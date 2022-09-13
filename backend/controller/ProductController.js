@@ -1,6 +1,6 @@
 const Product = require("../models/ProductModel");
 
-// create product
+// create product -- Admin
 const createProduct = async (req, res) => {
   const product = await Product.create(req.body);
 
@@ -24,7 +24,31 @@ const getAllProducts = async (req, res) => {
     })
 }
 
+// update product -- Admin
+const updateProduct = async (req, res) => {
+  let product = await Product.findById(req.params.id)
+
+  if (!product) {
+    res.status(500).json({
+      success: false,
+      message: "Product is not found with this id"
+    })
+  }
+
+  product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+    useUnified: false
+  })
+
+  res.status(200).json({
+    success: true,
+    product
+  })
+}
+
 module.exports = {
   getAllProducts,
-  createProduct
+  createProduct,
+  updateProduct
 }
