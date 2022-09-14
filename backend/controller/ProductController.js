@@ -1,6 +1,7 @@
 const Product = require("../models/ProductModel");
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const Features = require("../utils/Features");
 
 // create product -- Admin
 const createProduct = catchAsyncErrors(async (req, res, next) => {
@@ -16,7 +17,12 @@ const createProduct = catchAsyncErrors(async (req, res, next) => {
 
 // get all products
 const getAllProducts = catchAsyncErrors(async (req, res) => {
-  const products = await Product.find();
+
+  const pageLimit = 8;
+
+  const feature = new Features(Product.find(), req.query).search().filter().pagination(pageLimit);
+
+  const products = await feature.query;
 
   res
     .status(200)
