@@ -1,6 +1,7 @@
 const User = require("../models/UserModel");
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const sendToken = require("../utils/jwtToken");
 
 // register
 const createUser = catchAsyncErrors(async (req, res, next) => {
@@ -16,13 +17,7 @@ const createUser = catchAsyncErrors(async (req, res, next) => {
     }
   });
 
-  const token = user.getJWTToken();
-
-  res.status(201).json({
-    success: true,
-    token,
-    user
-  })
+  sendToken(user, 201, res);
 });
 
 // login
@@ -45,16 +40,24 @@ const loginUser = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("User is not found with this email and password", 401));
   }
 
-  const token = user.getJWTToken();
+  sendToken(user, 201, res);
+})
 
-  res.status(201).json({
+// logout
+const logoutUser = catchAsyncErrors(async (req, res, next) => {
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+    httpOnly: true
+  });
+
+  res.status(200).json({
     success: true,
-    token
+    message: "Logout success"
   })
-
 })
 
 module.exports = {
   createUser,
-  loginUser
+  loginUser,
+  logoutUser
 }
