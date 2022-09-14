@@ -1,7 +1,8 @@
 const app = require("./app");
 const dotenv = require("dotenv");
 const express = require("express");
-const router = require("./routes/ProductRoute");
+const product = require("./routes/ProductRoute");
+const user = require("./routes/UserRoute");
 const connectDatabase = require("./db/Database");
 const errorMiddleware = require("./middleware/error");
 
@@ -21,7 +22,8 @@ connectDatabase();
 
 app.use(express.json());
 
-app.use("/api", router);
+app.use("/api", product);
+app.use("/api", user);
 
 app.use(errorMiddleware);
 
