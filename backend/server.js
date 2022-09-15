@@ -1,6 +1,7 @@
 const app = require("./app");
 const dotenv = require("dotenv");
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const product = require("./routes/ProductRoute");
 const user = require("./routes/UserRoute");
 const connectDatabase = require("./db/Database");
@@ -21,6 +22,7 @@ dotenv.config({
 connectDatabase();
 
 app.use(express.json());
+app.use(cookieParser())
 
 app.use("/api", product);
 app.use("/api", user);
