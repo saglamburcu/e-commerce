@@ -103,7 +103,7 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 const resetPassword = catchAsyncErrors(async (req, res, next) => {
   const { resetPasswordToken } = req.query;
 
-  const { password } = req.body;
+  const { password, confirmPassword } = req.body;
 
   if (!resetPasswordToken) {
     return next(new ErrorHandler("Please provide a valid token", 400));
@@ -118,16 +118,96 @@ const resetPassword = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Invalid Token or session expired", 404));
   }
 
+  if (password !== confirmPassword) {
+    return next(new ErrorHandler("Passwords is not matched", 400));
+  }
+
   user.password = password;
   user.resetPasswordToken = undefined;
   user.resetPasswordTime = undefined;
 
   await user.save();
 
+  sendToken(user, 200, res);
+})
+
+// Get user details
+const userDetails = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.user.id);
+
   res.status(200).json({
-    status: "success",
-    message: "Reset password process successfull"
+    success: true,
+    user
+  })
+})
+
+// Update password
+const updatePassword = catchAsyncErrors(async (req, res, next) => {
+  const { oldPassword, newPassword, confirmPassword } = req.body;
+
+  const user = await User.findById(req.user.id).select("+password");
+
+  const isPasswordMatched = await user.comparePassword(oldPassword);
+
+  if (!isPasswordMatched) {
+    return next(new ErrorHandler("Old password is incorrect"));
+  };
+
+  if (newPassword !== confirmPassword) {
+    return next(new ErrorHandler("Passwords is not matched", 400));
+  };
+
+  user.password = newPassword;
+
+  await user.save();
+
+  sendToken(user, 200, res);
+
+})
+
+// Update User Profile
+const updateProfile = catchAsyncErrors(async (req, res, next) => {
+  const { name, email } = req.body;
+
+  const newUserData = {
+    name,
+    email
+  }
+
+  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false
   });
+
+  res.status(200).json({
+    success: true,
+    message: "Your profile is updated successfully"
+  })
+})
+
+// Get All Users --- Admin
+const getAllUsers = catchAsyncErrors(async (req, res, next) => {
+  const users = await User.find();
+
+  res.status(200).json({
+    success: true,
+    users
+  })
+})
+
+// Get Single User Details --- Admin
+const getSingleUser = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(new ErrorHandler("User is not found with this id", 400))
+  }
+
+  res.status(200).json({
+    success: true,
+    user
+  })
 })
 
 module.exports = {
@@ -135,5 +215,10 @@ module.exports = {
   loginUser,
   logoutUser,
   forgotPassword,
-  resetPassword
+  resetPassword,
+  userDetails,
+  updatePassword,
+  updateProfile,
+  getAllUsers,
+  getSingleUser
 }
