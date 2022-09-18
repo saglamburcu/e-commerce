@@ -210,6 +210,44 @@ const getSingleUser = catchAsyncErrors(async (req, res, next) => {
   })
 })
 
+// Change User Role
+const updateUserRole = catchAsyncErrors(async (req, res, next) => {
+  const { name, email, role } = req.body;
+
+  const newUserData = {
+    name,
+    email,
+    role
+  }
+
+  const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false
+  });
+
+  res.status(200).json({
+    success: true,
+    user
+  })
+})
+
+// Delete User
+const deleteUser = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(new ErrorHandler("User is not found with this id", 400))
+  }
+
+  await user.remove();
+
+  res.status(200).json({
+    success: true,
+    message: "User is deleted successfully"
+  })
+})
+
 module.exports = {
   createUser,
   loginUser,
@@ -220,5 +258,7 @@ module.exports = {
   updatePassword,
   updateProfile,
   getAllUsers,
-  getSingleUser
+  getSingleUser,
+  updateUserRole,
+  deleteUser
 }
