@@ -4,6 +4,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const product = require("./routes/ProductRoute");
 const user = require("./routes/UserRoute");
+const order = require("./routes/OrderRoute");
 const connectDatabase = require("./db/Database");
 const errorMiddleware = require("./middleware/error");
 
@@ -26,6 +27,7 @@ app.use(cookieParser())
 
 app.use("/api", product);
 app.use("/api", user);
+app.use("/api", order);
 
 app.use(errorMiddleware);
 
