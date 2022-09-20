@@ -1,3 +1,4 @@
+import Slider from "../Slider/Slider";
 import "./Home.scss";
 
 const images = [
@@ -8,7 +9,7 @@ const images = [
 const Home = () => {
   return (
     <div className="home">
-      Slider
+      <Slider />
     </div>
   )
 }
