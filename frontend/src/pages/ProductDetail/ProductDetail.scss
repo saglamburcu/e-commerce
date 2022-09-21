@@ -1,0 +1,13 @@
+.product__detail {
+  width: 80vw;
+  height: 73vh;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 5px;
+  margin: 20px auto;
+
+  &__center {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}

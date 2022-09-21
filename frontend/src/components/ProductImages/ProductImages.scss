@@ -1,0 +1,38 @@
+.product__images {
+ width: 30%;
+ height: 550px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+
+ &__selected {
+  width: 330px;
+  height: 420px;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 8px;
+  object-fit: cover;
+ }
+
+ &__card {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    width: 50px;
+    height: 80px;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    object-fit: cover;
+   }
+ }
+}
+
+.selected {
+  border: 2px solid orange;
+  border-radius: 5px;
+  width: 60px;
+  height: 90px;
+}

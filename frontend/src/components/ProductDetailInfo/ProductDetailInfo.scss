@@ -1,0 +1,49 @@
+.info {
+  width: 40%;
+  height: 550px;
+  padding: 30px;
+  line-height: 40px;
+
+  h2 {
+    color: rgb(124, 78, 9);
+  }
+
+  &__buttons {
+    button {
+      border: none;
+      font-size: 22px;
+      padding: 10px;
+    }
+    span {
+      font-size: 22px;
+      display: inline-block;
+      padding: 10px;
+    }
+  }
+
+  h4 {
+    color: rgb(226, 84, 120);
+  }
+
+  &__favorite__icon {
+    border: none;
+    background-color: transparent;
+    color: rgb(77, 165, 116);
+    font-size: 24px;
+  }
+
+  &__add__basket {
+    border: none;
+    background-color: rgb(77, 165, 116);
+    color: rgb(248, 247, 247);
+    padding: 10px 50px;
+    font-size: 20px;
+    border-radius: 5px;
+    letter-spacing: 3px;
+    margin: 20px;
+  }
+
+  &__desc {
+    color: gray;
+  }
+}
