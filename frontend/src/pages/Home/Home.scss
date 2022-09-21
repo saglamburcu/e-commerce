@@ -1,0 +1,15 @@
+.home__heading {
+  padding: 80px 50px;
+  width: 100%;
+
+  h2 {
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}

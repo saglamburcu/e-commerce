@@ -7,6 +7,8 @@ const user = require("./routes/UserRoute");
 const order = require("./routes/OrderRoute");
 const connectDatabase = require("./db/Database");
 const errorMiddleware = require("./middleware/error");
+const cors = require("cors");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 // handling uncaught exception
 process.on("uncaughtException", (err) => {
@@ -23,11 +25,20 @@ dotenv.config({
 connectDatabase();
 
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
+app.use(cors());
 
 app.use("/api", product);
 app.use("/api", user);
 app.use("/api", order);
+
+app.use("/api", createProxyMiddleware({
+  target: "http://localhost:3000/",
+  changeOrigin: true,
+  onProxyRes: function (proxyRes, req, res) {
+    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+  }
+}))
 
 app.use(errorMiddleware);
 
