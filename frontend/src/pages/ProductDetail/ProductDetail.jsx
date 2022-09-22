@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 import { fetchProductDetails } from "../../api";
 import ProductImages from "../../components/ProductImages/ProductImages";
 import ProductDetailInfo from "../../components/ProductDetailInfo/ProductDetailInfo";
+import Reviews from "../../components/Reviews/Reviews";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState();
@@ -31,6 +32,9 @@ const ProductDetail = () => {
                 stock={product.stock}
                 description={product.description}
               />
+            </div>
+            <div className="product__detail__review">
+              <Reviews id={id} />
             </div>
           </div>
         )

@@ -13,3 +13,22 @@ export const fetchProductDetails = async (id) => {
 
   return data.product;
 }
+
+// Create Product Review
+export const fetchCreateProductReview = async (productId, comment, rating) => {
+  const res = await fetch("http://localhost:4000/api/product/review", {
+    method: "POST",
+    body: JSON.stringify({
+      productId: productId,
+      comment: comment,
+      rating: rating
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  });
+
+  const data = await res.json();
+
+  console.log(data)
+}

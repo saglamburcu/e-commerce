@@ -2,12 +2,13 @@ import "./ProductDetailInfo.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart as fillHeart} from "@fortawesome/free-solid-svg-icons";
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
+import RatingStars from "../RatingStars/RatingStars";
 
 const ProductDetailInfo = ({name, price, rating, reviews, stock, description}) => {
   return (
     <div className="info">
       <h2>{name}</h2>
-      {rating} ({reviews.length} reviews)
+      <RatingStars /> {rating} ({reviews.length} reviews)
       <h2>{price} TL</h2>
       <div className="info__buttons">
         <button>-</button>
