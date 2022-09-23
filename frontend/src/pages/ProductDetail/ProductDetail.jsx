@@ -5,6 +5,7 @@ import { fetchProductDetails } from "../../api";
 import ProductImages from "../../components/ProductImages/ProductImages";
 import ProductDetailInfo from "../../components/ProductDetailInfo/ProductDetailInfo";
 import Reviews from "../../components/Reviews/Reviews";
+import Header from "../../components/Header/Header";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState();
@@ -18,6 +19,8 @@ const ProductDetail = () => {
   }, []);
 
   return (
+    <>
+    <Header />
     <div>
       {
         product && (
@@ -40,6 +43,7 @@ const ProductDetail = () => {
         )
       }
     </div>
+    </>
   )
 }
 

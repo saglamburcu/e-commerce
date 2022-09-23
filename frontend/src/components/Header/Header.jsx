@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping} from "@fortawesome/free-solid-svg-icons";
@@ -39,17 +40,17 @@ const Header = () => {
         </ul>
         <div className="header__menu__icons">
           <a href="#" className="header__menu__icons__search">
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
           </a>
           <a href="#" className="header__menu__icons__favorites">
-          <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faHeart} />
           </a>
           <a href="#" className="header__menu__icons__basket">
-          <FontAwesomeIcon icon={faCartShopping} />
+            <FontAwesomeIcon icon={faCartShopping} />
           </a>
-          <a href="#" className="header__menu__icons__user">
-          <FontAwesomeIcon icon={faUser} />
-          </a>
+          <Link to="/login" className="header__menu__icons__user">
+            <FontAwesomeIcon icon={faUser} />
+          </Link>
         </div>
       </div>
     </div>
