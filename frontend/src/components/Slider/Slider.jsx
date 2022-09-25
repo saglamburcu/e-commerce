@@ -36,8 +36,8 @@ const Slider = ({img}) => {
     <div className="slider">
       <div className="slider__items">
         {
-          img.map(image => (
-            <div className="slider__items__image" style={{left: `${position*100}%`}}>
+          img.map((image, index) => (
+            <div key={index} className="slider__items__image" style={{left: `${position*100}%`}}>
               <img src={image.url} alt="" />
             </div>
           ))

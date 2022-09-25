@@ -14,7 +14,7 @@ const imagesData = [
 
 const Home = () => {
   const {allProducts} = useContext(ProductContext);
-  console.log(allProducts)
+
   return (
     <>
     <Header />
@@ -29,6 +29,7 @@ const Home = () => {
               const {_id, name, images, reviews, price} = product;
               return (
                 <ProductCard 
+                  key={_id}
                   id={_id}
                   name={name}
                   images={images}

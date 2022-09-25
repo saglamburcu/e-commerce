@@ -6,55 +6,34 @@
   flex-direction: column;
   padding: 80px 20px;
 
-  &__name {
-    display: flex;
-    align-items: center;
-    margin-bottom: 50px;
-    width: 90%;
-
-    &__icon {
-      font-size: 20px;
-      margin-right: 10px;
-    }
-
-    &__input {
-      width: 90%;
-      height: 30px;
-      border-radius: 5px;
-      border: none;
-      padding: 5px
-    }
-  }
-
-  &__email {
-    display: flex;
-    align-items: center;
-    margin-bottom: 50px;
-    width: 90%;
-
-    &__icon {
-      font-size: 20px;
-      margin-right: 10px;
-    }
-
-    &__input {
-      width: 90%;
-      height: 30px;
-      border-radius: 5px;
-      border: none;
-      padding: 5px
-    }
-  }
-
+  &__name,
+  &__email,
   &__password {
-    @extend .registerform__email;
+    width: 90%;
+    margin-bottom: 50px;
 
-    &__icon {
-      @extend .registerform__email__icon;
+    &__value {
+      display: flex;
+      align-items: center;
+
+      &__icon {
+        font-size: 20px;
+        margin-right: 10px;
+      }
+  
+      &__input {
+        width: 90%;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+        padding: 5px
+      }
     }
 
-    &__input {
-      @extend .registerform__email__input;
+    &__error {
+      color: red;
+      text-align: center;
+      font-size: 14px;
     }
   }
 

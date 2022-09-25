@@ -18,7 +18,7 @@ const ProductImages = ({images}) => {
       <div className="product__images__card">
         {
           images.map((image, index) => (
-            <img onMouseEnter={() => handleMouseEnter(index)} className={index === imageIndex ? "product__images__card__item selected" : "product__images__card__item"}  src={image.url} alt="" />
+            <img key={index} onMouseEnter={() => handleMouseEnter(index)} className={index === imageIndex ? "product__images__card__item selected" : "product__images__card__item"}  src={image.url} alt="" />
             ))
           }
       </div>

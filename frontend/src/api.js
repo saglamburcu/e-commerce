@@ -48,8 +48,6 @@ export const fetchLoginUser = async (email, password) => {
 
   const data = await res.json();
 
-  console.log("login", data)
-
   return data;
 }
 
@@ -68,8 +66,6 @@ export const fetchRegisterUser = async (name, email, password) => {
   });
 
   const data = await res.json();
-
-  console.log("register", data)
 
   return data;
 }

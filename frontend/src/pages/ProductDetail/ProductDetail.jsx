@@ -8,7 +8,7 @@ import Reviews from "../../components/Reviews/Reviews";
 import Header from "../../components/Header/Header";
 
 const ProductDetail = () => {
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState(null);
   const {id} = useParams();
 
   useEffect(() => {
