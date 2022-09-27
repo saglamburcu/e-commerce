@@ -1,17 +1,21 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import {faHeart, faUser} from "@fortawesome/free-regular-svg-icons";
-
+import { UserContext } from "../../context/UserContext";
 
 const Header = () => {
+  const {userInfo, isLogin} = useContext(UserContext);
+
   return (
     <div className="header">
       <div className="header__logo">
         <h1>PatiShop</h1>
-        <p>Email: burcu@gmail.com</p>
+        {isLogin && 
+          <p>{`Email: ${userInfo?.email}`}</p>
+        }
       </div>
 
       <div className="header__menu">
@@ -48,9 +52,19 @@ const Header = () => {
           <a href="#" className="header__menu__icons__basket">
             <FontAwesomeIcon icon={faCartShopping} />
           </a>
-          <Link to="/login" className="header__menu__icons__user">
-            <FontAwesomeIcon icon={faUser} />
-          </Link>
+
+          {
+            isLogin ? (
+              <Link to="/login" className="header__menu__icons__user">
+                <FontAwesomeIcon icon={faUser} /> Hesabım
+              </Link>
+            ) : (
+              <Link to="/login" className="header__menu__icons__user">
+                <FontAwesomeIcon icon={faUser} /> Giriş Yap
+              </Link>
+            )                       
+          }   
+
         </div>
       </div>
     </div>

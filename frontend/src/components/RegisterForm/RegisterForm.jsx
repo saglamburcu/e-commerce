@@ -4,14 +4,14 @@ import {faUnlockKeyhole, faFaceSmile} from "@fortawesome/free-solid-svg-icons";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons"
 import { useState, useContext } from "react";
 import { fetchRegisterUser } from "../../api";
-import { ProductContext } from "../../context/ProductContext";
+import { UserContext } from "../../context/UserContext";
 import Error from "../Error/Error";
 import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik";
 import validations from "../../validations";
 
 const RegisterForm = () => {
-  const {setUserInfo} = useContext(ProductContext);
+  const {login} = useContext(UserContext);
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
@@ -30,8 +30,8 @@ const RegisterForm = () => {
         return;
       }
 
+      login(response)
       navigate("/", {replace: true});
-      setUserInfo(response.user);
 
     } catch (err) {
       console.log(err);

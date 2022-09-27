@@ -7,11 +7,12 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import Error from "../Error/Error";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {setUserInfo} = useContext(UserContext);
+  const {login} = useContext(UserContext);
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
@@ -31,8 +32,8 @@ const LoginForm = () => {
         return;
       } 
       
-      navigate("/", {replace: true});
-      setUserInfo(response.user);
+      login(response);
+    navigate("/", {replace: true});
 
     } catch (err) {
       console.log(err)
