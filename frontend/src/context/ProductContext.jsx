@@ -5,6 +5,7 @@ const ProductContext = createContext();
 
 const ProductProvider = ({children}) => {
   const [allProducts, setAllProducts] = useState([]);
+  const [productDetail, setProductDetail] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -14,7 +15,9 @@ const ProductProvider = ({children}) => {
   }, []);
 
   const values = {
-    allProducts
+    allProducts,
+    productDetail,
+    setProductDetail
   }
 
   return (

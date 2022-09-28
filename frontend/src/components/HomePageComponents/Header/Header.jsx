@@ -5,9 +5,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import {faHeart, faUser} from "@fortawesome/free-regular-svg-icons";
 import { UserContext } from "../../../context/UserContext";
+import { OrderContext } from "../../../context/OrderContext";
 
 const Header = () => {
   const {userInfo, isLogin} = useContext(UserContext);
+  const {basketIconNumber} = useContext(OrderContext);
 
   return (
     <>
@@ -51,7 +53,8 @@ const Header = () => {
               <FontAwesomeIcon icon={faHeart} />
             </a>
             <a href="#" className="header__menu__icons__basket">
-              <FontAwesomeIcon icon={faCartShopping} />
+              <FontAwesomeIcon icon={faCartShopping} /> 
+              <span>{basketIconNumber}</span>
             </a>
 
             {
@@ -64,7 +67,7 @@ const Header = () => {
                   <FontAwesomeIcon icon={faUser} /> Giriş Yap
                 </Link>
               )                       
-            }   
+            }  
 
           </div>
         </div>
