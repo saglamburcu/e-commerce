@@ -2,10 +2,9 @@ import "./ProductDetail.scss";
 import { useParams } from "react-router-dom";
 import {useState, useEffect} from "react";
 import { fetchProductDetails } from "../../api";
-import ProductImages from "../../components/ProductImages/ProductImages";
-import ProductDetailInfo from "../../components/ProductDetailInfo/ProductDetailInfo";
-import Reviews from "../../components/Reviews/Reviews";
-import Header from "../../components/Header/Header";
+import ProductImages from "../../components/ProductDetailsComponents/ProductImages/ProductImages";
+import ProductDetailInfo from "../../components/ProductDetailsComponents/ProductDetailInfo/ProductDetailInfo";
+import Reviews from "../../components/ProductDetailsComponents/Reviews/Reviews";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);
@@ -20,7 +19,6 @@ const ProductDetail = () => {
 
   return (
     <>
-    <Header />
     <div>
       {
         product && (

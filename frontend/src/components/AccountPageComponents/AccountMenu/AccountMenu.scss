@@ -1,0 +1,16 @@
+.accountmenu {
+  &__item {
+    width: 15%;
+    min-height: 70vh;
+    background-color: cadetblue;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 40px;
+    
+    a {
+      margin-bottom: 20px;
+    }
+  }
+}

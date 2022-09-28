@@ -2,10 +2,10 @@ import "./LoginForm.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUnlockKeyhole} from "@fortawesome/free-solid-svg-icons";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
-import { fetchLoginUser } from "../../api";
+import { fetchLoginUser} from "../../../api";
 import { useState, useContext } from "react";
-import { UserContext } from "../../context/UserContext";
-import Error from "../Error/Error";
+import { UserContext } from "../../../context/UserContext";
+import Error from "../../Error/Error";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -33,7 +33,7 @@ const LoginForm = () => {
       } 
       
       login(response);
-    navigate("/", {replace: true});
+      navigate("/", {replace: true});
 
     } catch (err) {
       console.log(err)

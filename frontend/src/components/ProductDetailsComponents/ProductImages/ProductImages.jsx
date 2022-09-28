@@ -1,4 +1,3 @@
-import Slider from "../Slider/Slider";
 import "./ProductImages.scss";
 import { useState } from "react";
 

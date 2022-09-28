@@ -1,6 +1,6 @@
 import "./Reviews.scss";
 import RatingStars from "../RatingStars/RatingStars";
-import { fetchCreateProductReview } from "../../api";
+import { fetchCreateProductReview } from "../../../api";
 
 const Reviews = ({id}) => {
 

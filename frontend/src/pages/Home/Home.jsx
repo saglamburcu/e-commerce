@@ -1,9 +1,8 @@
 import Slider from "../../components/Slider/Slider";
-import ProductCard from "../../components/ProductCard/ProductCard";
+import ProductCard from "../../components/HomePageComponents/ProductCard/ProductCard";
 import "./Home.scss";
 import { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
-import Header from "../../components/Header/Header";
 
 const imagesData = [
   {url: "images/photo2.jpg"},
@@ -17,7 +16,6 @@ const Home = () => {
 
   return (
     <>
-    <Header />
     <div className="home">
       <Slider img={imagesData}/>
 

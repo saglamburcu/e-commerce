@@ -3,12 +3,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUnlockKeyhole, faFaceSmile} from "@fortawesome/free-solid-svg-icons";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons"
 import { useState, useContext } from "react";
-import { fetchRegisterUser } from "../../api";
-import { UserContext } from "../../context/UserContext";
-import Error from "../Error/Error";
+import { fetchRegisterUser } from "../../../api";
+import { UserContext } from "../../../context/UserContext";
+import Error from "../../Error/Error";
 import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik";
-import validations from "../../validations";
+import validations from "../../../validations";
 
 const RegisterForm = () => {
   const {login} = useContext(UserContext);

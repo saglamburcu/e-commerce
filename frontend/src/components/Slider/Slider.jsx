@@ -6,11 +6,11 @@ const Slider = ({img}) => {
   const [position, setPosition] = useState(0);
   let slideInterval;
  
-  useEffect(() => {
-    autoSlider();
+  // useEffect(() => {
+  //   autoSlider();
 
-    return () => clearInterval(slideInterval);
-  }, [position])
+  //   return () => clearInterval(slideInterval);
+  // }, [position])
 
   const showNextImg = () => {
     if (Math.abs(position) !== img.length-1) {
