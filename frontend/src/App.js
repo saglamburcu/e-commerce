@@ -7,6 +7,7 @@ import Login from './pages/Login/Login';
 import Account from './pages/Account/Account';
 import UserInfos from './components/AccountPageComponents/UserInfos/UserInfos';
 import MyOrders from './components/AccountPageComponents/MyOrders/MyOrdersList/MyOrdersList';
+import MyBasket from './components/BasketPageComponents/MyBasket/MyBasket';
 
 function App() {
   return (
@@ -19,10 +20,10 @@ function App() {
             <Route path='user-infos' element={<UserInfos />} />
             <Route path='my-orders' element={<MyOrders />} />
           </Route>
+          <Route path='/basket' element={<MyBasket />} />
         </Route>
 
         <Route path='/login' element={<Login />} />
-
         {/* <Route path='/login' element={
           <PrivateRoute>
             <Login />

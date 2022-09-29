@@ -17,7 +17,7 @@ const ProductDetail = () => {
       const product = await fetchProductDetails(id);
       setProductDetail(product);
     })()
-  }, []);
+  }, [id, setProductDetail]);
 
   return (
     <>

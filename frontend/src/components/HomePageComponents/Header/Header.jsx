@@ -52,10 +52,10 @@ const Header = () => {
             <a href="#" className="header__menu__icons__favorites">
               <FontAwesomeIcon icon={faHeart} />
             </a>
-            <a href="#" className="header__menu__icons__basket">
+            <Link to="/basket" className="header__menu__icons__basket">
               <FontAwesomeIcon icon={faCartShopping} /> 
               <span>{basketIconNumber}</span>
-            </a>
+            </Link>
 
             {
               isLogin ? (

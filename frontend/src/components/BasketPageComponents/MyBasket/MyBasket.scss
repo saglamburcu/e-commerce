@@ -1,0 +1,40 @@
+.mybasket {
+  width: 85%;
+  margin: 40px auto;
+
+  &__products {
+    width: 100%;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 10px;
+    margin-bottom: 30px;
+  
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px;
+  
+      button {
+        padding: 6px 12px;
+        border-radius: 5px;
+        border: none;
+        background-color: rgb(224, 161, 138);
+        color: white;
+      }
+    }
+  }
+
+  &__confirm {
+    display: flex;
+    justify-content: flex-end;
+
+    &__button {
+      padding: 15px 45px;
+      background-color: rgb(77, 165, 116);
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 18px;
+    }
+  }
+}

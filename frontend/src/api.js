@@ -69,3 +69,11 @@ export const fetchRegisterUser = async (name, email, password) => {
 
   return data;
 }
+
+// Get Stripe Api Key
+export const getStripeApiKey = async () => {
+  const res = await fetch("http://localhost:4000/api/stripeapikey");
+  const data = await res.json();
+
+  return data.stripeApiKey;
+}
