@@ -35,7 +35,7 @@ const MyBasket = () => {
       </div>
 
       <div className="mybasket__confirm">
-        <Link to="/checkout">
+        <Link to="/checkout/shipping-address">
           <button className="mybasket__confirm__button">Sepeti Onayla</button>
         </Link>
       </div>

@@ -7,7 +7,11 @@ import Login from './pages/Login/Login';
 import Account from './pages/Account/Account';
 import UserInfos from './components/AccountPageComponents/UserInfos/UserInfos';
 import MyOrders from './components/AccountPageComponents/MyOrders/MyOrdersList/MyOrdersList';
-import MyBasket from './components/BasketPageComponents/MyBasket/MyBasket';
+import Basket from './pages/Basket/Basket';
+import Checkout from './pages/Checkout/Checkout';
+import ShippingAddress from './components/CheckoutPageComponents/ShippingAddress/ShippingAddress';
+import OrderConfirm from './components/CheckoutPageComponents/OrderConfirm/OrderConfirm';
+
 
 function App() {
   return (
@@ -20,10 +24,15 @@ function App() {
             <Route path='user-infos' element={<UserInfos />} />
             <Route path='my-orders' element={<MyOrders />} />
           </Route>
-          <Route path='/basket' element={<MyBasket />} />
+          <Route path='/basket' element={<Basket />} />
         </Route>
 
         <Route path='/login' element={<Login />} />
+
+        <Route path='/checkout' element={<Checkout />}>
+          <Route path='shipping-address' element={<ShippingAddress />} />
+          <Route path='order-confirm' element={<OrderConfirm />} />
+        </Route>
         {/* <Route path='/login' element={
           <PrivateRoute>
             <Login />

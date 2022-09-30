@@ -5,6 +5,7 @@ const OrderContext = createContext();
 const OrderProvider = ({children}) => {
   const [productsInTheBasket, setProductsInTheBasket] = useState(JSON.parse(localStorage.getItem("myBasket")) || []);
   const [basketIconNumber, setBasketIconNumber] = useState(Number(localStorage.getItem("numberOfProductsInTheBasket")) || 0);
+  const [addressData, setAddressData] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("myBasket", JSON.stringify(productsInTheBasket));

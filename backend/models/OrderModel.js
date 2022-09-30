@@ -22,11 +22,7 @@ const orderSchema = new Schema({
     },
     pinCode: {
       type: Number,
-      require: true
-    },
-    pinCode: {
-      type: Number,
-      require: true
+      // require: true
     }
   },
   orderItems: [
