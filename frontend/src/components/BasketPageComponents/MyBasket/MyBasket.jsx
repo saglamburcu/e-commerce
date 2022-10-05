@@ -1,10 +1,11 @@
 import "./MyBasket.scss";
 import {useContext} from "react";
 import { OrderContext } from "../../../context/OrderContext";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
-const MyBasket = () => {
+const MyBasket = ({url, buttonText, showBtn}) => {
   const {productsInTheBasket, setProductsInTheBasket, setBasketIconNumber} = useContext(OrderContext);
+  const navigate = useNavigate();
 
   const removeProductFromBasket = (productId) => {
     const remainingProducts = productsInTheBasket.filter(product => product.productInfos._id !== productId);
@@ -27,7 +28,9 @@ const MyBasket = () => {
                   <h5>{productInfos?.name}</h5>
                   <h3>{count} adet</h3>
                   <h3>{count * productInfos.price} TL</h3>
-                  <button type="button" onClick={() => removeProductFromBasket(productInfos._id)}>Sepetten Çıkar</button>
+                  {
+                    showBtn && <button type="button" onClick={() => removeProductFromBasket(productInfos._id)}>Sepetten Çıkar</button>
+                  }
                 </div>
             )
           })
@@ -35,9 +38,7 @@ const MyBasket = () => {
       </div>
 
       <div className="mybasket__confirm">
-        <Link to="/checkout/shipping-address">
-          <button className="mybasket__confirm__button">Sepeti Onayla</button>
-        </Link>
+        <button className="mybasket__confirm__button" onClick={() => navigate(`${url}`)}>{buttonText}</button>
       </div>
     </div>
   )

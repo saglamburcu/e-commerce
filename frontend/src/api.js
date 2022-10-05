@@ -1,6 +1,6 @@
 // Get All Products
 export const fetchAllProduct = async () => {
-  const res = await fetch("http://localhost:4000/api/products");
+  const res = await fetch("http://localhost:4000/api/products", { credentials: 'include' });
   const data = await res.json();
 
   return data.products;
@@ -8,7 +8,7 @@ export const fetchAllProduct = async () => {
 
 // Get Product Detail
 export const fetchProductDetails = async (id) => {
-  const res = await fetch(`http://localhost:4000/api/product/${id}`);
+  const res = await fetch(`http://localhost:4000/api/product/${id}`, { credentials: 'include' });
   const data = await res.json();
 
   return data.product;
@@ -25,7 +25,8 @@ export const fetchCreateProductReview = async (productId, comment, rating) => {
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8'
-    }
+    },
+    credentials: 'include'
   });
 
   const data = await res.json();
@@ -43,7 +44,8 @@ export const fetchLoginUser = async (email, password) => {
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8'
-    }
+    },
+    credentials: 'include'
   });
 
   const data = await res.json();
@@ -62,7 +64,8 @@ export const fetchRegisterUser = async (name, email, password) => {
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8'
-    }
+    },
+    credentials: 'include'
   });
 
   const data = await res.json();
@@ -70,10 +73,18 @@ export const fetchRegisterUser = async (name, email, password) => {
   return data;
 }
 
-// Get Stripe Api Key
-export const getStripeApiKey = async () => {
-  const res = await fetch("http://localhost:4000/api/stripeapikey");
-  const data = await res.json();
+// Create Order
+export const fetchCreateOrder = async (data) => {
+  const res = await fetch("http://localhost:4000/api/order/new", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    },
+    credentials: 'include'
+  });
 
-  return data.stripeApiKey;
+  const resData = await res.json();
+
+  return resData;
 }

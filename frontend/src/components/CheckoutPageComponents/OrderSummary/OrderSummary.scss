@@ -1,0 +1,36 @@
+.order__summary {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  
+  &__items {
+    width: 100%;
+    padding: 40px;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 10px;
+
+    &__price {
+      width: 100%;
+
+      p {
+        display: flex;
+        justify-content: space-between;
+        line-height: 50px;
+      }   
+    }
+  }
+
+  &__button {
+    margin-top: 20px;
+
+    button {
+      padding: 10px 40px;
+      background-color: rgb(77, 165, 116);
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 18px;
+    }
+  }
+  
+}

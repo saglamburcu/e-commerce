@@ -11,12 +11,16 @@ import Basket from './pages/Basket/Basket';
 import Checkout from './pages/Checkout/Checkout';
 import ShippingAddress from './components/CheckoutPageComponents/ShippingAddress/ShippingAddress';
 import OrderConfirm from './components/CheckoutPageComponents/OrderConfirm/OrderConfirm';
-
+import Success from './components/CheckoutPageComponents/Success/Success';
+// import Payment from './components/CheckoutPageComponents/Payment/Payment';
+// import PaymentWrapper from './components/CheckoutPageComponents/Payment/PaymentWrapper';
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>
+
         <Route path='/' element={<Header />}>
           <Route index={true} element={<Home />} />
           <Route path='product/:id' element={<ProductDetail />} />
@@ -32,6 +36,8 @@ function App() {
         <Route path='/checkout' element={<Checkout />}>
           <Route path='shipping-address' element={<ShippingAddress />} />
           <Route path='order-confirm' element={<OrderConfirm />} />
+          {/* <Route path='card-infos' element={<PaymentWrapper />} /> */}
+          <Route path='success' element={<Success />} />
         </Route>
         {/* <Route path='/login' element={
           <PrivateRoute>

@@ -23,6 +23,10 @@ const orderSchema = new Schema({
     pinCode: {
       type: Number,
       // require: true
+    },
+    phoneNo: {
+      type: Number,
+      require: true
     }
   },
   orderItems: [
@@ -76,7 +80,6 @@ const orderSchema = new Schema({
   },
   taxPrice: {
     type: Number,
-    required: true,
     default: 0
   },
   shippingPrice: {

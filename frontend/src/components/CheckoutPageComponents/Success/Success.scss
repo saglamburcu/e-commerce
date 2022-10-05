@@ -1,0 +1,13 @@
+.success {
+  text-align: center;
+  margin-top: 50px;
+
+  &__icon {
+    font-size: 60px;
+    color: rgb(77, 165, 116);
+  }
+
+  &__text {
+    color: rgb(77, 165, 116);
+  }
+}
