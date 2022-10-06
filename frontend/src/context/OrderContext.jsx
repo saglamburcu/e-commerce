@@ -48,6 +48,8 @@ const OrderProvider = ({children}) => {
       return [...prev, ...addedProduct]
       
     })
+
+    setBasketIconNumber(prev => prev + 1)
   };
 
   const values = {
