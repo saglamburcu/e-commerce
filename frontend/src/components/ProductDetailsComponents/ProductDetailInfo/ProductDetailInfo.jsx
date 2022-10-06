@@ -10,9 +10,10 @@ import ProductAmountButtons from "../ProductAmountButtons/ProductAmountButtons";
 
 const ProductDetailInfo = ({name, price, rating, reviews, stock, description}) => {
   const {productDetail} = useContext(ProductContext);
-  const {productsInTheBasket, setProductsInTheBasket, setBasketIconNumber} = useContext(OrderContext);
+  const { setProductsInTheBasket, setBasketIconNumber, favoriteProductsList, setFavoriteProductsList} = useContext(OrderContext);
 
   const [numberOfProducts, setNumberOfProducts] = useState(0);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const addToBasket = () => {
 
@@ -31,6 +32,20 @@ const ProductDetailInfo = ({name, price, rating, reviews, stock, description}) =
     setBasketIconNumber(prev => prev + numberOfProducts);
   }
 
+  const changeFavorite = () => {
+    setIsFavorite(!isFavorite);
+
+    setFavoriteProductsList(prev => {
+      const productIndex = prev.findIndex(product => product._id === productDetail._id);
+
+      if(productIndex !== -1) {
+        const newState = prev.filter((_, index) => index !== productIndex);
+        return newState;
+      }
+      return [...prev, {productInfos: productDetail, count: 1}]
+    })
+  }
+
   return (
     <div className="info">
       <h2>{name}</h2>
@@ -47,9 +62,12 @@ const ProductDetailInfo = ({name, price, rating, reviews, stock, description}) =
           <h4>Ürün tükendi</h4>
         )
       }
-      <button className="info__favorite__icon">
-        <FontAwesomeIcon icon={faHeart} />
-        <FontAwesomeIcon icon={fillHeart} />
+      <button onClick={changeFavorite} className="info__favorite__icon">
+        {
+          (favoriteProductsList.filter(product => product.productInfos._id === productDetail._id).length > 0) 
+            ? <FontAwesomeIcon icon={fillHeart} /> 
+            : <FontAwesomeIcon icon={faHeart} />
+        }
       </button>
       <button 
         type="button" 

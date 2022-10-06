@@ -6,10 +6,11 @@ import { faMagnifyingGlass, faCartShopping} from "@fortawesome/free-solid-svg-ic
 import {faHeart, faUser} from "@fortawesome/free-regular-svg-icons";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
+import { ProductContext } from "../../../context/ProductContext";
 
 const Header = () => {
   const {userInfo, isLogin} = useContext(UserContext);
-  const {basketIconNumber} = useContext(OrderContext);
+  const {basketIconNumber, favoriteProductsList} = useContext(OrderContext);
 
   return (
     <>
@@ -49,9 +50,10 @@ const Header = () => {
             <a href="#" className="header__menu__icons__search">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </a>
-            <a href="#" className="header__menu__icons__favorites">
+            <Link to="/favorites" className="header__menu__icons__favorites">
               <FontAwesomeIcon icon={faHeart} />
-            </a>
+              <span>{favoriteProductsList.length}</span>
+            </Link>
             <Link to="/basket" className="header__menu__icons__basket">
               <FontAwesomeIcon icon={faCartShopping} /> 
               <span>{basketIconNumber}</span>

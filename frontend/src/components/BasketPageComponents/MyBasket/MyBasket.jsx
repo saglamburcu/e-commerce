@@ -1,25 +1,16 @@
 import "./MyBasket.scss";
-import {useContext} from "react";
-import { OrderContext } from "../../../context/OrderContext";
 import {useNavigate} from "react-router-dom";
 
-const MyBasket = ({url, buttonText, showBtn}) => {
-  const {productsInTheBasket, setProductsInTheBasket, setBasketIconNumber} = useContext(OrderContext);
+const MyBasket = ({showBtn, productsList, removeProduct, singleProductButton, isBasketPage, isFavoritePage, addToBasketFromFavorite}) => {
   const navigate = useNavigate();
 
-  const removeProductFromBasket = (productId) => {
-    const remainingProducts = productsInTheBasket.filter(product => product.productInfos._id !== productId);
-    setProductsInTheBasket(remainingProducts);
-
-    const removeProduct = productsInTheBasket.find(product => product.productInfos._id === productId);
-    setBasketIconNumber(prev => prev - (removeProduct.count));
-  }
+  
 
   return (
     <div className="mybasket">
       <div className="mybasket__products">
         {
-          productsInTheBasket?.map(product => {
+          productsList?.map(product => {
             const {productInfos, count} = product;
 
             return (
@@ -29,7 +20,11 @@ const MyBasket = ({url, buttonText, showBtn}) => {
                   <h3>{count} adet</h3>
                   <h3>{count * productInfos.price} TL</h3>
                   {
-                    showBtn && <button type="button" onClick={() => removeProductFromBasket(productInfos._id)}>Sepetten Çıkar</button>
+                    showBtn && <button type="button" onClick={() => removeProduct(productInfos._id)}>{singleProductButton}</button>
+                  }
+
+                  {
+                    isFavoritePage && <button onClick={() => addToBasketFromFavorite(productInfos._id, productsList)}>Sepete Ekle</button>
                   }
                 </div>
             )
@@ -37,9 +32,13 @@ const MyBasket = ({url, buttonText, showBtn}) => {
         }
       </div>
 
-      <div className="mybasket__confirm">
-        <button className="mybasket__confirm__button" onClick={() => navigate(`${url}`)}>{buttonText}</button>
-      </div>
+      {
+        isBasketPage && (
+          <div className="mybasket__confirm">
+            <button className="mybasket__confirm__button" onClick={() => navigate("/checkout/shipping-address")}>Sepeti Onayla</button>
+          </div>
+        )
+      }
     </div>
   )
 }

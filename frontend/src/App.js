@@ -12,6 +12,7 @@ import Checkout from './pages/Checkout/Checkout';
 import ShippingAddress from './components/CheckoutPageComponents/ShippingAddress/ShippingAddress';
 import OrderConfirm from './components/CheckoutPageComponents/OrderConfirm/OrderConfirm';
 import Success from './components/CheckoutPageComponents/Success/Success';
+import Favorites from './pages/Favorites/Favorites';
 // import Payment from './components/CheckoutPageComponents/Payment/Payment';
 // import PaymentWrapper from './components/CheckoutPageComponents/Payment/PaymentWrapper';
 
@@ -29,6 +30,7 @@ function App() {
             <Route path='my-orders' element={<MyOrders />} />
           </Route>
           <Route path='/basket' element={<Basket />} />
+          <Route path='/favorites' element={<Favorites />} />
         </Route>
 
         <Route path='/login' element={<Login />} />

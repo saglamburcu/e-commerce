@@ -7,7 +7,7 @@ import OrderSummary from "../OrderSummary/OrderSummary";
 
 const OrderConfirm = () => {
 
-  const {addressData} = useContext(OrderContext);
+  const {addressData, productsInTheBasket, removeProductFromBasket} = useContext(OrderContext);
   const {userInfo} = useContext(UserContext);
 
   return (
@@ -19,7 +19,13 @@ const OrderConfirm = () => {
           <p>Telefon: {addressData?.phoneNo}</p>
           <p>Adres: {addressData.country} {addressData.state} {addressData.city} {addressData.address}</p>
         </div> 
-        <MyBasket url={"/basket"} buttonText={"Sepete Geri Dön"} showBtn={false}/> 
+        <MyBasket 
+          showBtn={false}
+          productsList={productsInTheBasket}
+          removeProduct={removeProductFromBasket}
+          isBasketPage={false}
+          isFavoritePage={false}
+        /> 
       </div>
         
       <div className="orderconfirm__summary">
