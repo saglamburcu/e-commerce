@@ -20,11 +20,13 @@ const MyBasket = ({showBtn, productsList, removeProduct, singleProductButton, is
                   <h3>{count} adet</h3>
                   <h3>{count * productInfos.price} TL</h3>
                   {
-                    showBtn && <button type="button" onClick={() => removeProduct(productInfos._id)}>{singleProductButton}</button>
+                    showBtn && 
+                      <button type="button" onClick={() => removeProduct(productInfos._id)}>{singleProductButton}</button>
                   }
 
                   {
-                    isFavoritePage && <button onClick={() => addToBasketFromFavorite(productInfos._id, productsList)}>Sepete Ekle</button>
+                    isFavoritePage && 
+                      <button onClick={() => addToBasketFromFavorite(productInfos._id, productsList)}>Sepete Ekle</button>
                   }
                 </div>
             )

@@ -6,9 +6,17 @@
   flex-direction: column;
 
   &__image {
+    position: relative;
+
     img {
       width: 200px;
       height: 300px;
+    }
+
+    &__favoritebutton {
+      position: absolute;
+      top: 30px;
+      right: 20px;
     }
   }
 }

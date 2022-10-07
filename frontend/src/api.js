@@ -88,3 +88,11 @@ export const fetchCreateOrder = async (data) => {
 
   return resData;
 }
+
+// Get All Reviews Of The Product
+export const fetchAllReviews = async (productId) => {
+  const res = await fetch(`http://localhost:4000/api/reviews?id=${productId}`);
+  const data = await res.json();
+
+  return data.reviews;
+}

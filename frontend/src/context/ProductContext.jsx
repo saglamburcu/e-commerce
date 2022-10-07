@@ -1,23 +1,26 @@
 import {createContext, useState, useEffect} from "react";
-import { fetchAllProduct } from "../api";
+import { fetchAllProduct, fetchProductDetails } from "../api";
 
 const ProductContext = createContext();
 
 const ProductProvider = ({children}) => {
   const [allProducts, setAllProducts] = useState([]);
-  const [productDetail, setProductDetail] = useState(null);
+  const [productDetail, setProductDetail] = useState(JSON.parse(localStorage.getItem("detail")) || null);
+  const [productId, setProductId] = useState(localStorage.getItem("id") || "");
 
   useEffect(() => {
     (async () => {
       const products = await fetchAllProduct();
-      setAllProducts(products)
+      setAllProducts(products);
     })();
-  }, []);
+    localStorage.setItem("detail", JSON.stringify(productDetail))
+  }, [productDetail]);
 
   const values = {
     allProducts,
     productDetail,
-    setProductDetail
+    setProductDetail,
+    setProductId
   }
 
   return (

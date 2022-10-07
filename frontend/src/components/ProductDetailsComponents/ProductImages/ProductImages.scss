@@ -7,11 +7,21 @@
  flex-direction: column;
 
  &__selected {
-  width: 330px;
-  height: 420px;
-  border: 1px solid rgb(196, 196, 196);
-  border-radius: 8px;
-  object-fit: cover;
+  position: relative;
+
+  &__item {
+    width: 330px;
+    height: 420px;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  &__favoritebutton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+   }
  }
 
  &__card {

@@ -24,7 +24,7 @@ const Home = () => {
         <div className="home__heading__cards">
          {
           allProducts && allProducts.map(product => {
-              const {_id, name, images, reviews, price} = product;
+              const {_id, name, images, reviews, price, rating} = product;
               return (
                 <ProductCard 
                   key={_id}
@@ -33,6 +33,7 @@ const Home = () => {
                   images={images}
                   reviews={reviews}
                   price={price}
+                  rating={rating}
                 /> 
               )
           })

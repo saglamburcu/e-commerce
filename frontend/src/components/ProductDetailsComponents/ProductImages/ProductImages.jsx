@@ -1,5 +1,6 @@
 import "./ProductImages.scss";
 import { useState } from "react";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 const ProductImages = ({images}) => {
   const [imageIndex, setImageIndex] = useState(0);
@@ -10,10 +11,13 @@ const ProductImages = ({images}) => {
 
   return (
     <div className="product__images">
-      <div>
-        <img className="product__images__selected" src={images[imageIndex].url} alt="" />
+      <div className="product__images__selected">
+        <img className="product__images__selected__item" src={images[imageIndex].url} alt="" />
+        <div className="product__images__selected__favoritebutton">
+          <FavoriteButton />
+        </div>
       </div>
-
+      
       <div className="product__images__card">
         {
           images.map((image, index) => (
