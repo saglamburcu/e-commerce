@@ -1,13 +1,13 @@
 .accountmenu {
+  width: 20%;
+
   &__item {
-    width: 15%;
     min-height: 70vh;
-    background-color: cadetblue;
+    background-color: rgba(207, 211, 211, 0.479);
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-left: 40px;
     
     a {
       margin-bottom: 20px;

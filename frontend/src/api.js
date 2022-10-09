@@ -91,8 +91,32 @@ export const fetchCreateOrder = async (data) => {
 
 // Get All Reviews Of The Product
 export const fetchAllReviews = async (productId) => {
-  const res = await fetch(`http://localhost:4000/api/reviews?id=${productId}`);
+  const res = await fetch(`http://localhost:4000/api/reviews?id=${productId}`, { credentials: 'include' });
   const data = await res.json();
 
   return data.reviews;
+}
+
+// Get User Details
+export const fetchUserDetails = async () => {
+  const res = await fetch("http://localhost:4000/api/me", { credentials: 'include' });
+  const data = await res.json();
+
+  return data.user;
+}
+
+// Update User Info
+export const fetchUpdateUserInfo = async (data) => {
+  const res = await fetch("http://localhost:4000/api/me/update/info", {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: 'include'
+  });
+
+  const resData = await res.json();
+
+  console.log(resData);
 }
