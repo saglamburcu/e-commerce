@@ -13,6 +13,7 @@ import ShippingAddress from './components/CheckoutPageComponents/ShippingAddress
 import OrderConfirm from './components/CheckoutPageComponents/OrderConfirm/OrderConfirm';
 import Success from './components/CheckoutPageComponents/Success/Success';
 import Favorites from './pages/Favorites/Favorites';
+import OrderDetails from './pages/OrderDetails/OrderDetails';
 // import Payment from './components/CheckoutPageComponents/Payment/Payment';
 // import PaymentWrapper from './components/CheckoutPageComponents/Payment/PaymentWrapper';
 
@@ -41,6 +42,8 @@ function App() {
           {/* <Route path='card-infos' element={<PaymentWrapper />} /> */}
           <Route path='success' element={<Success />} />
         </Route>
+
+        <Route path='/order/:id' element={<OrderDetails />} />
         {/* <Route path='/login' element={
           <PrivateRoute>
             <Login />

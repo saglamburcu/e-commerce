@@ -9,7 +9,6 @@ import "./OrderSummary.scss";
 const OrderSummary = () => {
 
   const {productsInTheBasket, addressData, setAddressData, order, setOrder} = useContext(OrderContext);
-  const {userInfo} = useContext(UserContext);
   const navigate = useNavigate();
   
   let subTotal = productsInTheBasket.reduce((cumulative, item) => cumulative + item.productInfos.price*item.count, 0); 
@@ -18,13 +17,13 @@ const OrderSummary = () => {
 
   const total = shippingCharges + subTotal;
 
-  useEffect(() => {
-    (async () => {
-      if(order) {
-        await fetchCreateOrder(order);
-      }
-    })()
-  }, [order]);
+  // useEffect(() => {
+  //   (async () => {
+  //     if(order) {
+  //       await fetchCreateOrder(order);
+  //     }
+  //   })()
+  // }, [order]);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -39,14 +38,12 @@ const OrderSummary = () => {
       }
     });
 
-    // const user = userInfo;
-
     const paymentInfo = {
       id: "1",
       status: "succeeded"
     }
 
-    await setOrder({shippingInfo: addressData, itemsPrice: subTotal, shippingPrice: shippingCharges, totalPrice: total, orderItems: orders, paymentInfo: paymentInfo});
+    await fetchCreateOrder({shippingInfo: addressData, itemsPrice: subTotal, shippingPrice: shippingCharges, totalPrice: total, orderItems: orders, paymentInfo: paymentInfo});
      
     // navigate("/checkout/card-infos")
     navigate("/checkout/success");

@@ -120,3 +120,20 @@ export const fetchUpdateUserInfo = async (data) => {
 
   console.log(resData);
 }
+
+// Get All Orders
+export const fetchAllOrders = async () => {
+  const res = await fetch("http://localhost:4000/api/orders/me", { credentials: 'include' });
+  const data = res.json();
+
+  return data;
+}
+
+// Get Single Order
+export const fetchSingleOrder = async (orderId) => {
+  const res = await fetch(`http://localhost:4000/api/order/${orderId}`, { credentials: 'include' });
+  const data = res.json();
+
+  return data;
+}
+
