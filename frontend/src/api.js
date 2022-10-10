@@ -137,3 +137,23 @@ export const fetchSingleOrder = async (orderId) => {
   return data;
 }
 
+// Update Password
+export const fetchUpdatePassword = async (oldPassword, newPassword, confirmPassword) => {
+  const res = await fetch("http://localhost:4000/api/me/updatepassword", {
+    method: 'PUT',
+    body: JSON.stringify({
+      oldPassword,
+      newPassword,
+      confirmPassword
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: 'include'
+  })
+
+  const data = res.json();
+
+  return data;
+}
+

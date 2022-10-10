@@ -14,6 +14,7 @@ import OrderConfirm from './components/CheckoutPageComponents/OrderConfirm/Order
 import Success from './components/CheckoutPageComponents/Success/Success';
 import Favorites from './pages/Favorites/Favorites';
 import OrderDetails from './pages/OrderDetails/OrderDetails';
+import ChangePassword from './components/AccountPageComponents/ChangePassword/ChangePassword';
 // import Payment from './components/CheckoutPageComponents/Payment/Payment';
 // import PaymentWrapper from './components/CheckoutPageComponents/Payment/PaymentWrapper';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='account' element={<Account />} >
             <Route path='user-infos' element={<UserInfos />} />
             <Route path='my-orders' element={<MyOrders />} />
+            <Route path='change-password' element={<ChangePassword />} />
           </Route>
           <Route path='/basket' element={<Basket />} />
           <Route path='/favorites' element={<Favorites />} />
