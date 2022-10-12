@@ -157,3 +157,47 @@ export const fetchUpdatePassword = async (oldPassword, newPassword, confirmPassw
   return data;
 }
 
+// Logout
+export const fetchLogout = async () => {
+  const res = await fetch("http://localhost:4000/api/logout", { credentials: 'include' });
+  const data = res.json();
+
+  return data;
+}
+
+// Forgot Password
+export const fetchForgotPassword = async (email) => {
+  const res = await fetch("http://localhost:4000/api/password/forgot", {
+    method: "POST",
+    body: JSON.stringify({
+      email
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    },
+    credentials: 'include'
+  })
+
+  const data = await res.json();
+  return data;
+}
+
+// Reset Password
+export const fetchResetPassword = async (token, password, confirmPassword) => {
+  const res = await fetch(`http://localhost:4000/api/password/reset/${token}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      token,
+      password,
+      confirmPassword
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: 'include'
+  });
+
+  const data = res.json();
+  console.log(data)
+  return data;
+}

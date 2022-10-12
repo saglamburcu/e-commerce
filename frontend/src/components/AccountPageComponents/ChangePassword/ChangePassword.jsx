@@ -7,7 +7,7 @@ const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [isError, setIsError] = useState({state: false, message: ""});
+  const [isNotification, setIsNotification] = useState({state: false, message: ""});
 
   const changePassword = async (e) => {
     e.preventDefault();
@@ -17,10 +17,10 @@ const ChangePassword = () => {
       console.log(response)
 
       if (!response.success) {
-        setIsError({state: true, message: response.message});
+        setIsNotification({state: true, message: response.message});
 
         setTimeout(() => {
-          setIsError({state: false, message: ""});
+          setIsNotification({state: false, message: ""});
         }, 4000);
       }
 
@@ -32,7 +32,7 @@ const ChangePassword = () => {
   return (
     <div className="change__password">
       {
-        isError.state && <Error message={isError.message} />
+        isNotification.state && <Error status="error" message={isNotification.message} />
       }
       <form className="change__password__form" onSubmit={changePassword}>
         <label>Şifreniz</label>

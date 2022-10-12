@@ -12,7 +12,7 @@ import validations from "../../../validations";
 
 const RegisterForm = () => {
   const {login} = useContext(UserContext);
-  const [isError, setIsError] = useState(false);
+  const [isNotification, setIsNotification] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async () => {
@@ -21,10 +21,10 @@ const RegisterForm = () => {
       const response = await fetchRegisterUser(values.name, values.email, values.password);
     
       if (!response.success) {
-        setIsError(true);
+        setIsNotification(true);
         
         setTimeout(() => {
-          setIsError(false);
+          setIsNotification(false);
         }, 4000);
 
         return;
@@ -51,8 +51,9 @@ const RegisterForm = () => {
   return (
     <form className="registerform" onSubmit={handleSubmit}>
 
-      {isError && (
+      {isNotification && (
         <Error 
+          status="error"
           message="Bu mail adresi daha önce kullanıldı. Lütfen başka bir mail adresiyle kayıt olmayı deneyiniz."/>
       )}
 

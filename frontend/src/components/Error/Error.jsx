@@ -1,8 +1,8 @@
 import "./Error.scss";
 
-const Error = ({message}) => {
+const Error = ({status, message}) => {
   return (
-    <div className="error">
+    <div className={`infoMessage ${status}`}>
       <p>{message}</p>
     </div>
   )

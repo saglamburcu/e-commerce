@@ -1,7 +1,19 @@
 import "./AccountMenu.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { fetchLogout } from "../../../api";
+import { useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 
 const AccountMenu = () => {
+  const navigate = useNavigate();
+  const {setIsLogin} = useContext(UserContext);
+  
+  const handleLogout = async () => {
+    await fetchLogout();
+    navigate("/login");
+    setIsLogin(false);
+  }
+
   return (
     <div className="accountmenu">
       <div className="accountmenu__item">
@@ -14,12 +26,9 @@ const AccountMenu = () => {
         <Link to="/account/change-password" className="accountmenu__item__changepassword">
           <span>Parolamı değiştir</span>
         </Link>
-        <Link to="/account/forgot-password" className="accountmenu__item__forgotpassword">
-          <span>Parolamı unuttum</span>
-        </Link>
-        <Link to="/account/logout" className="accountmenu__item__logout">
-          <span>Çıkış Yap</span>
-        </Link>
+       
+        <button type="button" onClick={handleLogout}>Çıkış Yap</button>
+        
       </div>
     </div>
   )

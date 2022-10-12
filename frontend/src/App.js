@@ -15,6 +15,8 @@ import Success from './components/CheckoutPageComponents/Success/Success';
 import Favorites from './pages/Favorites/Favorites';
 import OrderDetails from './pages/OrderDetails/OrderDetails';
 import ChangePassword from './components/AccountPageComponents/ChangePassword/ChangePassword';
+import ForgotPassword from './components/LoginPageComponents/ForgotPassword/ForgotPassword';
+import ResetPassword from './components/LoginPageComponents/ResetPassword/ResetPassword';
 // import Payment from './components/CheckoutPageComponents/Payment/Payment';
 // import PaymentWrapper from './components/CheckoutPageComponents/Payment/PaymentWrapper';
 
@@ -37,6 +39,8 @@ function App() {
         </Route>
 
         <Route path='/login' element={<Login />} />
+        <Route path='/forgot/password' element={<ForgotPassword />} />
+        <Route path='/reset/password/:token' element={<ResetPassword />} />
 
         <Route path='/checkout' element={<Checkout />}>
           <Route path='shipping-address' element={<ShippingAddress />} />

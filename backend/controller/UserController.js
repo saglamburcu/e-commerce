@@ -71,7 +71,7 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
   await user.save(); // Save to database
 
-  const resetPasswordUrl = `http://localhost:4000/api/password/reset?resetPasswordToken=${resetPasswordToken}`;
+  const resetPasswordUrl = `http://localhost:3000/reset/password/${resetPasswordToken}`;
 
   const message = `Your password reset token is : ${resetPasswordUrl}`;
 
@@ -101,9 +101,13 @@ const forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
 // Reset password
 const resetPassword = catchAsyncErrors(async (req, res, next) => {
-  const { resetPasswordToken } = req.query;
+  const resetPasswordToken = req.params.token;
 
   const { password, confirmPassword } = req.body;
+
+  if (password !== confirmPassword) {
+    return next(new ErrorHandler("Passwords is not matched", 400));
+  }
 
   if (!resetPasswordToken) {
     return next(new ErrorHandler("Please provide a valid token", 400));
@@ -116,10 +120,6 @@ const resetPassword = catchAsyncErrors(async (req, res, next) => {
 
   if (!user) {
     return next(new ErrorHandler("Invalid Token or session expired", 404));
-  }
-
-  if (password !== confirmPassword) {
-    return next(new ErrorHandler("Passwords is not matched", 400));
   }
 
   user.password = password;
