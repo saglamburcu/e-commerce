@@ -1,7 +1,7 @@
 import "./Reviews.scss";
 import RatingStars from "../RatingStars/RatingStars";
-import { fetchCreateProductReview, fetchAllReviews } from "../../../api";
-import { useState, useEffect } from "react";
+import { fetchCreateProductReview, fetchAllReviews, fetchDeleteProductReview } from "../../../api";
+import { useState, useEffect, useContext } from "react";
 
 const Reviews = ({id}) => {
   const [review, setReview] = useState("");
@@ -13,7 +13,7 @@ const Reviews = ({id}) => {
       const reviewList = await fetchAllReviews(id);
       setAllReviews(reviewList);
     })()
-  }, [allReviews, id]);
+  }, [review]); // ?
 
   const handleSubmit = async (e) => {
     e.preventDefault()

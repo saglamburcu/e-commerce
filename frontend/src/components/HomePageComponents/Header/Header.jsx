@@ -7,10 +7,12 @@ import {faHeart, faUser} from "@fortawesome/free-regular-svg-icons";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { ProductContext } from "../../../context/ProductContext";
+import { useState } from "react";
 
 const Header = () => {
   const {userInfo, isLogin} = useContext(UserContext);
   const {basketIconNumber, favoriteProductsList} = useContext(OrderContext);
+  const [isShowSearchArea, setIsShowSearchArea] = useState(false);
 
   return (
     <>
@@ -25,13 +27,13 @@ const Header = () => {
         <div className="header__menu">
           <ul className="header__menu__links">
             <li>
-              <a href="#">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="#">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="#">Products</a>
+              <Link to="/products">Products</Link>
             </li>
             <li>
               <a href="#">Offers</a>
@@ -43,13 +45,18 @@ const Header = () => {
               <a href="#">User Rules</a>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
+
+          <div className="header__menu__search">
+            <input type="text" />
+            <button className="header__menu__search__icon">
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="header__menu__icons__search__item" />
+            </button>
+          </div>
+
           <div className="header__menu__icons">
-            <a href="#" className="header__menu__icons__search">
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </a>
             <Link to="/favorites" className="header__menu__icons__favorites">
               <FontAwesomeIcon icon={faHeart} />
               <span>{favoriteProductsList.length}</span>

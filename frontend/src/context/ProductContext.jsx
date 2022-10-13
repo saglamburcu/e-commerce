@@ -10,8 +10,8 @@ const ProductProvider = ({children}) => {
 
   useEffect(() => {
     (async () => {
-      const products = await fetchAllProduct();
-      setAllProducts(products);
+      const res = await fetchAllProduct();
+      setAllProducts(res.products);
     })();
     localStorage.setItem("detail", JSON.stringify(productDetail))
   }, [productDetail]);

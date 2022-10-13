@@ -1,9 +1,9 @@
 // Get All Products
-export const fetchAllProduct = async () => {
-  const res = await fetch("http://localhost:4000/api/products", { credentials: 'include' });
+export const fetchAllProduct = async (queryKey, queryValue, pageValue) => {
+  const res = await fetch(`http://localhost:4000/api/products?${queryKey}=${queryValue}&page=${pageValue}`, { credentials: 'include' });
   const data = await res.json();
 
-  return data.products;
+  return data;
 }
 
 // Get Product Detail
@@ -32,6 +32,14 @@ export const fetchCreateProductReview = async (productId, comment, rating) => {
   const data = await res.json();
 
   console.log(data)
+}
+
+// Get All Reviews Of The Product
+export const fetchAllReviews = async (productId) => {
+  const res = await fetch(`http://localhost:4000/api/reviews?id=${productId}`, { credentials: 'include' });
+  const data = await res.json();
+
+  return data.reviews;
 }
 
 // Login
@@ -69,90 +77,6 @@ export const fetchRegisterUser = async (name, email, password) => {
   });
 
   const data = await res.json();
-
-  return data;
-}
-
-// Create Order
-export const fetchCreateOrder = async (data) => {
-  const res = await fetch("http://localhost:4000/api/order/new", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8'
-    },
-    credentials: 'include'
-  });
-
-  const resData = await res.json();
-
-  return resData;
-}
-
-// Get All Reviews Of The Product
-export const fetchAllReviews = async (productId) => {
-  const res = await fetch(`http://localhost:4000/api/reviews?id=${productId}`, { credentials: 'include' });
-  const data = await res.json();
-
-  return data.reviews;
-}
-
-// Get User Details
-export const fetchUserDetails = async () => {
-  const res = await fetch("http://localhost:4000/api/me", { credentials: 'include' });
-  const data = await res.json();
-
-  return data.user;
-}
-
-// Update User Info
-export const fetchUpdateUserInfo = async (data) => {
-  const res = await fetch("http://localhost:4000/api/me/update/info", {
-    method: 'PUT',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-    credentials: 'include'
-  });
-
-  const resData = await res.json();
-
-  console.log(resData);
-}
-
-// Get All Orders
-export const fetchAllOrders = async () => {
-  const res = await fetch("http://localhost:4000/api/orders/me", { credentials: 'include' });
-  const data = res.json();
-
-  return data;
-}
-
-// Get Single Order
-export const fetchSingleOrder = async (orderId) => {
-  const res = await fetch(`http://localhost:4000/api/order/${orderId}`, { credentials: 'include' });
-  const data = res.json();
-
-  return data;
-}
-
-// Update Password
-export const fetchUpdatePassword = async (oldPassword, newPassword, confirmPassword) => {
-  const res = await fetch("http://localhost:4000/api/me/updatepassword", {
-    method: 'PUT',
-    body: JSON.stringify({
-      oldPassword,
-      newPassword,
-      confirmPassword
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-    credentials: 'include'
-  })
-
-  const data = res.json();
 
   return data;
 }
@@ -201,3 +125,84 @@ export const fetchResetPassword = async (token, password, confirmPassword) => {
   console.log(data)
   return data;
 }
+
+// Get User Details
+export const fetchUserDetails = async () => {
+  const res = await fetch("http://localhost:4000/api/me", { credentials: 'include' });
+  const data = await res.json();
+
+  return data.user;
+}
+
+// Update User Info
+export const fetchUpdateUserInfo = async (data) => {
+  const res = await fetch("http://localhost:4000/api/me/update/info", {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: 'include'
+  });
+
+  const resData = await res.json();
+
+  console.log(resData);
+}
+
+// Update Password
+export const fetchUpdatePassword = async (oldPassword, newPassword, confirmPassword) => {
+  const res = await fetch("http://localhost:4000/api/me/updatepassword", {
+    method: 'PUT',
+    body: JSON.stringify({
+      oldPassword,
+      newPassword,
+      confirmPassword
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: 'include'
+  })
+
+  const data = res.json();
+
+  return data;
+}
+
+// Create Order
+export const fetchCreateOrder = async (data) => {
+  const res = await fetch("http://localhost:4000/api/order/new", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    },
+    credentials: 'include'
+  });
+
+  const resData = await res.json();
+
+  return resData;
+}
+
+
+// Get All Orders
+export const fetchAllOrders = async () => {
+  const res = await fetch("http://localhost:4000/api/orders/me", { credentials: 'include' });
+  const data = res.json();
+
+  return data;
+}
+
+// Get Single Order
+export const fetchSingleOrder = async (orderId) => {
+  const res = await fetch(`http://localhost:4000/api/order/${orderId}`, { credentials: 'include' });
+  const data = res.json();
+
+  return data;
+}
+
+
+
+

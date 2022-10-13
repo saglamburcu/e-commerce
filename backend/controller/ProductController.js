@@ -20,6 +20,20 @@ const getAllProducts = catchAsyncErrors(async (req, res) => {
 
   const pageLimit = 8;
 
+  let category = req.query.category || "All";
+
+  const categories = ["Kıyafet", "Tasma", "Mama", "Oyuncak", "Yatak"];
+
+  category === "All"
+    ? (category = [...categories])
+    : (category = req.query.category.split(","));
+
+  const productsCount = await Product.countDocuments({
+    category: { $in: [...category] },
+  });
+
+  const totalPage = Math.ceil(productsCount / pageLimit);
+
   const feature = new Features(Product.find(), req.query).search().filter().pagination(pageLimit);
 
   const products = await feature.query;
@@ -28,7 +42,10 @@ const getAllProducts = catchAsyncErrors(async (req, res) => {
     .status(200)
     .json({
       success: true,
-      products
+      products,
+      totalPage,
+      pageLimit,
+      categories
     })
 })
 
