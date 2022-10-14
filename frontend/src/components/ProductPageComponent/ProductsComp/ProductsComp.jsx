@@ -12,6 +12,7 @@ const ProductComp = () => {
   const [categoryValue, setCategoryValue] = useState("Kıyafet");
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
+  const [activePage, setActivePage] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -24,6 +25,8 @@ const ProductComp = () => {
 
   const filteredProductToCategories = async (e) => {
     setCategoryValue(e.target.textContent);
+    setPageNumber(1);
+    setActivePage(0);
   }
 
   return (
@@ -53,7 +56,7 @@ const ProductComp = () => {
 
           {
             totalPage !== 0 && (
-              <Pagination totalPage={totalPage} setPageNumber={setPageNumber} />
+              <Pagination totalPage={totalPage} setPageNumber={setPageNumber} activePage={activePage} setActivePage={setActivePage} />
             )
           }
         </div>

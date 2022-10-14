@@ -1,8 +1,7 @@
 import { useState } from "react";
 import "./Pagination.scss";
 
-const Pagination = ({ totalPage, setPageNumber }) => {
-  const [activePage, setActivePage] = useState(0);
+const Pagination = ({ totalPage, setPageNumber, activePage, setActivePage }) => {
 
   const changePageNumber = (index) => {
     setPageNumber(index + 1);
