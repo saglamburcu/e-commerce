@@ -17,46 +17,25 @@
     justify-content: space-between;
     margin-bottom: 20px;
   }
-  
+
   &__menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
+
     &__links {
       @extend .header__menu;
       width: 40%;
       list-style: none;
-  
+
       li a {
         text-decoration: none;
       }
     }
 
-    &__search {
-      width: 35%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      input {
-        width: 90%;
-        height: 30px;
-        border: 1px solid rgb(196, 196, 196);
-        border-radius: 5px;
-        
-      }
-
-      &__icon {
-        border: none;
-        background-color: transparent;
-      }
-    }
-  
     &__icons {
       @extend .header__menu;
       width: 16%;
     }
   }
 }
-

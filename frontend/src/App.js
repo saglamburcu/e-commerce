@@ -18,6 +18,7 @@ import ChangePassword from './components/AccountPageComponents/ChangePassword/Ch
 import ForgotPassword from './components/LoginPageComponents/ForgotPassword/ForgotPassword';
 import ResetPassword from './components/LoginPageComponents/ResetPassword/ResetPassword';
 import Products from './pages/Products/Products';
+import Search from './pages/Search/Search';
 // import Payment from './components/CheckoutPageComponents/Payment/Payment';
 // import PaymentWrapper from './components/CheckoutPageComponents/Payment/PaymentWrapper';
 
@@ -38,6 +39,7 @@ function App() {
           <Route path='/basket' element={<Basket />} />
           <Route path='/favorites' element={<Favorites />} />
           <Route path='products' element={<Products />} />
+          <Route path='search' element={<Search />} />
         </Route>
 
         <Route path='/login' element={<Login />} />

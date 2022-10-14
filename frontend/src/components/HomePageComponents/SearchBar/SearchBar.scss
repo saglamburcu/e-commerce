@@ -1,0 +1,19 @@
+.header__menu__search {
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  input {
+    width: 90%;
+    height: 30px;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 5px;
+
+  }
+
+  &__icon {
+    border: none;
+    background-color: transparent;
+  }
+}

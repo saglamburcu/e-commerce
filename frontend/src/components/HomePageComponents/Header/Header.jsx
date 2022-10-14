@@ -1,17 +1,18 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./Header.scss";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faCartShopping} from "@fortawesome/free-solid-svg-icons";
-import {faHeart, faUser} from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass, faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { ProductContext } from "../../../context/ProductContext";
 import { useState } from "react";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Header = () => {
-  const {userInfo, isLogin} = useContext(UserContext);
-  const {basketIconNumber, favoriteProductsList} = useContext(OrderContext);
+  const { userInfo, isLogin } = useContext(UserContext);
+  const { basketIconNumber, favoriteProductsList } = useContext(OrderContext);
   const [isShowSearchArea, setIsShowSearchArea] = useState(false);
 
   return (
@@ -19,7 +20,7 @@ const Header = () => {
       <div className="header">
         <div className="header__logo">
           <h1>PatiShop</h1>
-          {isLogin && 
+          {isLogin &&
             <p>{`Email: ${userInfo?.email}`}</p>
           }
         </div>
@@ -49,12 +50,7 @@ const Header = () => {
             </li>
           </ul>
 
-          <div className="header__menu__search">
-            <input type="text" />
-            <button className="header__menu__search__icon">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="header__menu__icons__search__item" />
-            </button>
-          </div>
+          <SearchBar />
 
           <div className="header__menu__icons">
             <Link to="/favorites" className="header__menu__icons__favorites">
@@ -62,7 +58,7 @@ const Header = () => {
               <span>{favoriteProductsList.length}</span>
             </Link>
             <Link to="/basket" className="header__menu__icons__basket">
-              <FontAwesomeIcon icon={faCartShopping} /> 
+              <FontAwesomeIcon icon={faCartShopping} />
               <span>{basketIconNumber}</span>
             </Link>
 
@@ -75,8 +71,8 @@ const Header = () => {
                 <Link to="/login" className="header__menu__icons__user">
                   <FontAwesomeIcon icon={faUser} /> Giriş Yap
                 </Link>
-              )                       
-            }  
+              )
+            }
 
           </div>
         </div>
