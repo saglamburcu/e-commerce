@@ -6,9 +6,8 @@ import { useContext } from "react";
 import { ProductContext } from "../../../context/ProductContext";
 import { OrderContext } from "../../../context/OrderContext";
 
-const ProductCard = ({id, name, images, reviews, price, rating}) => {
-  const {allProducts} = useContext(ProductContext);
-  const {favoriteProductsList, setFavoriteProductsList} = useContext(OrderContext);
+const ProductCard = ({ id, name, images, reviews, price, rating }) => {
+  const { favoriteProductsList, setFavoriteProductsList } = useContext(OrderContext);
 
   return (
     <Link to={`/product/${id}`} className="card">
@@ -17,14 +16,14 @@ const ProductCard = ({id, name, images, reviews, price, rating}) => {
         <div className="card__image__favoritebutton">
           {
             favoriteProductsList.map(product => {
-              if(product.productInfos._id === id) {
+              if (product.productInfos._id === id) {
                 return <FavoriteButton />
               }
             })
           }
         </div>
       </div>
-      <RatingStars props={{value: rating, edit: false, size: 24}}/>
+      <RatingStars props={{ value: rating, edit: false, size: 24 }} />
       <div className="card__info">
         <h5>{name}</h5>
         <p>{reviews.length} yorum</p>

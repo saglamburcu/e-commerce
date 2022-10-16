@@ -14,6 +14,8 @@ const ProductProvider = ({ children }) => {
   const [totalPage, setTotalPage] = useState(0);
   const [activePage, setActivePage] = useState(0);
 
+  const [selectedCategory, setSelectedCategory] = useState("Kıyafet");
+
   useEffect(() => {
     // (async () => {
     //   const res = await fetchAllProduct();
@@ -34,7 +36,8 @@ const ProductProvider = ({ children }) => {
     totalPage,
     setTotalPage,
     activePage,
-    setActivePage
+    setActivePage,
+    selectedCategory, setSelectedCategory
   }
 
   return (

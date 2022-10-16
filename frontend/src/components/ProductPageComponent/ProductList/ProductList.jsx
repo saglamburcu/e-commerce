@@ -1,5 +1,5 @@
 import "./ProductList.scss";
-import ProductCard from "../../HomePageComponents/ProductCard/ProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 
 const ProductList = ({ products }) => {
   return (

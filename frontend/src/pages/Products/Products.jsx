@@ -4,13 +4,16 @@ import Categories from "../../components/ProductPageComponent/Categories/Categor
 import Pagination from "../../components/ProductPageComponent/Pagination/Pagination";
 import { useState, useContext, useEffect } from "react";
 import { fetchAllProduct } from "../../api";
+import { ProductContext } from "../../context/ProductContext";
+import Footer from "../../components/Footer/Footer";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("Kıyafet");
   const [totalPage, setTotalPage] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [activePage, setActivePage] = useState(0);
+
+  const { selectedCategory, setSelectedCategory } = useContext(ProductContext);
 
   useEffect(() => {
     (async () => {
@@ -27,15 +30,18 @@ const Products = () => {
   }
 
   return (
-    <div className="products">
-      <div className="products__categories">
-        <Categories changeSelectedCategory={changeSelectedCategory} />
+    <>
+      <div className="products">
+        <div className="products__categories">
+          <Categories changeSelectedCategory={changeSelectedCategory} />
+        </div>
+        <div className="products__list">
+          <ProductList products={products} />
+          <Pagination totalPage={totalPage} setPageNumber={setPageNumber} activePage={activePage} setActivePage={setActivePage} />
+        </div>
       </div>
-      <div className="products__list">
-        <ProductList products={products} />
-        <Pagination totalPage={totalPage} setPageNumber={setPageNumber} activePage={activePage} setActivePage={setActivePage} />
-      </div>
-    </div>
+      <Footer />
+    </>
   )
 }
 

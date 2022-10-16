@@ -9,6 +9,7 @@ import { OrderContext } from "../../../context/OrderContext";
 import { ProductContext } from "../../../context/ProductContext";
 import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
+import MenuItems from "../MenuItems/MenuItems";
 
 const Header = () => {
   const { userInfo, isLogin } = useContext(UserContext);
@@ -27,27 +28,7 @@ const Header = () => {
 
         <div className="header__menu">
           <ul className="header__menu__links">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/products">Products</Link>
-            </li>
-            <li>
-              <a href="#">Offers</a>
-            </li>
-            <li>
-              <a href="#">Become A Seller</a>
-            </li>
-            <li>
-              <a href="#">User Rules</a>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
+            <MenuItems />
           </ul>
 
           <SearchBar />
