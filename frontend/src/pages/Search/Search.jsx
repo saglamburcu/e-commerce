@@ -1,26 +1,18 @@
-import { useContext } from "react";
-import ProductCard from "../../components/HomePageComponents/ProductCard/ProductCard";
+import { useState, useContext } from "react";
+import { fetchAllProduct } from "../../api";
+import Pagination from "../../components/ProductPageComponent/Pagination/Pagination";
+import ProductList from "../../components/ProductPageComponent/ProductList/ProductList";
 import { ProductContext } from "../../context/ProductContext";
 
 const Search = () => {
-  const { searchedProducts } = useContext(ProductContext);
+
+  const { totalPage, setPageNumber, activePage, setActivePage, searchedProducts } = useContext(ProductContext);
 
   return (
-    <>
-      {
-        searchedProducts.length > 0 && (
-
-          searchedProducts.map(product => {
-            const { _id, name, images, reviews, price, rating } = product;
-
-            return (
-              <ProductCard id={_id} name={name} images={images} reviews={reviews} price={price} rating={rating} />
-            )
-          })
-
-        )
-      }
-    </>
+    <div className="search">
+      <ProductList products={searchedProducts} />
+      <Pagination totalPage={totalPage} setPageNumber={setPageNumber} activePage={activePage} setActivePage={setActivePage} />
+    </div>
   )
 }
 

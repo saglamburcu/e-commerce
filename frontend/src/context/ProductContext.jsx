@@ -5,9 +5,14 @@ const ProductContext = createContext();
 
 const ProductProvider = ({ children }) => {
   const [allProducts, setAllProducts] = useState([]);
-  const [searchedProducts, setSearchedProducts] = useState([]);
   const [productDetail, setProductDetail] = useState(JSON.parse(localStorage.getItem("detail")) || null);
   const [productId, setProductId] = useState(localStorage.getItem("id") || "");
+
+  // Search
+  const [pageNumber, setPageNumber] = useState(1);
+  const [searchedProducts, setSearchedProducts] = useState([]);
+  const [totalPage, setTotalPage] = useState(0);
+  const [activePage, setActivePage] = useState(0);
 
   useEffect(() => {
     // (async () => {
@@ -22,7 +27,14 @@ const ProductProvider = ({ children }) => {
     productDetail,
     setProductDetail,
     setProductId,
-    searchedProducts, setSearchedProducts
+    pageNumber,
+    setPageNumber,
+    searchedProducts,
+    setSearchedProducts,
+    totalPage,
+    setTotalPage,
+    activePage,
+    setActivePage
   }
 
   return (

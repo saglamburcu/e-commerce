@@ -1,0 +1,15 @@
+.categories {
+  display: flex;
+  flex-direction: column;
+  min-width: 15%;
+
+  button {
+    width: 90%;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px auto;
+    background-color: rgb(165, 224, 55);
+    color: white;
+  }
+}

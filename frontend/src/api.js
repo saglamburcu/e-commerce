@@ -1,6 +1,23 @@
 // Get All Products
-export const fetchAllProduct = async (queryKey, queryValue, pageValue) => {
-  const res = await fetch(`http://localhost:4000/api/products?${queryKey}=${queryValue}&page=${pageValue}`, { credentials: 'include' });
+// { name: val }
+export const fetchAllProduct = async (query, pageValue) => {
+  const url = new URL('http://localhost:4000/api/products');
+
+  for (const [key, val] of Object.entries(query)) {
+    url.searchParams.set(key, val);
+  }
+
+  url.searchParams.set('page', pageValue);
+
+  const res = await fetch(url, { credentials: 'include' });
+  const data = await res.json();
+
+  return data;
+}
+
+// Get All Categories
+export const fetchAllCategories = async () => {
+  const res = await fetch(`http://localhost:4000/api/categories`, { credentials: 'include' });
   const data = await res.json();
 
   return data;

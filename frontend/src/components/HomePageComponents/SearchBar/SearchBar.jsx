@@ -8,39 +8,32 @@ import { fetchAllProduct } from "../../../api";
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
-  const { searchedProducts, setSearchedProducts } = useContext(ProductContext);
-  const [categories, setCategories] = useState([]);
-  const [queryValue, setQueryValue] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
-  const [activePage, setActivePage] = useState(0);
+  const [sendText, setIsSendText] = useState("");
+
+  const { pageNumber, setSearchedProducts, setTotalPage } = useContext(ProductContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
-      const res = await fetchAllProduct("keyword", queryValue, pageNumber);
+      const res = await fetchAllProduct({ keyword: sendText }, pageNumber);
       setSearchedProducts(res.products);
-      setTotalPage(res.totalPage);
-      setCategories(res.categories);
+      setTotalPage(Math.ceil(res.productsCount / res.pageLimit));
     })()
-  }, [queryValue, pageNumber]);
+  }, [sendText, pageNumber]);
 
-  const searchValue = async (e) => {
+  const searchProduct = async (e) => {
     e.preventDefault();
-
-    setQueryValue(searchText);
-    setPageNumber(1);
-    setActivePage(0);
-
+    setSearchText("");
+    setIsSendText(searchText);
     navigate("/search");
   }
 
   return (
-    <form className="header__menu__search" onSubmit={searchValue}>
+    <form className="header__menu__search" onSubmit={searchProduct}>
       <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
       <button className="header__menu__search__icon" type="submit">
-        <FontAwesomeIcon icon={faMagnifyingGlass} className="header__menu__icons__search__item" />
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
       </button>
     </form>
   )

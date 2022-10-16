@@ -40,13 +40,13 @@ app.use("/api", user);
 app.use("/api", order);
 // app.use("/api", payment);
 
-// app.use("/api", createProxyMiddleware({
-//   target: "http://localhost:3000/",
-//   changeOrigin: true,
-//   onProxyRes: function (proxyRes, req, res) {
-//     proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-//   }
-// }))
+app.use("/api", createProxyMiddleware({
+  target: "http://localhost:3000/",
+  changeOrigin: true,
+  onProxyRes: function (proxyRes, req, res) {
+    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+  }
+}))
 
 app.use(errorMiddleware);
 
