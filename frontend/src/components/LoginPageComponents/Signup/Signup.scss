@@ -1,21 +1,32 @@
 .signup {
-  width: 26%;
+  width: 30%;
   height: 70vh;
-  background-color: rgba(250, 248, 248, 0.3);
-  position: relative;
-  top: 14%;
-  left: 12%;
+  background-color: #eeeeeeb9;
   clip-path: inset(5px 5px 5px round 5px);
+  position: fixed;
 
   &__buttons {
     display: flex;
 
-    &__item {
+    &__login {
       width: 50%;
-      padding: 20px;
-      background-color: white;
-      
+      padding: 1.25rem;
       text-align: center;
+      color: #9b9898;
+      font-size: 1.5vw;
+      font-weight: 600;
+      letter-spacing: 0.06rem;
+
+    }
+
+    &__register {
+      width: 50%;
+      padding: 1.25rem;
+      text-align: center;
+      color: #9b9898;
+      font-size: 1.5vw;
+      font-weight: 600;
+      letter-spacing: 0.06rem;
     }
   }
 
@@ -25,28 +36,68 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+}
 
-    &__login,
-    &__register {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 50px;
+.select {
+  border-bottom: 10px solid #F6688E;
+  background-color: #F19E8E;
+  color: #ebebeb;
+  transition: background-color 0.5s;
+}
 
-      input {
-        margin: 30px 10px;
-        line-height: 30px;
+// @keyframes changeForm {}
+
+@media screen and (max-width: 912px) {
+  .signup {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .signup {
+    width: 40%;
+
+    &__buttons {
+      &__item {
+        font-size: 2vw;
       }
-     
-      button {
-        padding: 6px 60px;
-      }
-      
     }
   }
 }
-.select {
-  border-bottom: 5px solid rgb(117, 0, 128);
-  background-color: rgb(207, 198, 203);
+
+@media screen and (max-width: 600px) {
+  .signup {
+    width: 55%;
+
+    &__buttons {
+      &__item {
+        font-size: 2.5vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .signup {
+    width: 80%;
+
+    &__buttons {
+      &__item {
+        font-size: 3.5vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .signup {
+    width: 90%;
+
+    &__buttons {
+      &__item {
+        font-size: 5vw;
+      }
+    }
+  }
 }

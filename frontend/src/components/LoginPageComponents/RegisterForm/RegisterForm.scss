@@ -4,29 +4,34 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 80px 20px;
+  padding: 5rem 1.25rem;
+  position: relative;
+  animation-name: registerForm;
+  animation-duration: 0.4s;
+  animation-timing-function: linear;
 
   &__name,
   &__email,
   &__password {
     width: 90%;
-    margin-bottom: 50px;
+    margin-bottom: 3.125rem;
 
     &__value {
       display: flex;
       align-items: center;
 
       &__icon {
-        font-size: 20px;
-        margin-right: 10px;
+        font-size: 1.75vw;
+        margin-right: 0.625rem;
+        color: #F19E8E;
       }
-  
+
       &__input {
         width: 90%;
-        height: 30px;
-        border-radius: 5px;
-        border: none;
-        padding: 5px
+        height: 1.875rem;
+        border-radius: 0.3rem;
+        border: 0.06rem solid gray;
+        padding: 0.3rem;
       }
     }
 
@@ -39,8 +44,130 @@
 
   &__button {
     width: 50%;
-    padding: 5px 20px;
-    border-radius: 5px;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.5rem;
     border: none;
+    background-color: #F6688E;
+    color: #ebebeb;
+    font-size: 1.25vw;
+    font-weight: 600;
+    letter-spacing: 0.06rem;
+  }
+}
+
+@keyframes registerForm {
+  0% {
+    left: 100%;
+  }
+
+  25% {
+    left: 75%;
+  }
+
+  50% {
+    left: 50%;
+  }
+
+  75% {
+    left: 25%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .registerform {
+
+    &__name,
+    &__email,
+    &__password {
+      &__value {
+        &__icon {
+          font-size: 2vw;
+        }
+      }
+    }
+
+    &__button {
+      font-size: 1.5vw;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .registerform {
+
+    &__name,
+    &__email,
+    &__password {
+      &__value {
+        &__icon {
+          font-size: 2.5vw;
+        }
+      }
+    }
+
+    &__button {
+      font-size: 2vw;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .registerform {
+
+    &__name,
+    &__email,
+    &__password {
+      &__value {
+        &__icon {
+          font-size: 3vw;
+        }
+      }
+    }
+
+    &__button {
+      font-size: 2.5vw;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .registerform {
+
+    &__name,
+    &__email,
+    &__password {
+      &__value {
+        &__icon {
+          font-size: 3.5vw;
+        }
+      }
+    }
+
+    &__button {
+      font-size: 3vw;
+    }
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .registerform {
+
+    &__name,
+    &__email,
+    &__password {
+      &__value {
+        &__icon {
+          font-size: 5vw;
+        }
+      }
+    }
+
+    &__button {
+      font-size: 4.5vw;
+    }
   }
 }

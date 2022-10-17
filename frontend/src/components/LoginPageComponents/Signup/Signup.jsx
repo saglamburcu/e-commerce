@@ -4,7 +4,7 @@ import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
 
 const Signup = () => {
-  const [clickItem, setClickItem] = useState("LOGIN");
+  const [clickItem, setClickItem] = useState("Giriş Yap");
 
   const handleClick = (e) => {
     setClickItem(e.target.textContent);
@@ -13,17 +13,17 @@ const Signup = () => {
   return (
     <div className="signup">
       <div onClick={(e) => handleClick(e)} className="signup__buttons">
-        <div className={clickItem === "LOGIN" ? "signup__buttons__item select" : "signup__buttons__item"}>LOGIN</div>
-        <div className={clickItem === "REGISTER" ? "signup__buttons__item select" : "signup__buttons__item"}>REGISTER</div>
+        <div className={clickItem === "Giriş Yap" ? "signup__buttons__login select" : "signup__buttons__login"}>Giriş Yap</div>
+        <div className={clickItem === "Kayıt Ol" ? "signup__buttons__register select" : "signup__buttons__register"}>Kayıt Ol</div>
       </div>
       <div className="signup__forms">
         {
-          clickItem === "LOGIN" ? (
-           <LoginForm />
+          clickItem === "Giriş Yap" ? (
+            <LoginForm />
           ) : (
-           <RegisterForm />
+            <RegisterForm />
           )
-        }        
+        }
       </div>
     </div>
   )
