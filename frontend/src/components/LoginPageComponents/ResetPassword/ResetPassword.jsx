@@ -7,11 +7,11 @@ import Error from "../../Error/Error";
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [infoMessage, setInfoMessage] = useState({status: "", message: ""});
+  const [infoMessage, setInfoMessage] = useState({ status: "", message: "" });
   const [isNotification, setIsNotification] = useState(false);
   const navigate = useNavigate();
 
-  const {token} = useParams();
+  const { token } = useParams();
 
   const changePassword = async (e) => {
     e.preventDefault();
@@ -36,12 +36,12 @@ const ResetPassword = () => {
 
     setTimeout(() => {
       setIsNotification(false);
-    }, 4000);
+    }, 6000);
   }
 
   const turnBackToLogin = () => {
     navigate("/login");
-  } 
+  }
 
   return (
     <div className="reset__password">

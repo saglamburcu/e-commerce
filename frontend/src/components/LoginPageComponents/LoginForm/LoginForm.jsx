@@ -27,7 +27,7 @@ const LoginForm = () => {
 
         setTimeout(() => {
           setIsNotification(false);
-        }, 4000);
+        }, 6000);
 
         return;
       }

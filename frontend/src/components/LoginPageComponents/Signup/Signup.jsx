@@ -13,8 +13,8 @@ const Signup = () => {
   return (
     <div className="signup">
       <div onClick={(e) => handleClick(e)} className="signup__buttons">
-        <div className={clickItem === "Giriş Yap" ? "signup__buttons__login select" : "signup__buttons__login"}>Giriş Yap</div>
-        <div className={clickItem === "Kayıt Ol" ? "signup__buttons__register select" : "signup__buttons__register"}>Kayıt Ol</div>
+        <div className={clickItem === "Giriş Yap" ? "signup__buttons__item select" : "signup__buttons__item"}>Giriş Yap</div>
+        <div className={clickItem === "Kayıt Ol" ? "signup__buttons__item select" : "signup__buttons__item"}>Kayıt Ol</div>
       </div>
       <div className="signup__forms">
         {

@@ -5,7 +5,7 @@ import Error from "../../Error/Error";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [infoMessage, setInfoMessage] = useState({status: "", message: ""});
+  const [infoMessage, setInfoMessage] = useState({ status: "", message: "" });
   const [isNotification, setIsNotification] = useState(false);
 
   const resetPassword = async (e) => {
@@ -30,7 +30,7 @@ const ForgotPassword = () => {
 
     setTimeout(() => {
       setIsNotification(false);
-    }, 4000);
+    }, 6000);
   }
 
   return (
@@ -41,7 +41,7 @@ const ForgotPassword = () => {
         }
         <h3>Şifremi Unuttum</h3>
         <form onSubmit={resetPassword}>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="email" placeholder="E-Mail" value={email} onChange={(e) => setEmail(e.target.value)} />
           <button type="submit">Şifremi Yenile</button>
         </form>
       </div>

@@ -25,7 +25,7 @@ const RegisterForm = () => {
 
         setTimeout(() => {
           setIsNotification(false);
-        }, 4000);
+        }, 6000);
 
         return;
       }
@@ -54,7 +54,7 @@ const RegisterForm = () => {
       {isNotification && (
         <Error
           status="error"
-          message="Bu mail adresi daha önce kullanıldı. Lütfen başka bir mail adresiyle kayıt olmayı deneyiniz." />
+          message="Bu mail adresi ile daha önce kayıt olundu." />
       )}
 
       <div className="registerform__name">
