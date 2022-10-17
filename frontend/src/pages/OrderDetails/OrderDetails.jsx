@@ -1,4 +1,3 @@
-
 import MyOrdersDetail from "../../components/AccountPageComponents/MyOrders/MyOrdersDetail/MyOrdersDetail";
 
 const OrderDetails = () => {

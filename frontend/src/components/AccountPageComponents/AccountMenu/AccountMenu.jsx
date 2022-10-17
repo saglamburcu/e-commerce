@@ -6,12 +6,13 @@ import { UserContext } from "../../../context/UserContext";
 
 const AccountMenu = () => {
   const navigate = useNavigate();
-  const {setIsLogin} = useContext(UserContext);
-  
+  const { setIsLogin, setUserInfo } = useContext(UserContext);
+
   const handleLogout = async () => {
     await fetchLogout();
     navigate("/login");
     setIsLogin(false);
+    setUserInfo(null);
   }
 
   return (
@@ -26,9 +27,9 @@ const AccountMenu = () => {
         <Link to="/account/change-password" className="accountmenu__item__changepassword">
           <span>Parolamı değiştir</span>
         </Link>
-       
+
         <button type="button" onClick={handleLogout}>Çıkış Yap</button>
-        
+
       </div>
     </div>
   )

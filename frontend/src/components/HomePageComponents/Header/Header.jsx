@@ -14,15 +14,15 @@ import MenuItems from "../MenuItems/MenuItems";
 const Header = () => {
   const { userInfo, isLogin } = useContext(UserContext);
   const { basketIconNumber, favoriteProductsList } = useContext(OrderContext);
-  const [isShowSearchArea, setIsShowSearchArea] = useState(false);
-
   return (
     <>
       <div className="header">
         <div className="header__logo">
           <h1>PatiShop</h1>
-          {isLogin &&
-            <p>{`Email: ${userInfo?.email}`}</p>
+          {
+            isLogin && userInfo
+              ? <p>{`Email: ${userInfo.email}`}</p>
+              : ""
           }
         </div>
 
@@ -44,7 +44,7 @@ const Header = () => {
             </Link>
 
             {
-              isLogin ? (
+              isLogin && userInfo ? (
                 <Link to="/account" className="header__menu__icons__user">
                   <FontAwesomeIcon icon={faUser} /> Hesabım
                 </Link>

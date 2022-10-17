@@ -19,6 +19,7 @@ import ForgotPassword from './components/LoginPageComponents/ForgotPassword/Forg
 import ResetPassword from './components/LoginPageComponents/ResetPassword/ResetPassword';
 import Products from './pages/Products/Products';
 import Search from './pages/Search/Search';
+import ProtectedRoute from './pages/Login/ProtectedRoute';
 // import Payment from './components/CheckoutPageComponents/Payment/Payment';
 // import PaymentWrapper from './components/CheckoutPageComponents/Payment/PaymentWrapper';
 
@@ -31,13 +32,15 @@ function App() {
         <Route path='/' element={<Header />}>
           <Route index={true} element={<Home />} />
           <Route path='product/:id' element={<ProductDetail />} />
-          <Route path='account' element={<Account />} >
-            <Route path='user-infos' element={<UserInfos />} />
-            <Route path='my-orders' element={<MyOrders />} />
-            <Route path='change-password' element={<ChangePassword />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path='account' element={<Account />} >
+              <Route path='user-infos' element={<UserInfos />} />
+              <Route path='my-orders' element={<MyOrders />} />
+              <Route path='change-password' element={<ChangePassword />} />
+            </Route>
+            <Route path='/basket' element={<Basket />} />
+            <Route path='/favorites' element={<Favorites />} />
           </Route>
-          <Route path='/basket' element={<Basket />} />
-          <Route path='/favorites' element={<Favorites />} />
           <Route path='products' element={<Products />} />
           <Route path='search' element={<Search />} />
         </Route>
@@ -46,18 +49,20 @@ function App() {
         <Route path='/forgot/password' element={<ForgotPassword />} />
         <Route path='/reset/password/:token' element={<ResetPassword />} />
 
-        <Route path='/checkout' element={<Checkout />}>
-          <Route path='shipping-address' element={<ShippingAddress />} />
-          <Route path='order-confirm' element={<OrderConfirm />} />
-          {/* <Route path='card-infos' element={<PaymentWrapper />} /> */}
-          <Route path='success' element={<Success />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path='/checkout' element={<Checkout />}>
+            <Route path='shipping-address' element={<ShippingAddress />} />
+            <Route path='order-confirm' element={<OrderConfirm />} />
+            {/* <Route path='card-infos' element={<PaymentWrapper />} /> */}
+            <Route path='success' element={<Success />} />
+          </Route>
+          <Route path='/order/:id' element={<OrderDetails />} />
         </Route>
 
-        <Route path='/order/:id' element={<OrderDetails />} />
         {/* <Route path='/login' element={
-          <PrivateRoute>
+          <ProtectedRoute>
             <Login />
-          </PrivateRoute>
+          </ProtectedRoute>
         } /> */}
 
       </Routes>
