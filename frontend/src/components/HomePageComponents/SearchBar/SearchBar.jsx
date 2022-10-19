@@ -1,6 +1,4 @@
 import "./SearchBar.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../../context/ProductContext";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +31,8 @@ const SearchBar = () => {
     <form className="header__menu__search" onSubmit={searchProduct}>
       <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
       <button className="header__menu__search__icon" type="submit">
-        <FontAwesomeIcon icon={faMagnifyingGlass} />
+        {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
+        Ara
       </button>
     </form>
   )
