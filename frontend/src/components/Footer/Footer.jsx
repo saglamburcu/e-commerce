@@ -12,7 +12,7 @@ const Footer = () => {
 
         <div className="footer__contact__address">
           <FontAwesomeIcon icon={faLocationDot} className="footer__contact__address__icon" />
-          <div>
+          <div className="footer__contact__address__text">
             Bostanlı Mah. Şehitler Bulvarı No: 52/A <br />
             Karşıyaka / İZMİR
           </div>
@@ -21,7 +21,7 @@ const Footer = () => {
         <div className="footer__contact__phone">
           <FontAwesomeIcon icon={faPhone} className="footer__contact__phone__icon" />
 
-          <div>(0232) XXX YY ZZ</div>
+          <div className="footer__contact__phone__text">(0232) XXX YY ZZ</div>
         </div>
       </div>
       <div className="footer__quick__menu">

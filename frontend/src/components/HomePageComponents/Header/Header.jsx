@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./Header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import SearchBar from "../SearchBar/SearchBar";
@@ -12,6 +13,12 @@ import MenuItems from "../MenuItems/MenuItems";
 const Header = () => {
   const { userInfo, isLogin } = useContext(UserContext);
   const { basketIconNumber, favoriteProductsList } = useContext(OrderContext);
+
+  const isShowMenu = useRef("");
+
+  const showResponsiveMenu = () => {
+    isShowMenu.current.classList.toggle("showMenu");
+  }
 
   return (
     <>
@@ -26,7 +33,11 @@ const Header = () => {
         </div>
 
         <div className="header__menu">
-          <ul className="header__menu__links">
+          <button onClick={showResponsiveMenu} className="header__menu__responsive__button">
+            <GiHamburgerMenu className="header__menu__responsive__icon" />
+          </button>
+
+          <ul className="header__menu__links" ref={isShowMenu}>
             <MenuItems />
           </ul>
 

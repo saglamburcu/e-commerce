@@ -17,7 +17,9 @@ const ProductGroupItem = ({ productGroups }) => {
           <li className="product__group__item">
             <NavLink to="/products" className="product__group__item__link" onClick={() => showProducts(index)} >
               <img src={group.image} alt="" />
-              <h3>{group.category}</h3>
+              <div>
+                {group.category}
+              </div>
             </NavLink>
           </li>
         ))

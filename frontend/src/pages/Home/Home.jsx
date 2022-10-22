@@ -7,10 +7,10 @@ import ProductGroups from "../../components/HomePageComponents/ProductGroups/Pro
 import Footer from "../../components/Footer/Footer";
 
 const imagesData = [
-  { url: "images/photo2.jpg" },
-  { url: "https://www.cdc.gov/healthypets/images/covid/dog-and-cat.jpg?_=46111" },
-  { url: "https://idsb.tmgrup.com.tr/ly/uploads/images/2021/11/17/160371.jpg" },
-  { url: "https://images.theconversation.com/files/438138/original/file-20211216-25-1hu3e65.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=900.0&fit=crop" }
+  { url: "/images/img1.jpg" },
+  { url: "/images/img2.jpg" },
+  { url: "/images/img3.jpg" },
+  { url: "/images/img4.jpg" },
 ]
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
       <div className="home">
         <Slider img={imagesData} />
         <ProductGroups />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   )

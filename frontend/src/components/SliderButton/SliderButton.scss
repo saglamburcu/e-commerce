@@ -1,10 +1,39 @@
 .slider__buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
   padding: 0 20px;
 
   button {
     border: none;
     background-color: transparent;
     font-size: 50px;
-    color: rgb(240, 238, 238);
+    color: rgba(240, 238, 238, 0.692);
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .slider__buttons {
+    top: 40%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .slider__buttons {
+    padding: 0 10px;
+
+    button {
+      font-size: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .slider__buttons {
+    button {
+      font-size: 25px;
+    }
   }
 }

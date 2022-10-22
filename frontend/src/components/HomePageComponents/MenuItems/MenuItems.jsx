@@ -6,7 +6,9 @@ const Menu = () => {
   return (
     <>
       <li className="menu__link">
-        <NavLink to="/" className="menu__link__item">Anasayfa</NavLink>
+        <NavLink to="/" className="menu__link__item">
+          <span>Anasayfa</span>
+        </NavLink>
       </li>
       <li className="menu__link">
         <NavLink to="/about" className="menu__link__item">Hakkımızda</NavLink>

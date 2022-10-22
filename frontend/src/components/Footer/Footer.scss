@@ -17,10 +17,7 @@
 
     &__address,
     &__phone {
-      color: rgb(109, 108, 108);
-      font-weight: 500;
       display: flex;
-      margin-bottom: 10px;
 
       &__icon {
         width: 25px;
@@ -28,6 +25,12 @@
         font-weight: 800;
         color: #F6688E;
         margin-right: 10px;
+      }
+
+      &__text {
+        color: rgb(109, 108, 108);
+        font-weight: 500;
+        margin-bottom: 10px;
       }
     }
   }
@@ -81,6 +84,39 @@
           font-weight: 800;
           color: #F6688E;
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .footer {
+
+    &__contact {
+
+      &__address,
+      &__phone {
+        &__text {
+          font-size: 14px;
+        }
+      }
+    }
+
+    &__quick__menu {
+      padding: 0 100px;
+
+      ul {
+        .menu__link {
+          &__item {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    &__follow__us {
+      h3 {
+        font-size: 14px;
       }
     }
   }
