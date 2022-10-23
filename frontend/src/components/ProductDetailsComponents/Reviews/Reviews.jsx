@@ -3,13 +3,13 @@ import RatingStars from "../RatingStars/RatingStars";
 import { fetchCreateProductReview, fetchAllReviews, fetchDeleteProductReview } from "../../../api";
 import { useState, useEffect, useContext } from "react";
 
-const Reviews = ({id}) => {
+const Reviews = ({ id }) => {
   const [review, setReview] = useState("");
   const [allReviews, setAllReviews] = useState([]);
   const [ratingStarValue, setRatingStarValue] = useState(0);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const reviewList = await fetchAllReviews(id);
       setAllReviews(reviewList);
     })()
@@ -30,7 +30,7 @@ const Reviews = ({id}) => {
     emptyIcon: <i className="far fa-star"></i>,
     halfIcon: <i className="fa fa-star-half-alt"></i>,
     fullIcon: <i className="fa fa-star"></i>,
-    activeColor: "#ffd700"   
+    activeColor: "#ffd700"
   }
 
   const allReviewsRatingStars = {
@@ -40,7 +40,7 @@ const Reviews = ({id}) => {
     emptyIcon: <i className="far fa-star"></i>,
     halfIcon: <i className="fa fa-star-half-alt"></i>,
     fullIcon: <i className="fa fa-star"></i>,
-    activeColor: "#ffd700"   
+    activeColor: "#ffd700"
   }
 
   return (
@@ -53,14 +53,14 @@ const Reviews = ({id}) => {
           allReviews?.map(reviewItem => (
             <div className="reviews__user__allcomments">
               <p className="reviews__user__allcomments__infos">{reviewItem.name} - {reviewItem.time.split("T")[0]}</p>
-              <RatingStars props={{value: reviewItem.rating, ...allReviewsRatingStars}} />
+              <RatingStars props={{ value: reviewItem.rating, ...allReviewsRatingStars }} />
               <p>{reviewItem.comment}</p>
             </div>
           ))
         }
         <div className="reviews__user__rating">
           <p>Puanınız</p>
-          <RatingStars props={currentRatingStars}/>
+          <RatingStars props={currentRatingStars} />
         </div>
         <form onSubmit={(e) => handleSubmit(e)} className="reviews__user__comment">
           <input type="text" placeholder="Yorum..." value={review} onChange={(e) => setReview(e.target.value)} />

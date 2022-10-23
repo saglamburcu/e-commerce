@@ -20,7 +20,7 @@ const Home = () => {
       <div className="home">
         <Slider img={imagesData} />
         <ProductGroups />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   )

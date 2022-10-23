@@ -2,8 +2,6 @@
   text-align: center;
   list-style: none;
   flex: 33%;
-  // padding: 15px;
-  // width: 100%;
   margin-bottom: 30px;
 
   &__link {
@@ -27,12 +25,39 @@
       border-bottom-right-radius: 25px;
       border-top-right-radius: 25px;
       color: #F19E8E;
+      font-size: 80%;
       font-weight: 500;
       transition: all .2s linear;
 
       &:hover {
         background-color: #F19E8E;
         color: #ebebeb;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .product__group__item {
+
+    &__link {
+
+      img {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .product__group__item {
+
+    &__link {
+
+      img {
+        width: 200px;
+        height: 200px;
       }
     }
   }
