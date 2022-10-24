@@ -1,11 +1,42 @@
 .product__list {
     display: flex;
-    margin-top: 30px;
+    margin: 30px auto auto 30px;
     justify-content: center;
+    width: 100%;
 
     &__filtered__products__card {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
+        gap: 40px;
+        justify-items: center;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .product__list {
+
+        &__filtered__products__card {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .product__list {
+
+        &__filtered__products__card {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .product__list {
+        margin-left: 0;
+
+        &__filtered__products__card {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 }

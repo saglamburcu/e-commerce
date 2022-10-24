@@ -1,15 +1,85 @@
 .categories {
   display: flex;
   flex-direction: column;
-  min-width: 15%;
+  width: 100%;
 
   button {
-    width: 90%;
-    border: none;
-    padding: 15px;
-    border-radius: 5px;
-    margin: 10px auto;
-    background-color: rgb(165, 224, 55);
-    color: white;
+    width: 100%;
+    border: 2px solid #F19E8E;
+    padding: 15px 50px;
+    border-radius: 8px;
+    margin: 15px auto;
+    background-color: #eeeeeeb9;
+    color: #F19E8E;
+    font-size: 1.1vw;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all .2s linear;
+
+    &:hover {
+      color: #faf6f6b9;
+      background-color: #F19E8E;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .categories {
+    button {
+      font-size: 1.3vw;
+      padding: 10px 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .categories {
+    button {
+      font-size: 1.5vw;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+
+    button {
+      font-size: 1.7vw;
+      padding: 10px 20px;
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .categories {
+    grid-template-columns: repeat(3, 1fr);
+
+    button {
+      font-size: 1.9vw;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .categories {
+
+    button {
+      font-size: 2.3vw;
+    }
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .categories {
+
+    button {
+      font-size: 2.6vw;
+    }
   }
 }

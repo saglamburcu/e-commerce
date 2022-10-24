@@ -1,3 +1,31 @@
 .products {
-  display: flex;
+  display: grid;
+  grid-template-areas: 'menu product product product product'
+    'menu product product product product'
+    'menu product product product product'
+    'menu product product product product'
+    'menu product product product product'
+    'menu product product product product'
+    'menu product product product product'
+    'menu product product product product'
+    'menu product product product product';
+  gap: 10px;
+  width: 100%;
+  justify-items: center;
+  padding: 30px;
+
+  &__categories {
+    width: 100%;
+  }
+
+  &__list {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .products {
+    display: block;
+    padding-inline: 30px;
+  }
 }

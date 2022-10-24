@@ -25,9 +25,9 @@ const ProductCard = ({ id, name, images, reviews, price, rating }) => {
       </div>
       <RatingStars props={{ value: rating, edit: false, size: 24 }} />
       <div className="card__info">
-        <h5>{name}</h5>
+        <h4>{name}</h4>
         <p>{reviews.length} yorum</p>
-        <h4>{price} TL</h4>
+        <h3>{price} TL</h3>
       </div>
     </Link>
   )

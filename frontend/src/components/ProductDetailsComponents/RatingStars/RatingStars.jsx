@@ -1,9 +1,10 @@
-import { useState } from "react";
+import "./RatingStars.scss";
 import ReactStars from "react-rating-stars-component";
 
-const RatingStars = ({props}) => {
- 
+const RatingStars = ({ props }) => {
+
   return (
+
     <ReactStars
       {...props}
     />

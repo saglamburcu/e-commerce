@@ -1,5 +1,5 @@
 .pagination {
-  width: 90px;
+  width: 15%;
   display: flex;
   justify-content: space-between;
   margin: 30px auto;
@@ -7,6 +7,7 @@
   &__button {
     width: 40px;
     height: 40px;
+    font-size: 1vw;
     border: 2px solid rgb(165, 224, 55);
     border-radius: 50%;
     color: rgb(117, 117, 116);
@@ -15,9 +16,55 @@
   &__active {
     width: 40px;
     height: 40px;
+    font-size: 1vw;
     border: 2px solid rgb(165, 224, 55);
     background-color: rgb(165, 224, 55);
     border-radius: 50%;
     color: rgb(255, 255, 255);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .pagination {
+    width: 30%;
+
+    &__button {
+      font-size: 1.5vw;
+    }
+
+    &__active {
+      font-size: 1.5vw;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .pagination {
+    width: 40%;
+
+    &__button {
+      font-size: 2vw;
+    }
+
+    &__active {
+      font-size: 2vw;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .pagination {
+
+    &__button {
+      width: 30px;
+      height: 30px;
+      font-size: 2.5vw;
+    }
+
+    &__active {
+      width: 30px;
+      height: 30px;
+      font-size: 2.5vw;
+    }
   }
 }
