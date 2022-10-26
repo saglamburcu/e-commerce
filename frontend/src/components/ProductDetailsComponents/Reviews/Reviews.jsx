@@ -63,7 +63,7 @@ const Reviews = ({ id }) => {
           <RatingStars props={currentRatingStars} />
         </div>
         <form onSubmit={(e) => handleSubmit(e)} className="reviews__user__comment">
-          <input type="text" placeholder="Yorum..." value={review} onChange={(e) => setReview(e.target.value)} />
+          <textarea placeholder="Yorum..." value={review} onChange={(e) => setReview(e.target.value)} />
           <button type="submit">Gönder</button>
         </form>
       </div>

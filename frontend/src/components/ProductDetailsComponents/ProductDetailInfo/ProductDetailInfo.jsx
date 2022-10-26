@@ -6,7 +6,7 @@ import ProductAmountButtons from "../ProductAmountButtons/ProductAmountButtons";
 
 const ProductDetailInfo = () => {
   const { setProductsInTheBasket, setBasketIconNumber } = useContext(OrderContext);
-  const {productDetail} = useContext(ProductContext)
+  const { productDetail } = useContext(ProductContext)
 
   const [numberOfProducts, setNumberOfProducts] = useState(0);
 
@@ -14,14 +14,14 @@ const ProductDetailInfo = () => {
 
     setProductsInTheBasket((prev) => {
       const productIndex = prev.findIndex((item) => item.productInfos._id === productDetail._id);
-  
-      if(productIndex !== -1) {
+
+      if (productIndex !== -1) {
         const newState = [...prev];
         newState[productIndex].count += numberOfProducts;
         return newState;
       }
-  
-      return [...prev, {productInfos: productDetail, count: numberOfProducts}];
+
+      return [...prev, { productInfos: productDetail, count: numberOfProducts }];
     })
 
     setBasketIconNumber(prev => prev + numberOfProducts);
@@ -30,7 +30,6 @@ const ProductDetailInfo = () => {
   return (
     <div className="info">
       <h2>{productDetail.name}</h2>
-      {/* <RatingStars />  */}
       <span>{productDetail.numOfReviews} değerlendirme</span>
       <h2>{productDetail.price} TL</h2>
       <ProductAmountButtons numberOfProducts={numberOfProducts} setNumberOfProducts={setNumberOfProducts} />
@@ -44,15 +43,15 @@ const ProductDetailInfo = () => {
           <h4>Ürün tükendi</h4>
         )
       }
- 
-      <button 
-        type="button" 
-        className="info__add__basket" 
-        {...((productDetail.stock === 0 || numberOfProducts === 0) && {disabled: "disabled"})} 
+
+      <button
+        type="button"
+        className="info__add__basket"
+        {...((productDetail.stock === 0 || numberOfProducts === 0) && { disabled: "disabled" })}
         onClick={addToBasket}>
-          Sepete Ekle
+        Sepete Ekle
       </button>
-      <p className="info__desc">Description: {productDetail.description}</p>
+      <p className="info__desc">Açıklama: {productDetail.description}</p>
     </div>
   )
 }

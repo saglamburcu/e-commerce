@@ -1,12 +1,77 @@
 .info__buttons {
+  width: 30%;
+  margin: 0 auto;
+
   button {
     border: none;
-    font-size: 22px;
-    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.8vw;
+    width: 30%;
+    padding: 2px;
+    color: #faf6f6b9;
+    background-color: #F19E8E;
   }
+
   span {
-    font-size: 22px;
+    font-size: 1.8vw;
     display: inline-block;
     padding: 10px;
+    color: #F19E8E;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .info__buttons {
+    min-width: 40%;
+
+    button,
+    span {
+      font-size: 2vw;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    .info__buttons {
+      min-width: 45%;
+
+      button,
+      span {
+        font-size: 2.2vw;
+      }
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .info__buttons {
+      min-width: 55%;
+
+      button,
+      span {
+        font-size: 2.4vw;
+      }
+
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .info__buttons {
+      min-width: 75%;
+
+      button,
+      span {
+        font-size: 2.6vw;
+      }
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .info__buttons {
+      min-width: 100%;
+
+      button,
+      span {
+        font-size: 3vw;
+      }
+    }
   }
 }

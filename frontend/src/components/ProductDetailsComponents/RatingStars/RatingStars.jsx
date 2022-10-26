@@ -4,10 +4,11 @@ import ReactStars from "react-rating-stars-component";
 const RatingStars = ({ props }) => {
 
   return (
-
-    <ReactStars
-      {...props}
-    />
+    <div className="stars">
+      <ReactStars
+        {...props}
+      />
+    </div>
   )
 }
 

@@ -6,7 +6,9 @@
   border-radius: 5px;
 
   &__header {
+    font-size: 1.3vw;
     text-decoration: underline;
+    color: rgb(109, 108, 108);
   }
 
   &__user {
@@ -14,12 +16,17 @@
 
     &__allcomments {
       border-bottom: 1px solid rgb(196, 196, 196);
-      padding: 20px 5px;
+      padding: 3% 1%;
 
       &__infos {
-        color: gray;
+        color: #F19E8E !important;
         letter-spacing: 2px;
-        font-size: 12px;
+        font-size: 0.9vw !important;
+      }
+
+      p {
+        color: rgb(109, 108, 108);
+        font-size: 1.2vw;
       }
     }
 
@@ -27,27 +34,229 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 18%;
+      width: 100%;
       margin: 15px 0;
+
+      p {
+        color: rgb(109, 108, 108);
+        font-size: 1.2vw;
+        padding-right: 20px;
+      }
     }
 
     &__comment {
-      input {
+      text-align: end;
+
+      textarea {
         width: 100%;
         height: 15vh;
+        padding: 20px 0 0 20px;
+        margin-bottom: 2%;
         border-radius: 5px;
         border: 1px solid rgb(196, 196, 196);
+        color: rgb(109, 108, 108);
+        font-size: 1.2vw;
       }
 
       button {
-        width: 20%;
-        height: 5vh;
-        margin-top: 15px;
-        background-color: orange;
-        font-size: 18px;
+        width: 30%;
+        height: 6vh;
+        background-color: #F6688E;
+        color: #faf6f6b9;
+        font-size: 1.3vw;
         letter-spacing: 2px;
         border: none;
         border-radius: 5px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .reviews {
+
+    &__header {
+      font-size: 1.5vw;
+    }
+
+    &__user {
+      &__allcomments {
+
+        &__infos {
+          font-size: 1.1vw !important;
+        }
+
+        p {
+          font-size: 1.4vw;
+        }
+      }
+
+      &__rating {
+        p {
+          font-size: 1.4vw;
+        }
+      }
+
+      &__comment {
+        textarea {
+          font-size: 1.4vw;
+        }
+
+        button {
+          font-size: 1.5vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .reviews {
+
+    &__header {
+      font-size: 1.7vw;
+    }
+
+    &__user {
+      &__allcomments {
+
+        &__infos {
+          font-size: 1.3vw !important;
+        }
+
+        p {
+          font-size: 1.6vw;
+        }
+      }
+
+      &__rating {
+        p {
+          font-size: 1.6vw;
+        }
+      }
+
+      &__comment {
+        textarea {
+          font-size: 1.6vw;
+        }
+
+        button {
+          font-size: 1.7vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .reviews {
+
+    &__header {
+      font-size: 1.9vw;
+    }
+
+    &__user {
+      &__allcomments {
+
+        &__infos {
+          font-size: 1.5vw !important;
+        }
+
+        p {
+          font-size: 1.8vw;
+        }
+      }
+
+      &__rating {
+        p {
+          font-size: 1.8vw;
+        }
+      }
+
+      &__comment {
+        textarea {
+          font-size: 1.8vw;
+        }
+
+        button {
+          font-size: 1.9vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .reviews {
+
+    &__header {
+      font-size: 2.3vw;
+    }
+
+    &__user {
+      &__allcomments {
+
+        &__infos {
+          font-size: 1.9vw !important;
+        }
+
+        p {
+          font-size: 2.2vw;
+        }
+      }
+
+      &__rating {
+        p {
+          font-size: 2.2vw;
+        }
+      }
+
+      &__comment {
+        textarea {
+          font-size: 2.2vw;
+        }
+
+        button {
+          font-size: 2.3vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .reviews {
+
+    &__header {
+      font-size: 2.7vw;
+    }
+
+    &__user {
+      &__allcomments {
+
+        &__infos {
+          font-size: 2.3vw !important;
+        }
+
+        p {
+          font-size: 2.6vw;
+        }
+      }
+
+      &__rating {
+        p {
+          font-size: 2.6vw;
+        }
+      }
+
+      &__comment {
+        textarea {
+          font-size: 2.6vw;
+        }
+
+        button {
+          font-size: 2.7vw;
+        }
       }
     }
   }

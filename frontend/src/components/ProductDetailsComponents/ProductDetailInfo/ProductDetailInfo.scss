@@ -1,29 +1,157 @@
 .info {
   width: 40%;
-  height: 550px;
-  padding: 30px;
   line-height: 40px;
+  text-align: center;
 
   h2 {
-    color: rgb(124, 78, 9);
+    font-size: 1.6vw;
+    color: #F19E8E;
+  }
+
+  span {
+    font-size: 1.2vw;
+    color: rgb(109, 108, 108);
   }
 
   h4 {
+    font-size: 1vw;
     color: rgb(226, 84, 120);
   }
 
   &__add__basket {
+    width: 70%;
     border: none;
-    // background-color: rgb(77, 165, 116);
-    // color: rgb(248, 247, 247);
-    padding: 10px 50px;
-    font-size: 20px;
+    padding: 5% 3%;
+    font-size: 1.3vw;
     border-radius: 5px;
     letter-spacing: 3px;
-    margin: 20px;
+    margin: 20px auto;
+    background-color: #F6688E;
+    color: #faf6f6b9;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #faf6f6b9;
+      color: #cececeb9;
+    }
   }
 
   &__desc {
-    color: gray;
+    font-size: 1.2vw;
+    color: rgb(109, 108, 108);
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .info {
+    width: 35%;
+    line-height: 30px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .info {
+    line-height: 25px;
+
+    h2 {
+      font-size: 1.8vw;
+    }
+
+    span {
+      font-size: 1.4vw;
+    }
+
+    h4 {
+      font-size: 1.2vw;
+    }
+
+    &__add__basket {
+      font-size: 1.5vw;
+      padding: 8% 5%;
+    }
+
+    &__desc {
+      font-size: 1.4vw;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .info {
+    line-height: 20px;
+
+    h2 {
+      font-size: 2vw;
+    }
+
+    span {
+      font-size: 1.6vw;
+    }
+
+    h4 {
+      font-size: 1.4vw;
+    }
+
+    &__add__basket {
+      font-size: 1.7vw;
+    }
+
+    &__desc {
+      font-size: 1.6vw;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .info {
+    width: 40%;
+    line-height: 15px;
+
+    h2 {
+      font-size: 2.4vw;
+    }
+
+    span {
+      font-size: 2vw;
+    }
+
+    h4 {
+      font-size: 1.8vw;
+    }
+
+    &__add__basket {
+      font-size: 2.1vw;
+    }
+
+    &__desc {
+      font-size: 2vw;
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .info {
+    line-height: 10px;
+
+    h2 {
+      font-size: 2.8vw;
+    }
+
+    span {
+      font-size: 2.4vw;
+    }
+
+    h4 {
+      font-size: 2.2vw;
+    }
+
+    &__add__basket {
+      font-size: 2.5vw;
+      min-width: 100%;
+    }
+
+    &__desc {
+      font-size: 2.4vw;
+    }
   }
 }

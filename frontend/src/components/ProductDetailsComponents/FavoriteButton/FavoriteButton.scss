@@ -1,6 +1,36 @@
 .favorite__icon {
   border: none;
   background-color: transparent;
-  color: rgb(77, 165, 116);
-  font-size: 24px;
+  color: #F19E8E;
+  font-size: 2.2vw;
+}
+
+@media screen and (max-width: 912px) {
+  .favorite__icon {
+    font-size: 2.6vw;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .favorite__icon {
+    font-size: 3vw;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .favorite__icon {
+    font-size: 3.3vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .favorite__icon {
+    font-size: 3.8vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .favorite__icon {
+    font-size: 4.3vw;
+  }
 }
