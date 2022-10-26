@@ -1,18 +1,24 @@
 .address {
-  width: 35%;
+  width: 100%;
+  height: 100vh;
   margin: 100px auto;
-  border: 1px solid rgb(196, 196, 196);
-  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &__form {
-    width: 100%;
+    width: 35%;
     display: flex;
+    box-shadow: 0px 0px 25px -2px rgba(0, 0, 0, 0.75);
     flex-direction: column;
     padding: 30px;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 10px;
 
     input {
-      margin-top: 20px;
-      height: 40px;
+      margin-top: 6%;
+      height: 5vh;
+      font-size: 1.1vw;
       border: 1px solid rgb(196, 196, 196);
       border-radius: 5px;
       padding-left: 10px;
@@ -20,21 +26,150 @@
 
     select {
       @extend input;
-   
+
       option {
-        font-size: 16px;
+        font-size: 1.1vw;
+        color: #a1a1a1;
       }
     }
 
     button {
-      width: 100%;
-      margin: 20px auto 0;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      background-color: rgb(77, 165, 116);
-      color: white;
-      font-size: 18px;
+      margin: 6% auto 0;
+      width: 50%;
+      font-size: 1.3vw;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #F6688E;
+      padding: 2% 6%;
+      border: 1px solid #F6688E;
+      border-radius: 10px;
+      background-color: #faf6f6d0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .address {
+
+    &__form {
+      width: 40%;
+
+      input {
+        font-size: 1.3vw;
+      }
+
+      select {
+        option {
+          font-size: 1.3vw;
+        }
+      }
+
+      button {
+        width: 55%;
+        font-size: 1.5vw;
+        border-radius: 6px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .address {
+
+    &__form {
+      width: 45%;
+
+      input {
+        font-size: 1.6vw;
+      }
+
+      select {
+        option {
+          font-size: 1.6vw;
+        }
+      }
+
+      button {
+        width: 60%;
+        font-size: 1.8vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .address {
+
+    &__form {
+      width: 55%;
+
+      input {
+        font-size: 2vw;
+      }
+
+      select {
+        option {
+          font-size: 2vw;
+        }
+      }
+
+      button {
+        font-size: 2.2vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .address {
+
+    &__form {
+      width: 65%;
+
+      input {
+        font-size: 2.4vw;
+      }
+
+      select {
+        option {
+          font-size: 2.4vw;
+        }
+      }
+
+      button {
+        font-size: 2.6vw;
+        border-radius: 4px;
+        padding: 3% 6%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .address {
+
+    &__form {
+      width: 70%;
+
+      input {
+        font-size: 2.8vw;
+        height: 4.5vh;
+      }
+
+      select {
+        option {
+          font-size: 2.8vw;
+        }
+      }
+
+      button {
+        font-size: 3vw;
+        width: 70%;
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 import "./ShippingAddress.scss";
-import { Link, useNavigate} from "react-router-dom";
-import { Country, State, City }  from 'country-state-city';
-import { useState, useEffect, useContext} from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Country, State, City } from 'country-state-city';
+import { useState, useEffect, useContext } from "react";
 import { OrderContext } from "../../../context/OrderContext";
 
 const ShippingAddress = () => {
@@ -17,7 +17,7 @@ const ShippingAddress = () => {
   const [isShowState, setIsShowState] = useState(false);
   const [isShowCity, setIsShowCity] = useState(false);
 
-  const {setAddressData} = useContext(OrderContext);
+  const { setAddressData } = useContext(OrderContext);
 
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const ShippingAddress = () => {
     setState(stateList);
 
     const cityList = City.getCitiesOfState(`${countryCodeValue}`, `${stateCodeValue}`);
-    setCity(cityList);  
+    setCity(cityList);
   }, [countryCodeValue, stateCodeValue]);
 
   const handleChangeCountry = (e) => {
@@ -71,31 +71,31 @@ const ShippingAddress = () => {
           }
         </select>
 
-        <select onChange={handleChangeState} {...(!isShowState && {disabled: "disabled"})}>
+        <select onChange={handleChangeState} {...(!isShowState && { disabled: "disabled" })}>
           <option value="">İl</option>
-            {
-              state.map((stateItem, index) => (
-                <option key={index} value={stateItem.isoCode}>{stateItem.name}</option>
-              ))
-            }
+          {
+            state.map((stateItem, index) => (
+              <option key={index} value={stateItem.isoCode}>{stateItem.name}</option>
+            ))
+          }
         </select>
 
-        <select onChange={handleChangeCity} {...(!isShowCity && {disabled: "disabled"})}>
+        <select onChange={handleChangeCity} {...(!isShowCity && { disabled: "disabled" })}>
           <option value="">İlçe</option>
-            {
-              city.map((cityItem, index) => (
-                <option key={index} value={cityItem.name}>{cityItem.name}</option>
-              ))
-            }
-        </select> 
+          {
+            city.map((cityItem, index) => (
+              <option key={index} value={cityItem.name}>{cityItem.name}</option>
+            ))
+          }
+        </select>
 
         <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Adres" />
 
-          <button type="submit">Siparişi Onayla</button>
-   
-    </form>
+        <button type="submit">Siparişi Onayla</button>
+
+      </form>
     </div>
-  )  
+  )
 }
 
 export default ShippingAddress;
