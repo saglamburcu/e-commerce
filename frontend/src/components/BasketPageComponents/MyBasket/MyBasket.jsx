@@ -1,5 +1,6 @@
 import "./MyBasket.scss";
 import { useNavigate } from "react-router-dom";
+import { FaRegThumbsUp } from "react-icons/fa";
 
 const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, isBasketPage, isFavoritePage, isOrderConfirm, addToBasketFromFavorite }) => {
   const navigate = useNavigate();
@@ -41,11 +42,13 @@ const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, i
         }
       </table>
 
-
       {
         isBasketPage && (
           <div className="mybasket__confirm">
-            <button className="mybasket__confirm__button" onClick={() => navigate("/checkout/shipping-address")}>Sepeti Onayla</button>
+            <button className="mybasket__confirm__button" onClick={() => navigate("/checkout/shipping-address")}>
+              <FaRegThumbsUp className="mybasket__confirm__button__paw" />
+              Sepeti Onayla
+            </button>
           </div>
         )
       }
