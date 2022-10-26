@@ -25,17 +25,20 @@ const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, i
                 <td className="mybasket__products__price">
                   <h3>{product.count ? product?.count * product.productInfos?.price : product.quantity * product.price} TL</h3>
                 </td>
-                <td className="mybasket__products__buttons">
-                  {
-                    showBtn &&
-                    <button type="button" onClick={() => removeProduct(product.productInfos._id)}>{singleProductButton}</button>
-                  }
 
-                  {
-                    isFavoritePage &&
-                    <button onClick={() => addToBasketFromFavorite(product.productInfos._id, productsList)}>Sepete Ekle</button>
-                  }
-                </td>
+                {(showBtn || isFavoritePage) &&
+                  <td className="mybasket__products__buttons">
+                    {
+                      showBtn &&
+                      <button type="button" onClick={() => removeProduct(product.productInfos._id)}>{singleProductButton}</button>
+                    }
+
+                    {
+                      isFavoritePage &&
+                      <button onClick={() => addToBasketFromFavorite(product.productInfos._id, productsList)}>Sepete Ekle</button>
+                    }
+                  </td>
+                }
               </tr>
             )
           })
