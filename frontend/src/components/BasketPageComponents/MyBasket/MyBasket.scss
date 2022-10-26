@@ -1,40 +1,268 @@
 .mybasket {
   width: 85%;
-  margin: 40px auto;
+  margin: 50px auto;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 10px;
+  padding: 3%;
 
   &__products {
+    border-collapse: collapse;
     width: 100%;
-    border: 1px solid rgb(196, 196, 196);
-    border-radius: 10px;
-    margin-bottom: 30px;
-  
-    &__item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 30px;
-  
+
+    td {
+      border: none;
+    }
+
+    &__image {
+      width: 10%;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__name {
+      width: 40%;
+
+      h5 {
+        font-size: 1.1vw;
+        color: rgb(109, 108, 108);
+      }
+    }
+
+    &__quantity {
+      width: 10%;
+
+      h3 {
+        font-size: 1.1vw;
+        color: rgb(109, 108, 108);
+      }
+    }
+
+    &__price {
+      width: 20%;
+
+      h3 {
+        font-size: 1.3vw;
+        color: #F19E8E;
+      }
+    }
+
+    &__buttons {
+      width: 20%;
+
       button {
-        padding: 6px 12px;
-        border-radius: 5px;
+        margin: 0 auto;
+        font-size: 1.1vw;
+        background-color: #F6688E;
+        color: #faf6f6b9;
         border: none;
-        background-color: rgb(224, 161, 138);
-        color: white;
+        border-radius: 5px;
+        width: 100%;
+        padding: 3% 5%;
+
+        &:first-child {
+          margin-bottom: 6%;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     }
   }
+}
 
-  &__confirm {
-    display: flex;
-    justify-content: flex-end;
+@media screen and (max-width: 912px) {
+  .mybasket {
+    &__products {
 
-    &__button {
-      padding: 15px 45px;
-      background-color: rgb(77, 165, 116);
-      border: none;
-      border-radius: 5px;
-      color: white;
-      font-size: 18px;
+      &__image {
+        width: 12%;
+      }
+
+      &__name {
+        h5 {
+          font-size: 1.3vw;
+        }
+      }
+
+      &__quantity {
+        h3 {
+          font-size: 1.3vw;
+        }
+      }
+
+      &__price {
+        width: 18%;
+
+        h3 {
+          font-size: 1.5vw;
+        }
+      }
+
+      &__buttons {
+        button {
+          font-size: 1.3vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .mybasket {
+    &__products {
+
+      &__image {
+        width: 14%;
+      }
+
+      &__name {
+        h5 {
+          font-size: 1.5vw;
+        }
+      }
+
+      &__quantity {
+        h3 {
+          font-size: 1.5vw;
+        }
+      }
+
+      &__price {
+        width: 16%;
+
+        h3 {
+          font-size: 1.7vw;
+        }
+      }
+
+      &__buttons {
+        button {
+          font-size: 1.5vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mybasket {
+    &__products {
+
+      &__image {
+        width: 16%;
+      }
+
+      &__name {
+        width: 38%;
+
+        h5 {
+          font-size: 1.7vw;
+        }
+      }
+
+      &__quantity {
+        h3 {
+          font-size: 1.7vw;
+        }
+      }
+
+      &__price {
+
+        h3 {
+          font-size: 1.9vw;
+        }
+      }
+
+      &__buttons {
+        button {
+          font-size: 1.7vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .mybasket {
+    &__products {
+
+      &__image {
+        width: 18%;
+      }
+
+      &__name {
+        width: 34%;
+
+        h5 {
+          font-size: 1.9vw;
+        }
+      }
+
+      &__quantity {
+        h3 {
+          font-size: 1.9vw;
+        }
+      }
+
+      &__price {
+
+        h3 {
+          font-size: 2.1vw;
+        }
+      }
+
+      &__buttons {
+        width: 22%;
+
+        button {
+          padding: 5% 8%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .mybasket {
+    &__products {
+
+      &__image {
+        width: 20%;
+      }
+
+      &__name {
+        width: 28%;
+
+        h5 {
+          font-size: 2.1vw;
+        }
+      }
+
+      &__quantity {
+        h3 {
+          font-size: 2.1vw;
+        }
+      }
+
+      &__price {
+
+        h3 {
+          font-size: 2.3vw;
+        }
+      }
+
+      &__buttons {
+        width: 26%;
+
+        button {
+          font-size: 1.9vw;
+          // padding: 5% 8%;
+        }
+      }
     }
   }
 }
