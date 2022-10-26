@@ -1,3 +1,4 @@
+import "./Step.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Step = ({ steps, orderDetail }) => {
