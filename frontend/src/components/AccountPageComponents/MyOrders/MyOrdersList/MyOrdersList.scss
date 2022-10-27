@@ -1,13 +1,148 @@
-table {
-  border-collapse: collapse;
-  width: 100%;
+.myOrdersList {
+  width: 85%;
+  margin: 15vh auto 0;
 
-  td, th {
-    text-align: center;
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
+  table {
+    width: 100%;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 10px;
+    padding: 3%;
+
+    tr {
+      font-size: 1.1vw;
+
+      .details__icon {
+        font-size: 1.5vw;
+      }
+
+      &:first-child {
+        background-color: transparent !important;
+        color: #F6688E !important;
+        font-size: 1.3vw !important;
+
+        th {
+          padding-bottom: 3%;
+        }
+      }
+
+      &:nth-child(odd) {
+        color: #F6688E;
+        background-color: #faf6f6b9;
+
+        .details__icon {
+          color: #F6688E;
+        }
+      }
+
+      &:nth-child(even) {
+        background-color: #f6688eda;
+        color: #faf6f6b9;
+
+        .details__icon {
+          color: #faf6f6b9;
+        }
+      }
+
+      td,
+      th {
+        text-align: center;
+        padding-block: 3%;
+      }
+    }
   }
 }
 
+@media screen and (max-width: 912px) {
+  .myOrdersList {
 
+    table {
+
+      tr {
+        font-size: 1.3vw;
+
+        .details__icon {
+          font-size: 1.8vw;
+        }
+
+        &:first-child {
+          font-size: 1.5vw !important;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .myOrdersList {
+
+    table {
+
+      tr {
+        font-size: 1.5vw;
+
+        .details__icon {
+          font-size: 2vw;
+        }
+
+        &:first-child {
+          font-size: 1.7vw !important;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .myOrdersList {
+    width: 90%;
+
+    table {
+      padding: 2%;
+
+      tr {
+        font-size: 1.7vw;
+
+        .details__icon {
+          font-size: 2.2vw;
+        }
+
+        &:first-child {
+          font-size: 1.9vw !important;
+        }
+
+        td,
+        th {
+          padding-block: 2%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .myOrdersList {
+    width: 95%;
+
+    table {
+      padding: 1%;
+
+      tr {
+        font-size: 2.4vw;
+
+        .details__icon {
+          font-size: 2.9vw;
+        }
+
+        &:first-child {
+          font-size: 2.5vw !important;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .myOrdersList {
+    width: 98%;
+  }
+}
