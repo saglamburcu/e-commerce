@@ -10,7 +10,7 @@ const Account = () => {
         {/* <AccountMenu /> */}
         <Outlet />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

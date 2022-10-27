@@ -1,31 +1,161 @@
 .user__infos {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 35%;
+  margin: 15vh auto 0;
+
+  &__message {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20%;
+  }
 
   &__form {
-    width: 35%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     border: 1px solid rgb(196, 196, 196);
     border-radius: 10px;
-    padding: 50px 40px;
+    padding: 4% 3%;
+
+    label {
+      color: #F19E8E;
+      font-weight: 600;
+      margin-bottom: 3%;
+      font-size: 1.2vw;
+    }
 
     input {
-      margin-bottom: 30px;
+      margin-bottom: 8%;
       height: 40px;
       border: 1px solid rgb(196, 196, 196);
       border-radius: 5px;
-      padding-left: 10px;
+      padding-left: 3%;
+      font-size: 1.1vw;
+      color: rgb(109, 108, 108);
     }
 
     button {
-      width: 50%;
       margin: 0 auto;
-      padding: 5px 30px;
-      border: none;
-      border-radius: 5px;
+      width: 60%;
+      font-size: 1.4vw;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #F6688E;
+      padding: 3% 6%;
+      border: 1px solid #F6688E;
+      border-radius: 10px;
+      background-color: #faf6f6d0;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .user__infos {
+    width: 40%;
+
+    &__form {
+
+      label {
+        font-size: 1.4vw;
+      }
+
+      input {
+        font-size: 1.3vw;
+      }
+
+      button {
+        font-size: 1.6vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .user__infos {
+    width: 45%;
+
+    &__form {
+
+      label {
+        font-size: 1.6vw;
+      }
+
+      input {
+        font-size: 1.5vw;
+      }
+
+      button {
+        font-size: 1.8vw;
+        border-radius: 6px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .user__infos {
+    width: 50%;
+
+    &__form {
+      padding: 6% 5%;
+
+      label {
+        font-size: 1.9vw;
+      }
+
+      input {
+        font-size: 1.8vw;
+        height: 35px;
+      }
+
+      button {
+        font-size: 2.1vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .user__infos {
+    width: 60%;
+
+    &__form {
+
+      label {
+        font-size: 2.5vw;
+      }
+
+      input {
+        font-size: 2.4vw;
+        height: 30px;
+      }
+
+      button {
+        font-size: 2.8vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .user__infos {
+    width: 70%;
+
+    &__form {
+      padding: 8% 7%;
+
+      label {
+        font-size: 3vw;
+      }
+
+      input {
+        font-size: 2.9vw;
+        height: 30px;
+      }
+
+      button {
+        font-size: 3.3vw;
+      }
     }
   }
 }
