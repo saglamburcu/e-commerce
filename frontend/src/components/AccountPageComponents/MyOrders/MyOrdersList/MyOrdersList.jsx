@@ -19,7 +19,7 @@ const MyOrders = () => {
 
   return (
     <div className="myOrdersList">
-      <table>
+      <table className="myOrdersList__table">
         <tr>
           <th>Sipariş Tarihi</th>
           <th>Sipariş Miktarı</th>

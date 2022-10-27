@@ -5,10 +5,15 @@
   margin-top: 50px;
 }
 
+.step-wizard-container {
+  width: 70%;
+}
+
 .step-wizard-list {
-  background: rgba(245, 244, 244, 0.733);
+  width: 100%;
+  color: #F6688E;
+  background-color: #faf6f6b9;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
-  color: #333;
   list-style-type: none;
   border-radius: 10px;
   display: flex;
@@ -25,7 +30,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  min-width: 170px;
+  width: 170px;
   position: relative;
 }
 
@@ -34,7 +39,7 @@
   position: absolute;
   left: 0;
   top: 19px;
-  background: #80d82d;
+  background: #F6688E;
   width: 100%;
   height: 2px;
   transform: translateX(-50%);
@@ -59,7 +64,7 @@
   content: "";
   height: 40px;
   width: 40px;
-  background: #80d82d;
+  background: #F6688E;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -82,7 +87,7 @@
 }
 
 .progress-label {
-  font-size: 14px;
+  font-size: 1vw;
   font-weight: 600;
   margin-top: 10px;
 }
@@ -103,9 +108,71 @@
 
 .current-item .progress-count:after {
   background: #fff;
-  border: 2px solid #80d82d;
+  border: 2px solid #F6688E;
 }
 
 .current-item .progress-count {
-  color: #80d82d;
+  color: #F6688E;
+}
+
+@media screen and (max-width: 912px) {
+  .progress-count:after {
+    content: "";
+    height: 35px;
+    width: 35px;
+  }
+
+  .progress-count:before {
+    content: "";
+    height: 6px;
+    width: 16px;
+  }
+
+  .progress-label {
+    font-size: 1.3vw;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .progress-label {
+    font-size: 1.5vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .progress-count:after {
+    content: "";
+    height: 30px;
+    width: 30px;
+  }
+
+  .progress-count:before {
+    content: "";
+    height: 5px;
+    width: 15px;
+  }
+
+  .progress-label {
+    font-size: 1.8vw;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .step-wizard-container {
+    width: 80%;
+  }
+
+  .progress-label {
+    font-size: 2.2vw;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .step-wizard-container {
+    width: 90%;
+  }
+
+  .progress-label {
+    font-size: 2.6vw;
+  }
 }
