@@ -150,11 +150,11 @@ const updatePassword = catchAsyncErrors(async (req, res, next) => {
   const isPasswordMatched = await user.comparePassword(oldPassword);
 
   if (!isPasswordMatched) {
-    return next(new ErrorHandler("Old password is incorrect"));
+    return next(new ErrorHandler("Mevcut şifrenizi yanlış girdiniz"));
   };
 
   if (newPassword !== confirmPassword) {
-    return next(new ErrorHandler("Passwords is not matched", 400));
+    return next(new ErrorHandler("Parolalar eşleşmiyor", 400));
   };
 
   user.password = newPassword;

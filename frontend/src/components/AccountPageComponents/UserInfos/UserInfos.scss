@@ -2,12 +2,6 @@
   width: 35%;
   margin: 15vh auto 0;
 
-  &__message {
-    width: 100%;
-    position: relative;
-    margin-bottom: 20%;
-  }
-
   &__form {
     width: 100%;
     display: flex;
@@ -45,6 +39,12 @@
       border-radius: 10px;
       background-color: #faf6f6d0;
       cursor: pointer;
+    }
+
+    .updated {
+      @extend button;
+      border: 1px solid #acdf13;
+      color: #acdf13;
     }
   }
 }
