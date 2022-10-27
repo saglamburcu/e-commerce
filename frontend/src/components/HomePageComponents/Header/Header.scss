@@ -123,6 +123,7 @@
 @media screen and (max-width: 912px) {
   .header {
     position: relative;
+    padding: 1.875rem 5rem 1rem;
 
     &__logo {
       width: 100%;
@@ -143,7 +144,7 @@
       padding-right: 5rem;
 
       &__links {
-        display: none;
+        visibility: hidden;
       }
 
       &__icons {
@@ -210,7 +211,8 @@
       padding-right: 5rem;
 
       &__links {
-        display: none;
+        visibility: hidden;
+        padding-top: 20px;
       }
 
       &__icons {
@@ -282,7 +284,8 @@
       padding-right: 5rem;
 
       &__links {
-        display: none;
+        visibility: hidden;
+        padding-top: 20px;
       }
 
       &__icons {
@@ -355,7 +358,8 @@
       padding-right: 5rem;
 
       &__links {
-        display: none;
+        visibility: hidden;
+        padding-top: 20px;
       }
 
       &__icons {
@@ -429,7 +433,8 @@
       padding-right: 5rem;
 
       &__links {
-        display: none;
+        visibility: hidden;
+        padding-top: 20px;
       }
 
       &__icons {
@@ -504,7 +509,8 @@
       padding-right: 5rem;
 
       &__links {
-        display: none;
+        visibility: hidden;
+        padding-top: 20px;
       }
 
       &__icons {
@@ -559,7 +565,9 @@
 
 
 .showMenu {
+  visibility: visible;
   display: block;
-  margin-top: 60px;
-  line-height: 30px
+  margin-top: 30px;
+  line-height: 40px;
+  transition: all .2s linear;
 }

@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer__contact">
-        <img src="images/logo.png" alt="" />
+        <img src="/images/logo2.jpg" alt="" />
 
         <div className="footer__contact__address">
           <FontAwesomeIcon icon={faLocationDot} className="footer__contact__address__icon" />

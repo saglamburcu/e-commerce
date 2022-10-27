@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./Header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,17 +15,31 @@ const Header = () => {
   const { userInfo, isLogin } = useContext(UserContext);
   const { basketIconNumber, favoriteProductsList } = useContext(OrderContext);
 
-  const isShowMenu = useRef("");
+  // const isShowMenu = useRef("");
+
+  // const showResponsiveMenu = () => {
+  //   isShowMenu.current.classList.toggle("showMenu");
+  // }
+
+  // const hiddenMenu = () => {
+  //   isShowMenu.current.classList.toggle("hiddenMenu");
+  // }
+
+  const [isShowMenu, setIsShowMenu] = useState(false);
 
   const showResponsiveMenu = () => {
-    isShowMenu.current.classList.toggle("showMenu");
+    setIsShowMenu(!isShowMenu);
+  }
+
+  const hiddenMenu = () => {
+    setIsShowMenu(false)
   }
 
   return (
     <>
       <div className="header">
         <div className="header__logo">
-          <img src="images/logo.png" alt="logo" />
+          <img src="/images/logo2.jpg" alt="logo" />
           {
             isLogin && userInfo
               ? <div>{userInfo.email}</div>
@@ -38,7 +52,7 @@ const Header = () => {
             <GiHamburgerMenu className="header__menu__responsive__icon" />
           </button>
 
-          <ul className="header__menu__links" ref={isShowMenu}>
+          <ul className={isShowMenu ? "header__menu__links showMenu" : "header__menu__links"} onClick={hiddenMenu} >
             <MenuItems />
           </ul>
 
