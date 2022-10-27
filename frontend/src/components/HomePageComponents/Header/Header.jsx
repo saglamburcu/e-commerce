@@ -9,6 +9,7 @@ import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import SearchBar from "../SearchBar/SearchBar";
 import MenuItems from "../MenuItems/MenuItems";
+import AccountMenu from "../../AccountPageComponents/AccountMenu/AccountMenu";
 
 const Header = () => {
   const { userInfo, isLogin } = useContext(UserContext);
@@ -55,10 +56,14 @@ const Header = () => {
 
             {
               isLogin && userInfo ? (
-                <Link to="/account" className="header__menu__icons__user">
+                <div className="header__menu__icons__user">
                   <FontAwesomeIcon icon={faUser} className="header__menu__icons__user__item" />
                   <p>Hesabım</p>
-                </Link>
+
+                  <div className="header__menu__icons__user__account">
+                    <AccountMenu />
+                  </div>
+                </div>
               ) : (
                 <Link to="/login" className="header__menu__icons__user">
                   <FontAwesomeIcon icon={faUser} className="header__menu__icons__user__item" />

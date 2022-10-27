@@ -7,7 +7,7 @@ const Account = () => {
   return (
     <>
       <div className="account">
-        <AccountMenu />
+        {/* <AccountMenu /> */}
         <Outlet />
       </div>
       <Footer />
