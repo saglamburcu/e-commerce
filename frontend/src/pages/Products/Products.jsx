@@ -6,12 +6,14 @@ import { useState, useContext, useEffect } from "react";
 import { fetchAllProduct } from "../../api";
 import { ProductContext } from "../../context/ProductContext";
 import Footer from "../../components/Footer/Footer";
+import Loading from "../../components/Loading/Loading";
 
 const Products = () => {
   const [totalPage, setTotalPage] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [activePage, setActivePage] = useState(0);
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { selectedCategory, setSelectedCategory } = useContext(ProductContext);
 
@@ -20,6 +22,7 @@ const Products = () => {
       const res = await fetchAllProduct({ category: selectedCategory }, pageNumber);
       setProducts(res.products);
       setTotalPage(Math.ceil(res.productsCount / res.pageLimit));
+      // setIsLoading(false)
     })()
   }, [selectedCategory, pageNumber]);
 
@@ -27,6 +30,10 @@ const Products = () => {
     setSelectedCategory(category);
     setActivePage(0);
     setPageNumber(1);
+  }
+
+  if (isLoading) {
+    return <Loading />
   }
 
   return (
