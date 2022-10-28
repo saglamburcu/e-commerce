@@ -14,7 +14,8 @@ const ProductProvider = ({ children }) => {
   const [totalPage, setTotalPage] = useState(0);
   const [activePage, setActivePage] = useState(0);
 
-  const [selectedCategory, setSelectedCategory] = useState("Kıyafet");
+  // Products Categories
+  const [selectedCategory, setSelectedCategory] = useState("Köpek Kıyafeti");
 
   useEffect(() => {
     // (async () => {

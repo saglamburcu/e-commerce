@@ -8,10 +8,10 @@ import { ProductContext } from "../../context/ProductContext";
 import Footer from "../../components/Footer/Footer";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [activePage, setActivePage] = useState(0);
+  const [products, setProducts] = useState([]);
 
   const { selectedCategory, setSelectedCategory } = useContext(ProductContext);
 
