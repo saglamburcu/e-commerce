@@ -1,9 +1,11 @@
 import "./Categories.scss";
 import { useState, useContext, useEffect } from "react";
 import { fetchAllCategories } from "../../../api";
+import { ProductContext } from "../../../context/ProductContext";
 
 const Categories = ({ changeSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
+  const { selectedCategory, setSelectedCategory } = useContext(ProductContext);
 
   useEffect(() => {
     (async () => {
@@ -16,7 +18,13 @@ const Categories = ({ changeSelectedCategory }) => {
   return (
     <div className="categories">
       {categories.map(category => (
-        <button type="button" onClick={(e) => changeSelectedCategory(e.target.textContent)}>{category}</button>
+        <button
+          type="button"
+          onClick={(e) => changeSelectedCategory(e.target.textContent)}
+          className={category === selectedCategory ? "selectedCategory" : ""}
+        >
+          {category}
+        </button>
       ))}
     </div>
   )

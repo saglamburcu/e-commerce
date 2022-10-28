@@ -22,6 +22,12 @@
       cursor: pointer;
     }
   }
+
+  .selectedCategory {
+    color: #faf6f6b9;
+    background-color: #F19E8E;
+    cursor: pointer;
+  }
 }
 
 @media screen and (max-width: 850px) {
