@@ -1,9 +1,11 @@
 import "./MyBasket.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaRegThumbsUp } from "react-icons/fa";
 
 const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, isBasketPage, isFavoritePage, isOrderConfirm, addToBasketFromFavorite }) => {
   const navigate = useNavigate();
+
+  console.log(productsList)
 
   return (
     <div className="mybasket">
@@ -13,12 +15,15 @@ const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, i
 
             return (
               <tr>
-                <td className="mybasket__products__image">
-                  <img src={product.productInfos ? product.productInfos.images[0].url : product.image} alt="" />
-                </td>
+                <Link to={`/product/${product.productInfos._id}`}>
+                  <td className="mybasket__products__image">
+                    <img src={product.productInfos ? product.productInfos.images[0].url : product.image} alt="" />
+                  </td>
+                </Link>
                 <td className="mybasket__products__name">
                   <h5>{product.productInfos ? product.productInfos.name : product.name}</h5>
                 </td>
+
                 <td className="mybasket__products__quantity">
                   <h3>{product.count ? product.count : product.quantity} adet</h3>
                 </td>
