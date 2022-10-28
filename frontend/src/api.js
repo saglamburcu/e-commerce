@@ -48,7 +48,7 @@ export const fetchCreateProductReview = async (productId, comment, rating) => {
 
   const data = await res.json();
 
-  console.log(data)
+  return data;
 }
 
 // Get All Reviews Of The Product

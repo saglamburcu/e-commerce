@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from "react";
 
 const Reviews = ({ id }) => {
   const [review, setReview] = useState("");
+  const [sendReview, setSendReview] = useState(null);
   const [allReviews, setAllReviews] = useState([]);
   const [ratingStarValue, setRatingStarValue] = useState(0);
 
@@ -13,17 +14,20 @@ const Reviews = ({ id }) => {
       const reviewList = await fetchAllReviews(id);
       setAllReviews(reviewList);
     })()
-  }, [review]); // ?
+  }, [id, sendReview]); // ?
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await fetchCreateProductReview(id, review, ratingStarValue);
+    const userReview = await fetchCreateProductReview(id, review, ratingStarValue);
+    setSendReview(userReview);
     setReview("");
+    setRatingStarValue(0);
   }
 
   const currentRatingStars = {
+    key: `rating_${ratingStarValue}`,
     count: 5,
-    value: ratingStarValue,
+    value: Math.max(0, ratingStarValue),
     onChange: (value) => setRatingStarValue(value),
     size: 24,
     isHalf: true,
@@ -53,7 +57,7 @@ const Reviews = ({ id }) => {
           allReviews?.map(reviewItem => (
             <div className="reviews__user__allcomments">
               <p className="reviews__user__allcomments__infos">{reviewItem.name} - {reviewItem.time.split("T")[0]}</p>
-              <RatingStars props={{ value: reviewItem.rating, ...allReviewsRatingStars }} />
+              <RatingStars props={{ key: `rating_${reviewItem.rating}`, value: Math.max(0, reviewItem.rating), ...allReviewsRatingStars }} />
               <p>{reviewItem.comment}</p>
             </div>
           ))
