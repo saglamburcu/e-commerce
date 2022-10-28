@@ -1,11 +1,12 @@
 import "./ProductCard.scss";
+import "../../ProductDetailsComponents/FavoriteButton/FavoriteButton.scss"
+import "../../ProductDetailsComponents/ProductImages/ProductImages.scss"
 import { Link } from "react-router-dom";
 import RatingStars from "../../ProductDetailsComponents/RatingStars/RatingStars";
-import FavoriteButton from "../../ProductDetailsComponents/FavoriteButton/FavoriteButton";
 import { useContext } from "react";
-import { ProductContext } from "../../../context/ProductContext";
 import { OrderContext } from "../../../context/OrderContext";
-import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as fillHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ProductCard = ({ id, name, images, reviews, price, rating }) => {
   const { favoriteProductsList } = useContext(OrderContext);
@@ -25,13 +26,10 @@ const ProductCard = ({ id, name, images, reviews, price, rating }) => {
     <Link to={`/product/${id}`} className="card">
       <div className="card__image">
         <img src={images[0].url} alt="#" />
-        <div className="card__image__favoritebutton">
+        <div className="product__images__selected__favoritebutton favorite__icon">
           {
-            favoriteProductsList.map(product => {
-              if (product.productInfos._id === id) {
-                return <FavoriteButton />
-              }
-            })
+            favoriteProductsList.filter(product => product.productInfos._id === id).length > 0
+            && <FontAwesomeIcon icon={fillHeart} />
           }
         </div>
       </div>
