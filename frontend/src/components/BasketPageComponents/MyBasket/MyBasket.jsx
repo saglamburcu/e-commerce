@@ -5,8 +5,6 @@ import { FaRegThumbsUp } from "react-icons/fa";
 const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, isBasketPage, isFavoritePage, isOrderConfirm, addToBasketFromFavorite }) => {
   const navigate = useNavigate();
 
-  console.log(productsList)
-
   return (
     <div className="mybasket">
       <table className="mybasket__products">
@@ -15,11 +13,11 @@ const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, i
 
             return (
               <tr>
-                <Link to={`/product/${product.productInfos._id}`}>
-                  <td className="mybasket__products__image">
+                <td className="mybasket__products__image">
+                  <Link to={product.productInfos ? `/product/${product.productInfos._id}` : `/product/${product.product}`}>
                     <img src={product.productInfos ? product.productInfos.images[0].url : product.image} alt="" />
-                  </td>
-                </Link>
+                  </Link>
+                </td>
                 <td className="mybasket__products__name">
                   <h5>{product.productInfos ? product.productInfos.name : product.name}</h5>
                 </td>

@@ -7,9 +7,11 @@ import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { fetchSingleOrder } from "../../../../api";
 import MyBasket from "../../../BasketPageComponents/MyBasket/MyBasket";
 import Step from "../../../Step/Step";
+import Loading from "../../../Loading/Loading";
 
 const MyOrdersDetail = () => {
   const [orderDetail, setOrderDetail] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
 
@@ -17,10 +19,16 @@ const MyOrdersDetail = () => {
     (async () => {
       const data = await fetchSingleOrder(id);
       setOrderDetail(data.order);
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 750);
     })()
   }, []);
 
-  console.log(orderDetail)
+  if (isLoading) {
+    return <Loading />
+  }
 
   const orderIcons = [
     { status: "Processing", icon: faThumbsUp, text: "Siparişiniz alındı" },
@@ -28,19 +36,24 @@ const MyOrdersDetail = () => {
     { status: "Delivered", icon: faCheck, text: "Teslim edildi" }
   ];
 
-  return (
-    <div className="orders__detail">
-      {
-        orderDetail && <Step steps={orderIcons} orderDetail={orderDetail} />
-      }
+  console.log(orderDetail)
 
-      <MyBasket
-        showBtn={false}
-        productsList={orderDetail?.orderItems}
-        isBasketPage={false}
-        isFavoritePage={false}
-      />
-    </div>
+  return (
+    <>
+      {
+        orderDetail &&
+
+        <div className="orders__detail">
+          <Step steps={orderIcons} orderDetail={orderDetail} />
+          <MyBasket
+            showBtn={false}
+            productsList={orderDetail.orderItems}
+            isBasketPage={false}
+            isFavoritePage={false}
+          />
+        </div>
+      }
+    </>
   )
 }
 

@@ -2,12 +2,14 @@ import "./UserInfos.scss";
 import { useState, useEffect, useContext } from "react";
 import { fetchUserDetails, fetchUpdateUserInfo } from "../../../api";
 import { UserContext } from "../../../context/UserContext";
+import Loading from "../../Loading/Loading";
 
 const UserInfos = () => {
   const [userDetails, setUserDetails] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isUpdate, setIsUpdate] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { setUserInfo } = useContext(UserContext);
 
@@ -15,6 +17,10 @@ const UserInfos = () => {
     (async () => {
       const userInfo = await fetchUserDetails();
       setUserDetails(userInfo);
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 750);
     })()
   }, []);
 
@@ -31,6 +37,10 @@ const UserInfos = () => {
     setUserInfo(prev => ({ ...prev, name, email }));
 
     setIsUpdate(true);
+  }
+
+  if (isLoading) {
+    return <Loading />
   }
 
   return (

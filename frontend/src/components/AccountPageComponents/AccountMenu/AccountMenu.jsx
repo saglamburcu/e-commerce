@@ -1,12 +1,13 @@
 import "./AccountMenu.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchLogout } from "../../../api";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../../context/UserContext";
 
 const AccountMenu = () => {
-  const navigate = useNavigate();
   const { setIsLogin, setUserInfo } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     await fetchLogout();

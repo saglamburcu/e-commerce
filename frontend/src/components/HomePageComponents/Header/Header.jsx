@@ -15,16 +15,6 @@ const Header = () => {
   const { userInfo, isLogin } = useContext(UserContext);
   const { basketIconNumber, favoriteProductsList } = useContext(OrderContext);
 
-  // const isShowMenu = useRef("");
-
-  // const showResponsiveMenu = () => {
-  //   isShowMenu.current.classList.toggle("showMenu");
-  // }
-
-  // const hiddenMenu = () => {
-  //   isShowMenu.current.classList.toggle("hiddenMenu");
-  // }
-
   const [isShowMenu, setIsShowMenu] = useState(false);
 
   const showResponsiveMenu = () => {

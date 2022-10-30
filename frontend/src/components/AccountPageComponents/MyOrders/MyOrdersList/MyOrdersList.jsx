@@ -5,17 +5,27 @@ import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { fetchAllOrders } from "../../../../api";
 import { UserContext } from "../../../../context/UserContext";
+import Loading from "../../../Loading/Loading";
 
 const MyOrders = () => {
   const { userInfo } = useContext(UserContext)
   const [allOrders, setAllOrders] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const data = await fetchAllOrders();
       setAllOrders(data.orders);
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 750);
     })()
   }, []);
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <div className="myOrdersList">

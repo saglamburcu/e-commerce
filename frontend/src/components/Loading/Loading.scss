@@ -2,7 +2,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #fde16671;
+  background-color: #faf6f6b9;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -10,85 +10,106 @@
   align-items: center;
 
   &__paw {
-    width: 10%;
-    height: 35%;
-    background-color: aqua;
+    width: 80%;
+    height: 20%;
     position: relative;
 
-    &__item1 {
-      font-size: 5vw;
-      color: #F6688E;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      animation-name: paw1;
-      animation-duration: 4s;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-    }
+    // &__item1 {
+    //   opacity: 0;
+    //   font-size: 8vw;
+    //   color: #F6688E;
+    //   position: absolute;
+    //   bottom: -60px;
+    //   left: 3%;
+    //   transform: rotate(70deg);
+    //   animation: walk 2s linear infinite;
+    // }
 
     &__item2 {
-      font-size: 5vw;
+      opacity: 0;
+      font-size: 8vw;
       color: #F6688E;
       position: absolute;
-      top: 50%;
-      left: 0%;
-      animation-name: paw2;
-      animation-duration: 2s;
-      animation-delay: 1s;
-      animation-iteration-count: infinite;
+      top: -20px;
+      left: 15%;
+      transform: rotate(50deg);
+      animation: walk 1.5s linear infinite;
     }
+
+    &__item3 {
+      opacity: 0;
+      font-size: 8vw;
+      color: #F6688E;
+      position: absolute;
+      bottom: -10%;
+      left: 28%;
+      transform: rotate(70deg);
+      animation: walk 1.5s linear infinite 0.25s;
+    }
+
+    &__item4 {
+      opacity: 0;
+      font-size: 8vw;
+      color: #F6688E;
+      position: absolute;
+      top: -70px;
+      left: 37%;
+      transform: rotate(95deg);
+      animation: walk 1.5s linear infinite 0.5s;
+    }
+
+    &__item5 {
+      opacity: 0;
+      font-size: 8vw;
+      color: #F6688E;
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: rotate(95deg);
+      animation: walk 1.5s linear infinite 0.75s;
+    }
+
+    &__item6 {
+      opacity: 0;
+      font-size: 8vw;
+      color: #F6688E;
+      position: absolute;
+      top: -25px;
+      left: 63%;
+      transform: rotate(110deg);
+      animation: walk 1.5s linear infinite 1s;
+    }
+
+    &__item7 {
+      opacity: 0;
+      font-size: 8vw;
+      color: #F6688E;
+      position: absolute;
+      bottom: -65px;
+      left: 72%;
+      transform: rotate(110deg);
+      animation: walk 1.5s linear infinite 1.25s;
+    }
+
+    // &__item8 {
+    //   opacity: 0;
+    //   font-size: 8vw;
+    //   color: #F6688E;
+    //   position: absolute;
+    //   top: 20px;
+    //   left: 85%;
+    //   transform: rotate(120deg);
+    //   animation: walk 2s linear infinite 1.75s;
+    // }
   }
 }
 
-@keyframes paw1 {
-  0% {
-    bottom: 0;
-    right: 0;
-  }
-
-  100% {
-    top: 0;
-    left: 0;
+@keyframes walk {
+  25% {
     opacity: 1;
   }
 
-  // 100% {
-  //   bottom: 0;
-  //   right: 0;
-  // }
-}
-
-@keyframes paw2 {
-  0% {
-    top: 50%;
-    left: 0%;
-  }
-
   100% {
-    top: 25%;
-    left: 50%;
+    opacity: 0;
   }
-
-  // 100% {
-  //   top: 50%;
-  //   left: 0%;
-  // }
 }
-
-// @keyframes paw2 {
-//   0% {
-//     top: 50%;
-//     left: 0%;
-//   }
-
-//   100% {
-//     top: 0;
-//     left: 0;
-//   }
-
-//   // 100% {
-//   //   top: 50%;
-//   //   left: 0%;
-//   // }
-// }

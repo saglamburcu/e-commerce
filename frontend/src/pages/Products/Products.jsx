@@ -22,6 +22,10 @@ const Products = () => {
       const res = await fetchAllProduct({ category: selectedCategory }, pageNumber);
       setProducts(res.products);
       setTotalPage(Math.ceil(res.productsCount / res.pageLimit));
+
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 750)
       // setIsLoading(false)
     })()
   }, [selectedCategory, pageNumber]);
