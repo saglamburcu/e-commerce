@@ -29,7 +29,9 @@ const Header = () => {
     <>
       <div className="header">
         <div className="header__logo">
-          <img src="/images/logo2.jpg" alt="logo" />
+          <Link to="/">
+            <img src="/images/logo.jpg" alt="logo" />
+          </Link>
           {
             isLogin && userInfo
               ? <div>{userInfo.email}</div>

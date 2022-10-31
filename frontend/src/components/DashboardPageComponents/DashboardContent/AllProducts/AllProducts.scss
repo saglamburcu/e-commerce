@@ -1,0 +1,43 @@
+.all__products {
+  width: 70%;
+  margin: auto;
+  height: 85vh;
+  overflow-y: scroll;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 10px;
+
+  &__list {
+    width: 100%;
+    padding: 3%;
+
+    tr {
+      font-size: 1.1vw;
+
+      &:first-child {
+        background-color: transparent !important;
+        color: #F6688E !important;
+        font-size: 1.3vw !important;
+
+        th {
+          padding-bottom: 3%;
+        }
+      }
+
+      &:nth-child(odd) {
+        color: #F6688E;
+        background-color: #faf6f6b9;
+      }
+
+      &:nth-child(even) {
+        background-color: #f6688eda;
+        color: #faf6f6b9;
+      }
+
+      td,
+      th {
+        text-align: center;
+        padding-block: 3%;
+      }
+    }
+  }
+}

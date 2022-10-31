@@ -220,6 +220,40 @@ export const fetchSingleOrder = async (orderId) => {
   return data;
 }
 
+// Get All Products --- Admin
+export const fetchAllProductsAdmin = async () => {
+  const res = await fetch("http://localhost:4000/api/products/admin", { credentials: 'include' });
+  const data = res.json();
+
+  return data;
+}
+
+// Delete Product --- Admin
+export const fetchDeleteProduct = async (productId) => {
+  const res = await fetch(`http://localhost:4000/api/product/${productId}`, {
+    method: 'DELETE',
+    credentials: 'include'
+  });
+}
+
+// Update Product --- Admin
+export const fetchUpdateProduct = async (productId, name, desc, price, images, category, stock) => {
+  const res = await fetch(`http://localhost:4000/api/product/${productId}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      name,
+      desc,
+      price,
+      images,
+      category,
+      stock
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: 'include'
+  })
+}
 
 
 

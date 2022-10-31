@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../../context/UserContext";
 
 const AccountMenu = () => {
-  const { setIsLogin, setUserInfo } = useContext(UserContext);
+  const { setIsLogin, userInfo, setUserInfo } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -19,6 +19,12 @@ const AccountMenu = () => {
   return (
     <div className="accountmenu">
       <div className="accountmenu__item">
+        {
+          userInfo.role === "admin" &&
+          <Link to="/dashboard" className="accountmenu__item__dashboard">
+            <span>Dashboard</span>
+          </Link>
+        }
         <Link to="/account/user-infos" className="accountmenu__item__userInfo">
           <span>Kullanıcı Bilgilerim</span>
         </Link>

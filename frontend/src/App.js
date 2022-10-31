@@ -20,6 +20,14 @@ import ResetPassword from './components/LoginPageComponents/ResetPassword/ResetP
 import Products from './pages/Products/Products';
 import Search from './pages/Search/Search';
 import ProtectedRoute from './pages/Login/ProtectedRoute';
+import ProtectedRouteAdmin from './pages/Login/ProtectedRouteAdmin';
+import Dashboard from './pages/Dashboard/Dashboard';
+import AllProducts from './components/DashboardPageComponents/DashboardContent/AllProducts/AllProducts';
+import DashboardMain from './components/DashboardPageComponents/DashboardContent/DashBoardMain/DashboardMain';
+import CreateProduct from './components/DashboardPageComponents/DashboardContent/CreateProduct/CreateProduct';
+import Orders from './components/DashboardPageComponents/DashboardContent/Orders/Orders';
+import Users from './components/DashboardPageComponents/DashboardContent/Users/Users';
+import Reviews from './components/DashboardPageComponents/DashboardContent/Reviews/Reviews';
 // import Payment from './components/CheckoutPageComponents/Payment/Payment';
 // import PaymentWrapper from './components/CheckoutPageComponents/Payment/PaymentWrapper';
 
@@ -59,11 +67,16 @@ function App() {
           <Route path='/order/:id' element={<OrderDetails />} />
         </Route>
 
-        {/* <Route path='/login' element={
-          <ProtectedRoute>
-            <Login />
-          </ProtectedRoute>
-        } /> */}
+        <Route element={<ProtectedRouteAdmin />}>
+          <Route path='/dashboard' element={<Dashboard />}>
+            <Route path="" element={<DashboardMain />} />
+            <Route path='products' element={<AllProducts />} />
+            <Route path='create-product' element={<CreateProduct />} />
+            <Route path='orders' element={<Orders />} />
+            <Route path='users' element={<Users />} />
+            <Route path='reviews' element={<Reviews />} />
+          </Route>
+        </Route>
 
       </Routes>
     </BrowserRouter>

@@ -1,4 +1,5 @@
 import "./Footer.scss";
+import { Link } from "react-router-dom";
 import MenuItems from "../HomePageComponents/MenuItems/MenuItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +9,9 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="footer__contact">
-        <img src="/images/logo2.jpg" alt="" />
+        <Link to="/">
+          <img src="/images/logo.jpg" alt="" />
+        </Link>
 
         <div className="footer__contact__address">
           <FontAwesomeIcon icon={faLocationDot} className="footer__contact__address__icon" />
