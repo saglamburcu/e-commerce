@@ -30,10 +30,10 @@ app.use(cors({
   origin: 'http://localhost:3000',
   credentials: true,
 }));
-app.use(express.json());
+app.use(express.json({ extended: false, limit: '50mb' }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
+app.use(express.urlencoded({ limit: '50mb', extended: false, parameterLimit: 50000 }));
 
 app.use("/api", product);
 app.use("/api", user);

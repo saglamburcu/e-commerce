@@ -1,17 +1,31 @@
 import "./AllProducts.scss";
 import { useEffect, useState } from "react";
-import { fetchAllProductsAdmin } from "../../../../api";
+import { useNavigate } from "react-router-dom";
+import { fetchAllProductsAdmin, fetchDeleteProduct } from "../../../../api";
 import { RiDeleteBin5Fill, RiEdit2Fill } from "react-icons/ri";
+import Loading from "../../../Loading/Loading";
 
 const AllProducts = () => {
   const [allProducts, setAllProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
       const res = await fetchAllProductsAdmin();
-      setAllProducts(res.products)
+      setAllProducts(res.products);
+      setIsLoading(false);
     })()
-  }, [allProducts])
+  }, [allProducts]);
+
+  const deleteProduct = async (id) => {
+    await fetchDeleteProduct(id);
+  }
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <div className="all__products">
@@ -36,10 +50,14 @@ const AllProducts = () => {
                 <td>{stock}</td>
                 <td>{price}</td>
                 <td>
-                  <RiDeleteBin5Fill />
+                  <button onClick={() => deleteProduct(_id)}>
+                    <RiDeleteBin5Fill />
+                  </button>
                 </td>
                 <td>
-                  <RiEdit2Fill />
+                  <button onClick={() => navigate(`/dashboard/edit-product/${_id}`)}>
+                    <RiEdit2Fill />
+                  </button>
                 </td>
               </tr>
             )

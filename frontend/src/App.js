@@ -25,6 +25,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import AllProducts from './components/DashboardPageComponents/DashboardContent/AllProducts/AllProducts';
 import DashboardMain from './components/DashboardPageComponents/DashboardContent/DashBoardMain/DashboardMain';
 import CreateProduct from './components/DashboardPageComponents/DashboardContent/CreateProduct/CreateProduct';
+import EditProduct from './components/DashboardPageComponents/DashboardContent/AllProducts/EditProduct/EditProduct';
 import Orders from './components/DashboardPageComponents/DashboardContent/Orders/Orders';
 import Users from './components/DashboardPageComponents/DashboardContent/Users/Users';
 import Reviews from './components/DashboardPageComponents/DashboardContent/Reviews/Reviews';
@@ -71,6 +72,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />}>
             <Route path="" element={<DashboardMain />} />
             <Route path='products' element={<AllProducts />} />
+            <Route path='edit-product/:id' element={<EditProduct />} />
             <Route path='create-product' element={<CreateProduct />} />
             <Route path='orders' element={<Orders />} />
             <Route path='users' element={<Users />} />
