@@ -1,0 +1,104 @@
+.create__page {
+  width: 35%;
+  padding: 2%;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 10px;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0px 0px 29px -6px rgba(0, 0, 0, 0.75);
+
+  &__form {
+    width: 100%;
+    margin: auto;
+
+    &__name,
+    &__price,
+    &__category,
+    &__stock {
+
+      input {
+        width: 100%;
+        margin-block: 3%;
+        height: 40px;
+        font-size: 1.1vw;
+        padding-left: 2%;
+        border: 1px solid rgb(196, 196, 196);
+        border-radius: 5px;
+        color: rgb(109, 108, 108);
+      }
+    }
+
+    &__desc {
+      textarea {
+        width: 100%;
+        margin-block: 3%;
+        height: 50px;
+        font-size: 1.1vw;
+        padding-left: 2%;
+        padding-top: 2%;
+        border: 1px solid rgb(196, 196, 196);
+        border-radius: 5px;
+        color: rgb(109, 108, 108);
+      }
+    }
+
+    &__file {
+      margin-block: 3%;
+      text-align: end;
+
+      label {
+        font-size: 1vw;
+        padding: 2% 5%;
+        color: #F6688E;
+        background-color: #faf6f6d0;
+        border: 1px solid #F6688E;
+        border-radius: 5px;
+        text-align: center;
+      }
+    }
+
+    &__images {
+      margin-block: 8%;
+      display: flex;
+
+      &__item {
+        position: relative;
+        width: 15%;
+        margin-left: 2%;
+
+        button {
+          position: absolute;
+          top: 5px;
+          right: 2px;
+          border: none;
+          background-color: transparent;
+          font-size: 1.1vw;
+          color: #F6688E;
+        }
+
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &__updateButton {
+      width: 100%;
+      color: #F6688E;
+      background-color: #faf6f6d0;
+      border: 1px solid #F6688E;
+      border-radius: 10px;
+      padding: 3% 6%;
+      font-size: 1.2vw;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .added {
+      border: 1px solid #acdf13;
+      color: #acdf13;
+      background-color: #faf6f6d0;
+    }
+  }
+}

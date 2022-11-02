@@ -237,12 +237,12 @@ export const fetchDeleteProduct = async (productId) => {
 }
 
 // Update Product --- Admin
-export const fetchUpdateProduct = async (productId, name, desc, price, images, category, stock) => {
+export const fetchUpdateProduct = async (productId, name, description, price, images, category, stock) => {
   const res = await fetch(`http://localhost:4000/api/product/${productId}`, {
     method: 'PUT',
     body: JSON.stringify({
       name,
-      desc,
+      description,
       price,
       images,
       category,
@@ -252,7 +252,34 @@ export const fetchUpdateProduct = async (productId, name, desc, price, images, c
       'Content-type': 'application/json; charset=UTF-8',
     },
     credentials: 'include'
-  })
+  });
+
+  const resData = await res.json();
+
+  return resData;
+}
+
+// Create Product --- Admin
+export const fetchCreateNewProduct = async (name, description, price, images, category, stock) => {
+  const res = await fetch("http://localhost:4000/api/product/new", {
+    method: "POST",
+    body: JSON.stringify({
+      name,
+      description,
+      price,
+      images,
+      category,
+      stock
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    },
+    credentials: 'include'
+  });
+
+  const resData = await res.json();
+
+  return resData;
 }
 
 

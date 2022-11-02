@@ -8,7 +8,7 @@ import Loading from "../../../../Loading/Loading";
 
 const EditProduct = () => {
   const { id } = useParams();
-  const { productDetail, setProductDetail } = useContext(ProductContext);
+  const { setProductDetail } = useContext(ProductContext);
   const [name, setName] = useState("")
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState(0);
@@ -16,6 +16,7 @@ const EditProduct = () => {
   const [category, setCategory] = useState("");
   const [stock, setStock] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -49,10 +50,20 @@ const EditProduct = () => {
 
   const changeProductProperties = async (e) => {
     e.preventDefault();
-    await fetchUpdateProduct(id, name, desc, price, images, category, stock)
+
+    try {
+      const res = await fetchUpdateProduct(id, name, desc, price, images, category, stock);
+
+      if (res.success) {
+        setIsUpdated(true);
+      }
+
+    } catch (err) {
+      console.log(err);
+    }
   }
 
-  const deleteProductOldImage = (index) => {
+  const deleteProductImage = (index) => {
     const filteredImages = images.filter((_, i) => i !== index);
     setImages(filteredImages);
   }
@@ -93,7 +104,7 @@ const EditProduct = () => {
           {
             images.map((image, index) =>
               <div key={image._id} className="edit__page__form__images__item">
-                <button type="button" onClick={() => deleteProductOldImage(index)}>
+                <button type="button" onClick={() => deleteProductImage(index)}>
                   <AiFillCloseCircle />
                 </button>
                 <img src={image.url} alt="old-images" />
@@ -102,7 +113,9 @@ const EditProduct = () => {
           }
         </div>
 
-        <button type="submit" className="edit__page__form__updateButton">Güncelle</button>
+        <button type="submit" className={isUpdated ? "edit__page__form__updateButton updated" : "edit__page__form__updateButton"}>
+          {isUpdated ? "Güncellendi" : "Güncelle"}
+        </button>
       </form>
     </div>
   )
