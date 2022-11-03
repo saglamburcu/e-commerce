@@ -29,6 +29,7 @@ import EditProduct from './components/DashboardPageComponents/DashboardContent/A
 import Orders from './components/DashboardPageComponents/DashboardContent/Orders/Orders';
 import Users from './components/DashboardPageComponents/DashboardContent/Users/Users';
 import Reviews from './components/DashboardPageComponents/DashboardContent/Reviews/Reviews';
+import EditOrders from './components/DashboardPageComponents/DashboardContent/Orders/EditOrders/EditOrders';
 // import Payment from './components/CheckoutPageComponents/Payment/Payment';
 // import PaymentWrapper from './components/CheckoutPageComponents/Payment/PaymentWrapper';
 
@@ -75,6 +76,7 @@ function App() {
             <Route path='edit-product/:id' element={<EditProduct />} />
             <Route path='create-product' element={<CreateProduct />} />
             <Route path='orders' element={<Orders />} />
+            <Route path='edit-order/:id' element={<EditOrders />} />
             <Route path='users' element={<Users />} />
             <Route path='reviews' element={<Reviews />} />
           </Route>

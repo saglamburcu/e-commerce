@@ -8,6 +8,7 @@ import Loading from "../../../Loading/Loading";
 const AllProducts = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [deleteProductId, setDeleteProductId] = useState("");
 
   const navigate = useNavigate();
 
@@ -17,10 +18,11 @@ const AllProducts = () => {
       setAllProducts(res.products);
       setIsLoading(false);
     })()
-  }, [allProducts]);
+  }, [deleteProductId]);
 
   const deleteProduct = async (id) => {
     await fetchDeleteProduct(id);
+    setDeleteProductId(id);
   }
 
   if (isLoading) {

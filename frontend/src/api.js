@@ -282,5 +282,47 @@ export const fetchCreateNewProduct = async (name, description, price, images, ca
   return resData;
 }
 
+// Get All Orders --- Admin
+export const fetchGetAllOrders = async () => {
+  const res = await fetch("http://localhost:4000/api/admin/orders", { credentials: 'include' });
 
+  const data = await res.json();
+
+  return data;
+}
+
+// Delete Order --- Admin
+export const fetchDeleteOrder = async (orderId) => {
+  const res = await fetch(`http://localhost:4000/api/admin/order/${orderId}`, {
+    method: 'DELETE',
+    credentials: 'include'
+  });
+}
+
+// Get Single User --- Admin
+export const fetchGetSingleUser = async (userId) => {
+  const res = await fetch(`http://localhost:4000/api/admin/user/${userId}`, { credentials: 'include' });
+
+  const data = await res.json();
+
+  return data;
+}
+
+// Update Order Status --- Admin
+export const fetchUpdateOrderStatus = async (orderId, status) => {
+  const res = await fetch(`http://localhost:4000/api/admin/order/${orderId}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      status
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: 'include'
+  });
+
+  const data = await res.json();
+
+  return data;
+}
 
