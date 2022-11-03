@@ -299,15 +299,6 @@ export const fetchDeleteOrder = async (orderId) => {
   });
 }
 
-// Get Single User --- Admin
-export const fetchGetSingleUser = async (userId) => {
-  const res = await fetch(`http://localhost:4000/api/admin/user/${userId}`, { credentials: 'include' });
-
-  const data = await res.json();
-
-  return data;
-}
-
 // Update Order Status --- Admin
 export const fetchUpdateOrderStatus = async (orderId, status) => {
   const res = await fetch(`http://localhost:4000/api/admin/order/${orderId}`, {
@@ -324,5 +315,47 @@ export const fetchUpdateOrderStatus = async (orderId, status) => {
   const data = await res.json();
 
   return data;
+}
+
+// Get Users --- Admin
+export const fetchAllUsers = async () => {
+  const res = await fetch("http://localhost:4000/api/admin/users", { credentials: 'include' });
+
+  const data = await res.json();
+
+  return data;
+}
+
+// Get Single User --- Admin
+export const fetchGetSingleUser = async (userId) => {
+  const res = await fetch(`http://localhost:4000/api/admin/user/${userId}`, { credentials: 'include' });
+
+  const data = await res.json();
+
+  return data;
+}
+
+// Delete User --- Admin
+export const fetchDeleteUser = async (userId) => {
+  const res = await fetch(`http://localhost:4000/api/admin/deleteuser/${userId}`, {
+    method: 'DELETE',
+    credentials: 'include'
+  });
+}
+
+// Update User Role --- Admin
+export const fetchUpdateUserRole = async (userId, data) => {
+  const res = await fetch(`http://localhost:4000/api/admin/updaterole/${userId}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    credentials: 'include'
+  });
+
+  const resData = await res.json();
+
+  return resData;
 }
 

@@ -1,0 +1,48 @@
+.edit__user {
+  width: 35%;
+  padding: 2%;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 10px;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0px 0px 29px -6px rgba(0, 0, 0, 0.75);
+
+  &__form {
+    width: 100%;
+    margin: auto;
+
+    &__name,
+    &__email,
+    &__role {
+
+      input {
+        width: 100%;
+        margin-block: 3%;
+        height: 40px;
+        font-size: 1.1vw;
+        padding-left: 2%;
+        border: 1px solid rgb(196, 196, 196);
+        border-radius: 5px;
+        color: rgb(109, 108, 108);
+      }
+    }
+
+    &__updateButton {
+      width: 100%;
+      color: #F6688E;
+      background-color: #faf6f6d0;
+      border: 1px solid #F6688E;
+      border-radius: 10px;
+      padding: 3% 6%;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 1.2vw;
+    }
+
+    .updated {
+      border: 1px solid #acdf13;
+      color: #acdf13;
+      background-color: #faf6f6d0;
+    }
+  }
+}

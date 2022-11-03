@@ -1,0 +1,58 @@
+.all__users {
+  width: 70%;
+  margin: auto;
+  max-height: 85vh;
+  overflow-y: scroll;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 29px -6px rgba(0, 0, 0, 0.75);
+
+  &__list {
+    width: 100%;
+    padding: 3%;
+
+    tr {
+      font-size: 1.1vw;
+
+      button {
+        font-size: 1.2vw;
+        border: none;
+        background-color: transparent;
+      }
+
+      &:first-child {
+        background-color: transparent !important;
+        color: #F6688E !important;
+        font-size: 1.3vw !important;
+
+        th {
+          padding-block: 3%;
+        }
+      }
+
+      &:nth-child(odd) {
+        color: #F6688E;
+        background-color: #faf6f6b9;
+
+        button {
+          color: #F6688E;
+        }
+      }
+
+      &:nth-child(even) {
+        background-color: #f6688eda;
+        color: #faf6f6b9;
+
+        button {
+          color: #faf6f6b9;
+        }
+      }
+
+      td {
+        text-align: center;
+        padding-block: 3%;
+      }
+    }
+  }
+}
