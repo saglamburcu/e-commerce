@@ -359,3 +359,11 @@ export const fetchUpdateUserRole = async (userId, data) => {
   return resData;
 }
 
+// Delete Product Review --- Admin
+export const fetchDeleteProductReview = async (productId, reviewId) => {
+  const res = await fetch(`http://localhost:4000/api/delete/review?productId=${productId}&id=${reviewId}`, {
+    method: 'DELETE',
+    credentials: 'include'
+  });
+}
+

@@ -4,9 +4,10 @@
   width: 20%;
   background-color: #fde166c7;
   padding: 3%;
+  border-right: 5px solid #F6688E;
 
   &__logo {
-    margin-bottom: 20%;
+    margin-bottom: 30%;
   }
 
   &__main,
@@ -15,6 +16,7 @@
   &__orders,
   &__users,
   &__reviews {
+    color: #F6688E;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -24,6 +26,7 @@
   &__icon {
     font-size: 2vw;
     margin-right: 8%;
+    color: #F6688E;
   }
 
   h4 {
