@@ -5,10 +5,13 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { ProductContext } from "../../../../../context/ProductContext";
 import { fetchProductDetails, fetchUpdateProduct } from "../../../../../api";
 import Loading from "../../../../Loading/Loading";
+import { AdminContext } from "../../../../../context/AdminContext";
 
 const EditProduct = () => {
   const { id } = useParams();
   const { setProductDetail } = useContext(ProductContext);
+  const { isUpdated, setIsUpdated } = useContext(AdminContext);
+
   const [name, setName] = useState("")
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState(0);
@@ -16,7 +19,6 @@ const EditProduct = () => {
   const [category, setCategory] = useState("");
   const [stock, setStock] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
     (async () => {

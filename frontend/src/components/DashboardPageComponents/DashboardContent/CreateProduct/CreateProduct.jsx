@@ -1,16 +1,18 @@
 import "./CreateProduct.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { fetchCreateNewProduct } from "../../../../api";
+import { AdminContext } from "../../../../context/AdminContext";
 
 const CreateProduct = () => {
+  const { isAddProduct, setIsAddProduct } = useContext(AdminContext);
+
   const [name, setName] = useState("")
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState(0);
   const [images, setImages] = useState([]);
   const [category, setCategory] = useState("");
   const [stock, setStock] = useState(0);
-  const [isAddProduct, setIsAddProduct] = useState(false);
 
   const updateProductImagesChange = (e) => {
     const files = Array.from(e.target.files);

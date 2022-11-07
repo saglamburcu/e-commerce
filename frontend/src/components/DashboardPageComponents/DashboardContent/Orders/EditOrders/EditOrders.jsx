@@ -1,15 +1,17 @@
 import "./EditOrders.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { fetchGetSingleUser, fetchSingleOrder, fetchUpdateOrderStatus } from "../../../../../api";
+import { AdminContext } from "../../../../../context/AdminContext";
 
 const EditOrders = () => {
   const { id } = useParams();
+  const { isUpdatedOrder, setIsUpdatedOrder } = useContext(AdminContext);
+
   const [orderDetail, setOrderDetail] = useState(null);
   const [statusValue, setStatusValue] = useState("");
   const [orderStatus, setOrderStatus] = useState("");
   const [user, setUser] = useState(null);
-  const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -31,7 +33,7 @@ const EditOrders = () => {
 
       if (res.success) {
         setOrderStatus(statusValue);
-        setIsUpdated(true);
+        setIsUpdatedOrder(true);
       }
     } catch (err) {
       console.log(err);
@@ -100,8 +102,8 @@ const EditOrders = () => {
         <form className="edit__process__form" onSubmit={updateOrderStatus}>
           <h2>Sipariş Durumunu Güncelle</h2>
           <input type="text" value={statusValue} onChange={(e) => setStatusValue(e.target.value)} />
-          <button type="submit" className={isUpdated ? "updated" : ""}>
-            {isUpdated ? "Güncellendi" : "Güncelle"}
+          <button type="submit" className={isUpdatedOrder ? "updated" : ""}>
+            {isUpdatedOrder ? "Güncellendi" : "Güncelle"}
           </button>
         </form>
       </div>

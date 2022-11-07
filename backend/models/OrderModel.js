@@ -95,7 +95,7 @@ const orderSchema = new Schema({
   orderStatus: {
     type: String,
     required: true,
-    default: "Processing"
+    // default: "Processing"
   },
   deliveredAt: Date,
   createdAt: {

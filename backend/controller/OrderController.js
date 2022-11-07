@@ -8,6 +8,7 @@ const createOrder = catchAsyncErrors(async (req, res, next) => {
   const { shippingInfo, orderItems, paymentInfo, itemsPrice, taxPrice, shippingPrice, totalPrice } = req.body;
 
   const order = await Order.create({
+    orderStatus: "Processing",
     shippingInfo,
     orderItems,
     paymentInfo,
@@ -18,6 +19,14 @@ const createOrder = catchAsyncErrors(async (req, res, next) => {
     paidAt: Date.now(),
     user: req.user._id
   });
+
+  if (order.orderStatus === "Processing") {
+    order.orderItems.forEach(async (ord) => {
+      await updateStock(ord.product, ord.quantity);
+    });
+  };
+
+  await order.save();
 
   res.status(201).json({
     success: true,
@@ -78,11 +87,11 @@ const updateAdminOrder = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("You have already delivered this order", 400));
   };
 
-  if (req.body.status === "Shipped") {
-    order.orderItems.forEach(async (ord) => {
-      await updateStock(ord.product, ord.quantity);
-    });
-  };
+  // if (req.body.status === "Shipped") {
+  //   order.orderItems.forEach(async (ord) => {
+  //     await updateStock(ord.product, ord.quantity);
+  //   });
+  // };
 
   order.orderStatus = req.body.status;
 

@@ -8,7 +8,7 @@ import { OrderContext } from "../../../context/OrderContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as fillHeart } from "@fortawesome/free-solid-svg-icons";
 
-const ProductCard = ({ id, name, images, reviews, price, rating }) => {
+const ProductCard = ({ id, name, images, reviews, price, rating, stock }) => {
   const { favoriteProductsList } = useContext(OrderContext);
 
   const productsRatings = {
@@ -32,6 +32,12 @@ const ProductCard = ({ id, name, images, reviews, price, rating }) => {
             && <FontAwesomeIcon icon={fillHeart} />
           }
         </div>
+        {
+          stock === 0 &&
+          <div className="product__images__selected__soldOut">
+            Tükendi
+          </div>
+        }
       </div>
       <RatingStars props={productsRatings} />
       <div className="card__info">

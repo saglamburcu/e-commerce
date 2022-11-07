@@ -1,13 +1,15 @@
 import "./EditUsers.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { fetchGetSingleUser, fetchUpdateUserRole } from "../../../../../api";
+import { AdminContext } from "../../../../../context/AdminContext";
 
 const EditUsers = () => {
+  const { isUpdatedUser, setIsUpdatedUser } = useContext(AdminContext);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
-  const [isUpdated, setIsUpdated] = useState(false);
 
   const { id } = useParams();
 
@@ -26,7 +28,7 @@ const EditUsers = () => {
     const res = await fetchUpdateUserRole(id, data);
 
     if (res.success) {
-      setIsUpdated(true);
+      setIsUpdatedUser(true);
     }
   }
 
@@ -45,8 +47,8 @@ const EditUsers = () => {
           <input type="text" value={role} onChange={(e) => setRole(e.target.value)} />
         </div>
 
-        <button type="submit" className={isUpdated ? "edit__user__form__updateButton updated" : "edit__user__form__updateButton"}>
-          {isUpdated ? "Güncellendi" : "Güncelle"}
+        <button type="submit" className={isUpdatedUser ? "edit__user__form__updateButton updated" : "edit__user__form__updateButton"}>
+          {isUpdatedUser ? "Güncellendi" : "Güncelle"}
         </button>
       </form>
     </div>

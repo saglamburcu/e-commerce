@@ -6,7 +6,9 @@ import ProductAmountButtons from "../ProductAmountButtons/ProductAmountButtons";
 
 const ProductDetailInfo = () => {
   const { setProductsInTheBasket, setBasketIconNumber } = useContext(OrderContext);
-  const { productDetail } = useContext(ProductContext)
+  const { productDetail } = useContext(ProductContext);
+
+  console.log(productDetail)
 
   const [numberOfProducts, setNumberOfProducts] = useState(0);
 
@@ -34,7 +36,7 @@ const ProductDetailInfo = () => {
       <h2>{productDetail.price} TL</h2>
       <ProductAmountButtons numberOfProducts={numberOfProducts} setNumberOfProducts={setNumberOfProducts} />
       {
-        (productDetail.stock <= 3 && productDetail.stock > 0) && (
+        (productDetail.stock <= 5 && productDetail.stock > 0) && (
           <h4>Son {productDetail.stock} ürün</h4>
         )
       }

@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from "react";
 
 const OrderContext = createContext();
 
-const OrderProvider = ({children}) => {
+const OrderProvider = ({ children }) => {
   const [productsInTheBasket, setProductsInTheBasket] = useState(JSON.parse(localStorage.getItem("myBasket")) || []);
   const [basketIconNumber, setBasketIconNumber] = useState(Number(localStorage.getItem("numberOfProductsInTheBasket")) || 0);
   const [addressData, setAddressData] = useState(JSON.parse(localStorage.getItem("orderShippingAddress")) || null);
@@ -35,18 +35,18 @@ const OrderProvider = ({children}) => {
     const addedProduct = productsList.filter(product => product.productInfos._id === id);
 
     setFavoriteProductsList(productsList.filter(product => product.productInfos._id !== id))
-   
+
     setProductsInTheBasket((prev) => {
       const productIndex = prev.findIndex(product => product.productInfos._id === id);
 
-      if(productIndex !== -1) {
+      if (productIndex !== -1) {
         const newState = [...prev];
         newState[productIndex].count += 1;
 
         return newState;
-      } 
+      }
       return [...prev, ...addedProduct]
-      
+
     })
 
     setBasketIconNumber(prev => prev + 1)
