@@ -1,13 +1,11 @@
-import { useEffect } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchCreateOrder } from "../../../api";
 import { OrderContext } from "../../../context/OrderContext";
 import "./OrderSummary.scss";
 
 const OrderSummary = () => {
 
-  const { productsInTheBasket, addressData, setProductsInTheBasket, setBasketIconNumber, setFavoriteProductsList } = useContext(OrderContext);
+  const { productsInTheBasket, addressData, setOrderData } = useContext(OrderContext);
   const navigate = useNavigate();
 
   let subTotal = productsInTheBasket.reduce((cumulative, item) => cumulative + item.productInfos.price * item.count, 0);
@@ -16,15 +14,7 @@ const OrderSummary = () => {
 
   const total = shippingCharges + subTotal;
 
-  // useEffect(() => {
-  //   (async () => {
-  //     if(order) {
-  //       await fetchCreateOrder(order);
-  //     }
-  //   })()
-  // }, [order]);
-
-  const handleClick = async (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
 
     const orders = productsInTheBasket.map(productItem => {
@@ -37,21 +27,9 @@ const OrderSummary = () => {
       }
     });
 
-    const paymentInfo = {
-      id: "1",
-      status: "succeeded"
-    }
+    setOrderData({ shippingInfo: addressData, itemsPrice: subTotal, shippingPrice: shippingCharges, totalPrice: total, orderItems: orders });
 
-    const res = await fetchCreateOrder({ shippingInfo: addressData, itemsPrice: subTotal, shippingPrice: shippingCharges, totalPrice: total, orderItems: orders, paymentInfo: paymentInfo });
-
-    if (res.success) {
-      setProductsInTheBasket([]);
-      setBasketIconNumber(0);
-      setFavoriteProductsList([]);
-    }
-
-    // navigate("/checkout/card-infos")
-    navigate("/checkout/success");
+    navigate("/checkout/card-infos")
   }
 
   return (

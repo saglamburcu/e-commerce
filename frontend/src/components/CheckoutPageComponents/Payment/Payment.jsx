@@ -1,87 +1,74 @@
-// import {
-//   CardNumberElement,
-//   CardCvcElement,
-//   CardExpiryElement,
-//   useStripe,
-//   useElements,
-// } from "@stripe/react-stripe-js";
-// import axios from "axios";
-// import { useRef } from "react";
+import {
+  useStripe,
+  useElements,
+  CardElement,
+} from "@stripe/react-stripe-js";
+import axios from "axios";
+import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { fetchCreateOrder } from "../../../api";
+import { OrderContext } from "../../../context/OrderContext";
 
-// const Payment = () => {
-//   const stripe = useStripe();
-//   const elements = useElements();
-//   const payBtn = useRef(null);
+const Payment = () => {
+  const [clientSecret, setClientSecret] = useState("");
 
-//   const submitHandler = async (e) => {
-//     e.preventDefault();
+  const { orderData, setProductsInTheBasket, setBasketIconNumber, setFavoriteProductsList } = useContext(OrderContext);
 
-//     try {
-//       const config = {
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       };
-//       const { data } = await axios.post(
-//         "http://localhost:4000/api/payment/process",
-//         {amount: Math.round(5 * 100)},  //?
-//         config
-//       );
+  const stripe = useStripe();
+  const elements = useElements();
+  const navigate = useNavigate();
 
-//       const client_secret = data.client_secret;
+  useEffect(() => {
+    const fetchClientSecret = async () => {
+      const data = await axios.post("http://localhost:4000/api/payment/process", {
+        amount: orderData.totalPrice,
+      });
 
-//       if (!stripe || !elements) return;
+      setClientSecret(data.data.clientSecret)
+    };
 
-//       const result = await stripe.confirmCardPayment(client_secret, {
-//         payment_method: {
-//           card: elements.getElement(CardNumberElement),
-//           billing_details: {
-//             name: "Burcu",
-//             email: "burcu@gmail.com",
-//             address: {
-//               line1: "shippingInfo.address",
-//               city: "shippingInfo.city",
-//               state: "shippingInfo.state",
-//               country: "shippingInfo.country",
-//             },
-//           },
-//         },
-//       });
+    fetchClientSecret();
+    console.log("clientSecretKeys", clientSecret)
+  }, []);
 
-//       if (!result.error) {
-//         console.log("Successfull payment")
-//       }
+  const confirmPayment = async (e) => {
+    e.preventDefault();
 
-//     } catch (err) {
-//       console.log(err.response.data.message)
-//     }
-//   }
+    const result = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement)
+      }
+    })
 
-//   return (
-//     <>
-//       <div className="paymentContainer">
-//         <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
-//           <h1>Card Info</h1>
-//           <div>
-//             <CardNumberElement className="paymentInput" />
-//           </div>
-//           <div>
-//             <CardExpiryElement className="paymentInput" />
-//           </div>
-//           <div>
-//             <CardCvcElement className="paymentInput" />
-//           </div>
+    if (result.paymentIntent.status === "succeeded") {
+      const paymentInfo = {
+        id: result.paymentIntent.id,
+        status: result.paymentIntent.status
+      }
 
-//           <input
-//             type="submit"
-//             value={`Pay - $ ${100}`}
-//             ref={payBtn}
-//             className="paymentFormBtn"
-//           />
-//         </form>
-//       </div>
-//     </>
-//   )
-// }
+      const res = await fetchCreateOrder({ ...orderData, paymentInfo });
+      console.log(res)
 
-// export default Payment;
+      if (res.success) {
+        setProductsInTheBasket([]);
+        setBasketIconNumber(0);
+        setFavoriteProductsList([]);
+        navigate("/checkout/success");
+      }
+    }
+  }
+
+  return (
+    <>
+      <div className="paymentContainer" style={{ width: "500px" }}>
+        <div>
+          <CardElement />
+
+        </div>
+        <button onClick={confirmPayment}>Place Order</button>
+      </div>
+    </>
+  )
+}
+
+export default Payment;

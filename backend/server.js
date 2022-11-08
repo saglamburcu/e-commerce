@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const product = require("./routes/ProductRoute");
 const user = require("./routes/UserRoute");
 const order = require("./routes/OrderRoute");
-// const payment = require("./routes/PaymentRoute");
+const payment = require("./routes/PaymentRoute");
 const connectDatabase = require("./db/Database");
 const errorMiddleware = require("./middleware/error");
 const cors = require("cors");
@@ -38,7 +38,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: false, parameterLimit: 500
 app.use("/api", product);
 app.use("/api", user);
 app.use("/api", order);
-// app.use("/api", payment);
+app.use("/api", payment);
 
 app.use("/api", createProxyMiddleware({
   target: "http://localhost:3000/",

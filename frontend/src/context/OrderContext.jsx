@@ -8,6 +8,7 @@ const OrderProvider = ({ children }) => {
   const [addressData, setAddressData] = useState(JSON.parse(localStorage.getItem("orderShippingAddress")) || null);
   const [order, setOrder] = useState(JSON.parse(localStorage.getItem("order")) || null);
   const [favoriteProductsList, setFavoriteProductsList] = useState(JSON.parse(localStorage.getItem("favoriteProducts")) || []);
+  const [orderData, setOrderData] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("myBasket", JSON.stringify(productsInTheBasket));
@@ -65,7 +66,8 @@ const OrderProvider = ({ children }) => {
     favoriteProductsList,
     setFavoriteProductsList,
     removeProductFromFavorites,
-    addToBasketFromFavorite
+    addToBasketFromFavorite,
+    orderData, setOrderData
   }
 
   return (

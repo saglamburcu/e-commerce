@@ -1,4 +1,5 @@
 import './App.css';
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from '../src/components/HomePageComponents/Header/Header';
 import Home from './pages/Home/Home';
@@ -31,8 +32,12 @@ import Users from './components/DashboardPageComponents/DashboardContent/Users/U
 import Reviews from './components/DashboardPageComponents/DashboardContent/Reviews/Reviews';
 import EditOrders from './components/DashboardPageComponents/DashboardContent/Orders/EditOrders/EditOrders';
 import EditUsers from './components/DashboardPageComponents/DashboardContent/Users/EditUsers/EditUsers';
-// import Payment from './components/CheckoutPageComponents/Payment/Payment';
-// import PaymentWrapper from './components/CheckoutPageComponents/Payment/PaymentWrapper';
+import Payment from './components/CheckoutPageComponents/Payment/Payment';
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const apiKey = process.env.REACT_APP_STRIPE_API_KEY;
+const promise = loadStripe(apiKey);
 
 function App() {
 
@@ -64,7 +69,11 @@ function App() {
           <Route path='/checkout' element={<Checkout />}>
             <Route path='shipping-address' element={<ShippingAddress />} />
             <Route path='order-confirm' element={<OrderConfirm />} />
-            {/* <Route path='card-infos' element={<PaymentWrapper />} /> */}
+            <Route path='card-infos' element={
+              <Elements stripe={promise}>
+                <Payment />
+              </Elements>
+            } />
             <Route path='success' element={<Success />} />
           </Route>
           <Route path='/order/:id' element={<OrderDetails />} />
