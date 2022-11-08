@@ -1,7 +1,6 @@
 import "./Products.scss";
 import ProductList from "../../components/ProductPageComponent/ProductList/ProductList";
 import Categories from "../../components/ProductPageComponent/Categories/Categories";
-import Pagination from "../../components/ProductPageComponent/Pagination/Pagination";
 import { useState, useContext, useEffect } from "react";
 import { fetchAllProduct } from "../../api";
 import { ProductContext } from "../../context/ProductContext";
@@ -11,7 +10,6 @@ import Loading from "../../components/Loading/Loading";
 const Products = () => {
   const [totalPage, setTotalPage] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
-  const [activePage, setActivePage] = useState(0);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,7 +18,7 @@ const Products = () => {
   useEffect(() => {
     (async () => {
       const res = await fetchAllProduct({ category: selectedCategory }, pageNumber);
-      setProducts(res.products);
+      setProducts(pre => [...pre, ...res.products]);
       setTotalPage(Math.ceil(res.productsCount / res.pageLimit));
 
       setTimeout(() => {
@@ -30,9 +28,27 @@ const Products = () => {
     })()
   }, [selectedCategory, pageNumber]);
 
+  useEffect(() => {
+    const handleScroll = (e) => {
+      const scrollHeight = e.target.documentElement.scrollHeight;
+      const currentHeight = e.target.documentElement.scrollTop + window.innerHeight;
+
+      console.log("scrollHeight", scrollHeight)
+      console.log("currentHeight", currentHeight)
+
+      if (currentHeight >= scrollHeight - 800) {
+        setPageNumber(pageNumber + 1);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [pageNumber]);
+
   const changeSelectedCategory = (category) => {
     setSelectedCategory(category);
-    setActivePage(0);
+    setProducts([])
     setPageNumber(1);
   }
 
@@ -48,7 +64,6 @@ const Products = () => {
         </div>
         <div className="products__list">
           <ProductList products={products} />
-          <Pagination totalPage={totalPage} setPageNumber={setPageNumber} activePage={activePage} setActivePage={setActivePage} />
         </div>
       </div>
       <Footer />

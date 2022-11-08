@@ -6,23 +6,42 @@ import { fetchAllProduct } from "../../../api";
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
-  const [sendText, setIsSendText] = useState("");
 
-  const { pageNumber, setSearchedProducts, setTotalPage } = useContext(ProductContext);
+  const { pageNumber, setSearchedProducts, setTotalPage, sendText, setIsSendText, setPageNumber } = useContext(ProductContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
       const res = await fetchAllProduct({ keyword: sendText }, pageNumber);
-      setSearchedProducts(res.products);
+      setSearchedProducts(pre => [...pre, ...res.products]);
       setTotalPage(Math.ceil(res.productsCount / res.pageLimit));
     })()
   }, [sendText, pageNumber]);
 
+  useEffect(() => {
+    const handleScroll = (e) => {
+      const scrollHeight = e.target.documentElement.scrollHeight;
+      const currentHeight = e.target.documentElement.scrollTop + window.innerHeight;
+
+      console.log("scrollHeight", scrollHeight)
+      console.log("currentHeight", currentHeight)
+
+      if (currentHeight >= scrollHeight - 800) {
+        setPageNumber(pageNumber + 1);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [pageNumber]);
+
   const searchProduct = async (e) => {
     e.preventDefault();
     setSearchText("");
+    setSearchedProducts([]);
+    setPageNumber(1);
     setIsSendText(searchText);
     navigate("/search");
   }

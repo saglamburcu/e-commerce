@@ -11,7 +11,7 @@ const ProductProvider = ({ children }) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [searchedProducts, setSearchedProducts] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
-  const [activePage, setActivePage] = useState(0);
+  const [sendText, setIsSendText] = useState("");
 
   // Products Categories
   const [selectedCategory, setSelectedCategory] = useState("Köpek Kıyafeti");
@@ -21,7 +21,7 @@ const ProductProvider = ({ children }) => {
     //   const res = await fetchAllProduct();
     //   setAllProducts(res.products);
     // })();
-    localStorage.setItem("detail", JSON.stringify(productDetail))
+    localStorage.setItem("detail", JSON.stringify(productDetail));
   }, [productDetail]);
 
   const values = {
@@ -35,9 +35,10 @@ const ProductProvider = ({ children }) => {
     setSearchedProducts,
     totalPage,
     setTotalPage,
-    activePage,
-    setActivePage,
-    selectedCategory, setSelectedCategory
+    selectedCategory,
+    setSelectedCategory,
+    sendText,
+    setIsSendText
   }
 
   return (

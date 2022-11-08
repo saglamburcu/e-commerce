@@ -5,7 +5,7 @@ import { ProductContext } from "../../../context/ProductContext";
 
 const Categories = ({ changeSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
-  const { selectedCategory, setSelectedCategory } = useContext(ProductContext);
+  const { selectedCategory } = useContext(ProductContext);
 
   useEffect(() => {
     (async () => {

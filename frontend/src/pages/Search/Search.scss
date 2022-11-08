@@ -1,0 +1,40 @@
+.search {
+  padding: 5% 10%;
+  background-color: #fff6fa;
+
+  &__result {
+    margin-bottom: 5%;
+    text-align: center;
+    font-size: 1.5vw;
+    color: #F19E8E;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .search {
+    padding: 10%;
+
+    &__result {
+      margin-bottom: 10%;
+      font-size: 2.5vw;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .search {
+
+    &__result {
+      font-size: 3vw;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .search {
+
+    &__result {
+      font-size: 3.2vw;
+    }
+  }
+}

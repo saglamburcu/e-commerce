@@ -1,6 +1,5 @@
 import "./MyBasket.scss";
 import { useNavigate, Link } from "react-router-dom";
-import { FaRegThumbsUp } from "react-icons/fa";
 
 const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, isBasketPage, isFavoritePage, addToBasketFromFavorite }) => {
   const navigate = useNavigate();
@@ -39,14 +38,9 @@ const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, i
                         }
 
                         {
-                          (isFavoritePage && (product.productInfos.stock !== 0)) &&
+                          isFavoritePage &&
                           <button onClick={() => addToBasketFromFavorite(product.productInfos._id, productsList)}>Sepete Ekle</button>
                         }
-                        {/* 
-                        {
-                          (isFavoritePage && (product.productInfos.stock === 0)) &&
-                          <p>Ürün Tükendi</p>
-                        } */}
                       </td>
                     }
                   </tr>
@@ -60,7 +54,6 @@ const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, i
         (isBasketPage && productsList.length) ? (
           <div className="mybasket__confirm">
             <button className="mybasket__confirm__button" onClick={() => navigate("/checkout/shipping-address")}>
-              <FaRegThumbsUp className="mybasket__confirm__button__paw" />
               Sepeti Onayla
             </button>
           </div>
