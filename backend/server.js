@@ -11,6 +11,7 @@ const errorMiddleware = require("./middleware/error");
 const cors = require("cors");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 // handling uncaught exception
 process.on("uncaughtException", (err) => {
@@ -49,6 +50,12 @@ app.use("/api", createProxyMiddleware({
 }))
 
 app.use(errorMiddleware);
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+})
 
 // create server
 const server = app.listen(process.env.PORT, () => {
