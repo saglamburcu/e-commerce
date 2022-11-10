@@ -1,5 +1,5 @@
 .info {
-  width: 40%;
+  width: 50%;
   line-height: 40px;
   text-align: center;
 
@@ -21,7 +21,7 @@
   &__add__basket {
     width: 70%;
     border: none;
-    padding: 5% 3%;
+    padding: 3%;
     font-size: 1.3vw;
     border-radius: 5px;
     letter-spacing: 3px;
@@ -37,121 +37,127 @@
   }
 
   &__desc {
-    font-size: 1.2vw;
+    font-size: 0.9vw;
     color: rgb(109, 108, 108);
+    text-align: left;
+    line-height: 25px;
   }
 }
 
 @media screen and (max-width: 912px) {
   .info {
-    width: 35%;
+    width: 45%;
     line-height: 30px;
+
+    &__desc {
+      line-height: 20px;
+    }
   }
 }
 
 @media screen and (max-width: 750px) {
   .info {
-    line-height: 25px;
+    line-height: 35px;
+    width: 60%;
 
     h2 {
-      font-size: 1.8vw;
+      font-size: 2.5vw;
     }
 
     span {
-      font-size: 1.4vw;
+      font-size: 2.1vw;
     }
 
     h4 {
-      font-size: 1.2vw;
+      font-size: 1.9vw;
     }
 
     &__add__basket {
-      font-size: 1.5vw;
-      padding: 8% 5%;
+      font-size: 2.2vw;
     }
 
     &__desc {
-      font-size: 1.4vw;
+      font-size: 1.2vw;
     }
   }
 }
 
 @media screen and (max-width: 600px) {
   .info {
-    line-height: 20px;
+    line-height: 35px;
 
     h2 {
-      font-size: 2vw;
+      font-size: 2.9vw;
     }
 
     span {
-      font-size: 1.6vw;
+      font-size: 2.5vw;
     }
 
     h4 {
-      font-size: 1.4vw;
+      font-size: 2.3vw;
     }
 
     &__add__basket {
-      font-size: 1.7vw;
+      font-size: 2.6vw;
     }
 
     &__desc {
-      font-size: 1.6vw;
+      font-size: 1.8vw;
+      line-height: 15px;
     }
   }
 }
 
 @media screen and (max-width: 450px) {
   .info {
-    width: 40%;
-    line-height: 15px;
+    width: 70%;
 
     h2 {
-      font-size: 2.4vw;
+      font-size: 3.4vw;
     }
 
     span {
-      font-size: 2vw;
+      font-size: 3vw;
     }
 
     h4 {
-      font-size: 1.8vw;
+      font-size: 2.8vw;
     }
 
     &__add__basket {
-      font-size: 2.1vw;
+      font-size: 3.1vw;
     }
 
     &__desc {
-      font-size: 2vw;
+      font-size: 2.1vw;
     }
   }
 }
 
 @media screen and (max-width: 350px) {
   .info {
-    line-height: 10px;
+    width: 90%;
 
     h2 {
-      font-size: 2.8vw;
+      font-size: 3.9vw;
     }
 
     span {
-      font-size: 2.4vw;
+      font-size: 3.5vw;
     }
 
     h4 {
-      font-size: 2.2vw;
+      font-size: 3.3vw;
     }
 
     &__add__basket {
-      font-size: 2.5vw;
-      min-width: 100%;
+      font-size: 3.6vw;
     }
 
     &__desc {
-      font-size: 2.4vw;
+      font-size: 2.8vw;
+      line-height: 12px;
     }
   }
 }

@@ -21,3 +21,12 @@
     margin: 2% auto 8%;
   }
 }
+
+@media screen and (max-width: 750px) {
+  .product__detail {
+
+    &__center {
+      flex-direction: column;
+    }
+  }
+}

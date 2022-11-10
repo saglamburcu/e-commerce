@@ -39,11 +39,11 @@ const MyOrders = () => {
           <th>Sipariş Detayı</th>
         </tr>
         {
-          allOrders.map(order => {
+          allOrders.map((order, index) => {
             const { country, state, city, address } = order.shippingInfo;
 
             return (
-              <tr>
+              <tr key={index}>
                 <td>{order.createdAt.split("T")[0]}</td>
                 <td>{order.orderItems.reduce((cumulative, item) => cumulative + item.quantity, 0)} Ürün</td>
                 <td>{userInfo.name}</td>

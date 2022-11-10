@@ -2,12 +2,14 @@ import "./Reviews.scss";
 import { useState, useEffect } from "react";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { fetchAllReviews, fetchDeleteProductReview } from "../../../../api";
+import Spinner from "../../../Spinner/Spinner";
 
 const Reviews = () => {
   const [allReviews, setAllReviews] = useState([]);
   const [productId, setProductId] = useState("");
   const [searchProductId, setSearchProductId] = useState("");
   const [deletedReviewId, setDeletedReviewId] = useState("");
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -30,6 +32,11 @@ const Reviews = () => {
   const deleteReview = async (reviewId) => {
     await fetchDeleteProductReview(productId, reviewId);
     setDeletedReviewId(reviewId);
+    setIsDeleted(true);
+
+    setTimeout(() => {
+      setIsDeleted(false);
+    }, 2000);
   }
 
   return (
@@ -63,7 +70,7 @@ const Reviews = () => {
                   const { _id, name, comment, rating } = review;
 
                   return (
-                    <tr>
+                    <tr key={_id}>
                       <td>{_id}</td>
                       <td>{name}</td>
                       <td>{comment}</td>
@@ -82,6 +89,9 @@ const Reviews = () => {
           <p>
             Yorum Bulunamadı
           </p>
+      }
+      {
+        isDeleted && <Spinner />
       }
     </div>
   )

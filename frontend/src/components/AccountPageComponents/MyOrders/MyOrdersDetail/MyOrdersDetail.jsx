@@ -31,9 +31,9 @@ const MyOrdersDetail = () => {
   }
 
   const orderIcons = [
-    { status: "Processing", icon: faThumbsUp, text: "Siparişiniz alındı" },
-    { status: "Shipped", icon: faTruckFast, text: "Kargoya verildi" },
-    { status: "Delivered", icon: faCheck, text: "Teslim edildi" }
+    { status: "İşleme Alındı", icon: faThumbsUp, text: "Siparişiniz alındı" },
+    { status: "Kargoya verildi", icon: faTruckFast, text: "Kargoya verildi" },
+    { status: "Teslim edildi", icon: faCheck, text: "Teslim edildi" }
   ];
 
   console.log(orderDetail)
@@ -44,7 +44,7 @@ const MyOrdersDetail = () => {
         orderDetail &&
 
         <div className="orders__detail">
-          <Step steps={orderIcons} orderDetail={orderDetail} />
+          <Step steps={orderIcons} orderDetail={orderDetail.orderStatus} />
           <MyBasket
             showBtn={false}
             productsList={orderDetail.orderItems}

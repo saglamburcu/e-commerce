@@ -5,15 +5,23 @@ import { RiDeleteBin5Fill, RiEdit2Fill } from "react-icons/ri";
 import { fetchDeleteOrder, fetchGetAllOrders } from "../../../../api";
 import { AdminContext } from "../../../../context/AdminContext";
 import Loading from "../../../Loading/Loading";
+import Spinner from "../../../Spinner/Spinner";
 
 const Orders = () => {
+  const [isDeleted, setIsDeleted] = useState(false);
   const { isLoading, allOrders, setDeleteOrderId } = useContext(AdminContext);
+  console.log(allOrders)
 
   const navigate = useNavigate();
 
   const deleteOrder = async (id) => {
     await fetchDeleteOrder(id);
     setDeleteOrderId(id);
+    setIsDeleted(true);
+
+    setTimeout(() => {
+      setIsDeleted(false);
+    }, 2000);
   }
 
   if (isLoading) {
@@ -39,7 +47,7 @@ const Orders = () => {
                 const { _id, orderStatus, orderItems, totalPrice } = order;
 
                 return (
-                  <tr>
+                  <tr key={_id}>
                     <td>{_id}</td>
                     <td>{orderStatus}</td>
                     <td>{orderItems.length}</td>
@@ -60,6 +68,9 @@ const Orders = () => {
             }
           </table> :
           <p>Sipariş Bulunamadı</p>
+      }
+      {
+        isDeleted && <Spinner />
       }
     </div>
   )

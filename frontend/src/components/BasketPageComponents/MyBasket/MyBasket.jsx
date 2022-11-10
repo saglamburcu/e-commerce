@@ -11,9 +11,9 @@ const MyBasket = ({ showBtn, productsList, removeProduct, singleProductButton, i
           <table className="mybasket__products">
             {
               productsList.map(product => {
-                console.log(product)
+
                 return (
-                  <tr>
+                  <tr key={product.productInfos._id}>
                     <td className="mybasket__products__image">
                       <Link to={product.productInfos ? `/product/${product.productInfos._id}` : `/product/${product.product}`}>
                         <img src={product.productInfos ? product.productInfos.images[0].url : product.image} alt="" />

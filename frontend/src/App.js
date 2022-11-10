@@ -35,6 +35,7 @@ import EditUsers from './components/DashboardPageComponents/DashboardContent/Use
 import Payment from './components/CheckoutPageComponents/Payment/Payment';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import PageNotFound from './pages/PageNotFound/PageNotFound';
 
 const apiKey = process.env.REACT_APP_STRIPE_API_KEY;
 const promise = loadStripe(apiKey);
@@ -72,10 +73,10 @@ function App() {
             <Route path='card-infos' element={
               <Elements stripe={promise}>
                 <Payment />
-              </Elements>
-            } />
-            <Route path='success' element={<Success />} />
+              </Elements>}
+            />
           </Route>
+          <Route path='/success' element={<Success />} />
           <Route path='/order/:id' element={<OrderDetails />} />
         </Route>
 
@@ -92,6 +93,8 @@ function App() {
             <Route path='reviews' element={<Reviews />} />
           </Route>
         </Route>
+
+        <Route path='*' element={<PageNotFound />} />
 
       </Routes>
     </BrowserRouter>

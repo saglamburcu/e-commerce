@@ -24,7 +24,6 @@ const Products = () => {
       setTimeout(() => {
         setIsLoading(false)
       }, 750)
-      // setIsLoading(false)
     })()
   }, [selectedCategory, pageNumber]);
 

@@ -234,6 +234,10 @@ export const fetchDeleteProduct = async (productId) => {
     method: 'DELETE',
     credentials: 'include'
   });
+
+  const data = await res.json();
+
+  return data;
 }
 
 // Update Product --- Admin

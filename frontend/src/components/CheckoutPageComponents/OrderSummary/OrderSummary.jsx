@@ -5,7 +5,7 @@ import "./OrderSummary.scss";
 
 const OrderSummary = () => {
 
-  const { productsInTheBasket, addressData, setOrderData } = useContext(OrderContext);
+  const { productsInTheBasket, addressData, setOrderData, setCheckoutStep } = useContext(OrderContext);
   const navigate = useNavigate();
 
   let subTotal = productsInTheBasket.reduce((cumulative, item) => cumulative + item.productInfos.price * item.count, 0);
@@ -29,7 +29,8 @@ const OrderSummary = () => {
 
     setOrderData({ shippingInfo: addressData, itemsPrice: subTotal, shippingPrice: shippingCharges, totalPrice: total, orderItems: orders });
 
-    navigate("/checkout/card-infos")
+    setCheckoutStep("card-infos");
+    navigate("/checkout/card-infos");
   }
 
   return (

@@ -1,0 +1,37 @@
+.spinner {
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #faf6f6d0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__item {
+    display: inline-block;
+
+    &:after {
+      content: " ";
+      display: block;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 6px solid #F6688E;
+      border-color: #F6688E transparent rgba(173, 168, 168, 0.438) transparent;
+      animation: spinner 1.2s linear infinite;
+      margin: auto;
+    }
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

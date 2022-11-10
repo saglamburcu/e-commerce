@@ -1,5 +1,5 @@
 import "./OrderConfirm.scss";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { OrderContext } from "../../../context/OrderContext";
 import { UserContext } from "../../../context/UserContext";
 import MyBasket from "../../BasketPageComponents/MyBasket/MyBasket";
@@ -7,8 +7,12 @@ import OrderSummary from "../OrderSummary/OrderSummary";
 
 const OrderConfirm = () => {
 
-  const { addressData, productsInTheBasket, removeProductFromBasket } = useContext(OrderContext);
+  const { addressData, productsInTheBasket, removeProductFromBasket, setCheckoutStep } = useContext(OrderContext);
   const { userInfo } = useContext(UserContext);
+
+  useEffect(() => {
+    setCheckoutStep("confirm")
+  })
 
   return (
     <div className="orderconfirm">

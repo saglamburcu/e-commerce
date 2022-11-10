@@ -5,15 +5,22 @@ import { RiDeleteBin5Fill, RiEdit2Fill } from "react-icons/ri";
 import { fetchAllUsers, fetchDeleteUser } from "../../../../api";
 import { AdminContext } from "../../../../context/AdminContext";
 import Loading from "../../../Loading/Loading";
+import Spinner from "../../../Spinner/Spinner";
 
 const Users = () => {
   const { isLoading, allUsers, setDeleteUserId } = useContext(AdminContext);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const navigate = useNavigate();
 
   const deleteUser = async (userId) => {
     await fetchDeleteUser(userId);
     setDeleteUserId(userId);
+    setIsDeleted(true);
+
+    setTimeout(() => {
+      setIsDeleted(false);
+    }, 2000);
   }
 
   if (isLoading) {
@@ -39,7 +46,7 @@ const Users = () => {
                 const { _id, email, name, role } = user;
 
                 return (
-                  <tr>
+                  <tr key={_id}>
                     <td>{_id}</td>
                     <td>{email}</td>
                     <td>{name}</td>
@@ -61,7 +68,9 @@ const Users = () => {
           </table> :
           <p>Kullanıcı Bulunamadı</p>
       }
-
+      {
+        isDeleted && <Spinner />
+      }
     </div>
   )
 }

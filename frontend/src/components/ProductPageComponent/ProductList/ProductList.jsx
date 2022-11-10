@@ -26,7 +26,7 @@ const ProductList = ({ products }) => {
                 const { _id, name, images, reviews, price, rating, stock } = product;
 
                 return (
-                  <ProductCard id={_id} name={name} images={images} reviews={reviews} price={price} rating={rating} stock={stock} />
+                  <ProductCard key={_id} id={_id} name={name} images={images} reviews={reviews} price={price} rating={rating} stock={stock} />
                 )
               })
             }

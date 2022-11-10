@@ -5,15 +5,22 @@ import { fetchDeleteProduct } from "../../../../api";
 import { RiDeleteBin5Fill, RiEdit2Fill } from "react-icons/ri";
 import Loading from "../../../Loading/Loading";
 import { AdminContext } from "../../../../context/AdminContext";
+import Spinner from "../../../Spinner/Spinner";
 
 const AllProducts = () => {
   const { isLoading, allProducts, setDeleteProductId } = useContext(AdminContext);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const navigate = useNavigate();
 
   const deleteProduct = async (id) => {
     await fetchDeleteProduct(id);
     setDeleteProductId(id);
+    setIsDeleted(true);
+
+    setTimeout(() => {
+      setIsDeleted(false);
+    }, 2000);
   }
 
   if (isLoading) {
@@ -39,7 +46,7 @@ const AllProducts = () => {
                 const { _id, name, stock, price } = product;
 
                 return (
-                  <tr>
+                  <tr key={_id}>
                     <td>{_id}</td>
                     <td>{name}</td>
                     <td>{stock}</td>
@@ -60,6 +67,9 @@ const AllProducts = () => {
             }
           </table> :
           <p>Ürün Bulunamadı</p>
+      }
+      {
+        isDeleted && <Spinner />
       }
     </div>
   )

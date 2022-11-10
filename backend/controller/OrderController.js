@@ -8,7 +8,7 @@ const createOrder = catchAsyncErrors(async (req, res, next) => {
   const { shippingInfo, orderItems, paymentInfo, itemsPrice, taxPrice, shippingPrice, totalPrice } = req.body;
 
   const order = await Order.create({
-    orderStatus: "Processing",
+    orderStatus: "İşleme Alındı",
     shippingInfo,
     orderItems,
     paymentInfo,
@@ -20,7 +20,7 @@ const createOrder = catchAsyncErrors(async (req, res, next) => {
     user: req.user._id
   });
 
-  if (order.orderStatus === "Processing") {
+  if (order.orderStatus === "İşleme Alındı") {
     order.orderItems.forEach(async (ord) => {
       await updateStock(ord.product, ord.quantity);
     });
@@ -83,11 +83,11 @@ const updateAdminOrder = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Order not found with this id", 404));
   };
 
-  if (order.orderStatus === "Delivered") {
+  if (order.orderStatus === "Teslim edildi") {
     return next(new ErrorHandler("You have already delivered this order", 400));
   };
 
-  // if (req.body.status === "Shipped") {
+  // if (req.body.status === "Kargoya verildi") {
   //   order.orderItems.forEach(async (ord) => {
   //     await updateStock(ord.product, ord.quantity);
   //   });
@@ -95,7 +95,7 @@ const updateAdminOrder = catchAsyncErrors(async (req, res, next) => {
 
   order.orderStatus = req.body.status;
 
-  if (req.body.status === "Delivered") {
+  if (req.body.status === "Teslim edildi") {
     order.deliveredAt = Date.now();
   };
 

@@ -17,7 +17,7 @@ const ShippingAddress = () => {
   const [isShowState, setIsShowState] = useState(false);
   const [isShowCity, setIsShowCity] = useState(false);
 
-  const { setAddressData } = useContext(OrderContext);
+  const { setAddressData, setCheckoutStep } = useContext(OrderContext);
 
   const navigate = useNavigate();
 
@@ -27,6 +27,9 @@ const ShippingAddress = () => {
 
     const cityList = City.getCitiesOfState(`${countryCodeValue}`, `${stateCodeValue}`);
     setCity(cityList);
+
+    setCheckoutStep("shipping-address");
+
   }, [countryCodeValue, stateCodeValue]);
 
   const handleChangeCountry = (e) => {
@@ -45,6 +48,7 @@ const ShippingAddress = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setCheckoutStep("confirm");
     const data = {
       address: address,
       city: cityCodeValue,
@@ -53,8 +57,7 @@ const ShippingAddress = () => {
       phoneNo: phone
     }
     setAddressData(data);
-
-    navigate("/checkout/order-confirm")
+    navigate("/checkout/order-confirm");
   }
 
   return (

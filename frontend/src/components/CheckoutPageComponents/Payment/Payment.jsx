@@ -1,3 +1,4 @@
+import "./Payment.scss";
 import {
   useStripe,
   useElements,
@@ -47,27 +48,43 @@ const Payment = () => {
       }
 
       const res = await fetchCreateOrder({ ...orderData, paymentInfo });
-      console.log(res)
 
       if (res.success) {
         setProductsInTheBasket([]);
         setBasketIconNumber(0);
         setFavoriteProductsList([]);
-        navigate("/checkout/success");
+        navigate("/success");
       }
     }
   }
 
-  return (
-    <>
-      <div className="paymentContainer" style={{ width: "500px" }}>
-        <div>
-          <CardElement />
+  const cardStyle = {
+    style: {
+      base: {
+        color: "#F19E8E",
+        fontFamily: 'Arial, sans-serif',
+        fontSmoothing: "antialiased",
+        fontSize: "14px",
+        "::placeholder": {
+          color: "#F19E8E"
+        },
+        iconColor: "#F19E8E"
+      },
+      invalid: {
+        fontFamily: 'Arial, sans-serif',
+        color: "#fa755a",
+        iconColor: "#fa755a"
+      }
+    }
+  };
 
-        </div>
-        <button onClick={confirmPayment}>Place Order</button>
+  return (
+    <div className="payment">
+      <div className="payment__card">
+        <CardElement className="payment__card__item" options={cardStyle} />
+        <button onClick={confirmPayment}>Onayla</button>
       </div>
-    </>
+    </div>
   )
 }
 

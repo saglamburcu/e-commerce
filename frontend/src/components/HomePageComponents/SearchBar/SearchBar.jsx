@@ -24,9 +24,6 @@ const SearchBar = () => {
       const scrollHeight = e.target.documentElement.scrollHeight;
       const currentHeight = e.target.documentElement.scrollTop + window.innerHeight;
 
-      console.log("scrollHeight", scrollHeight)
-      console.log("currentHeight", currentHeight)
-
       if (currentHeight >= scrollHeight - 800) {
         setPageNumber(pageNumber + 1);
       }

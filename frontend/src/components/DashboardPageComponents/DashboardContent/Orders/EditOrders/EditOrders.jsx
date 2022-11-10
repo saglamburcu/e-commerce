@@ -40,6 +40,12 @@ const EditOrders = () => {
     }
   }
 
+  const status = [
+    { value: "İşleme Alındı" },
+    { value: "Kargoya verildi" },
+    { value: "Teslim edildi" }
+  ]
+
   return (
     <div className="edit">
       <div className="edit__order">
@@ -87,8 +93,8 @@ const EditOrders = () => {
         <h2>Ürünler</h2>
         <div className="edit__order__products">
           {
-            orderDetail?.orderItems.map(order => (
-              <div className="edit__order__products__item">
+            orderDetail?.orderItems.map((order, index) => (
+              <div key={index} className="edit__order__products__item">
                 <img src={order.image} alt="order-image" />
                 <p>{order.name}</p>
                 <p>{order.quantity} x {order.price} = <span>{order.quantity * order.price} TL</span></p>
@@ -101,7 +107,14 @@ const EditOrders = () => {
       <div className="edit__process">
         <form className="edit__process__form" onSubmit={updateOrderStatus}>
           <h2>Sipariş Durumunu Güncelle</h2>
-          <input type="text" value={statusValue} onChange={(e) => setStatusValue(e.target.value)} />
+          <select onChange={(e) => setStatusValue(e.target.value)}>
+            <option value=""></option>
+            {
+              status.map((item, index) => (
+                <option key={index} value={item.value}>{item.value}</option>
+              ))
+            }
+          </select>
           <button type="submit" className={isUpdatedOrder ? "updated" : ""}>
             {isUpdatedOrder ? "Güncellendi" : "Güncelle"}
           </button>

@@ -14,7 +14,7 @@ const ProductGroupItem = ({ productGroups }) => {
     <>
       {
         productGroups.map((group, index) => (
-          <li className="product__group__item">
+          <li key={index} className="product__group__item">
             <NavLink to="/products" className="product__group__item__link" onClick={() => showProducts(index)} >
               <img src={group.image} alt="" />
               <div>

@@ -66,6 +66,19 @@
         font-size: 1.5vw;
       }
     }
+
+    &__card {
+
+      &__item {
+        width: 25%;
+      }
+
+      .selected {
+        border: 2px solid #F19E8E;
+        border-radius: 5px;
+        width: 30%;
+      }
+    }
   }
 }
 
@@ -76,6 +89,20 @@
     &__selected {
       &__soldOut {
         font-size: 1.7vw;
+      }
+    }
+
+    &__card {
+      margin-bottom: 10%;
+
+      &__item {
+        width: 30%;
+      }
+
+      .selected {
+        border: 2px solid #F19E8E;
+        border-radius: 5px;
+        width: 35%;
       }
     }
   }

@@ -17,8 +17,12 @@
     margin-top: 20px;
 
     &__allcomments {
-      border-bottom: 1px solid rgb(196, 196, 196);
+      border-top: 1px solid rgb(196, 196, 196);
       padding: 3% 1%;
+
+      &:first-child {
+        border-top: none;
+      }
 
       &__infos {
         color: #F19E8E !important;
@@ -37,6 +41,8 @@
       align-items: center;
       width: 100%;
       margin: 15px 0;
+      border-top: 1px solid rgb(196, 196, 196);
+      padding-top: 3%;
 
       p {
         color: rgb(109, 108, 108);

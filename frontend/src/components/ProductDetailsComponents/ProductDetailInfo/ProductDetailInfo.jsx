@@ -8,8 +8,6 @@ const ProductDetailInfo = () => {
   const { setProductsInTheBasket, setBasketIconNumber } = useContext(OrderContext);
   const { productDetail } = useContext(ProductContext);
 
-  console.log(productDetail)
-
   const [numberOfProducts, setNumberOfProducts] = useState(0);
 
   const addToBasket = () => {
@@ -53,7 +51,10 @@ const ProductDetailInfo = () => {
         onClick={addToBasket}>
         Sepete Ekle
       </button>
-      <p className="info__desc">Açıklama: {productDetail.description}</p>
+      <p className="info__desc">
+        Açıklama: <br />
+        {productDetail.description}
+      </p>
     </div>
   )
 }

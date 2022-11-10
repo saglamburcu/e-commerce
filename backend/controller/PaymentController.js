@@ -7,7 +7,7 @@ const processPayment = catchAsyncErrors(async (req, res, next) => {
 
   const payment = await stripe(process.env.STRIPE_SECRET_KEY).paymentIntents.create({
     amount: total * 100,
-    currency: "try",
+    currency: "try"
   });
 
   res.status(201).send({

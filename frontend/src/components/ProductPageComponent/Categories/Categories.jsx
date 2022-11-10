@@ -17,8 +17,9 @@ const Categories = ({ changeSelectedCategory }) => {
 
   return (
     <div className="categories">
-      {categories.map(category => (
+      {categories.map((category, index) => (
         <button
+          key={index}
           type="button"
           onClick={(e) => changeSelectedCategory(e.target.textContent)}
           className={category === selectedCategory ? "selectedCategory" : ""}
