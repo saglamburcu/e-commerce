@@ -8,9 +8,8 @@ import Chart from 'chart.js/auto';
 const DashboardMain = () => {
   const { allProducts, allOrders, allUsers } = useContext(AdminContext);
 
-  console.log(allProducts)
   let outOfStock = 0;
-  allProducts.map(product => {
+  allProducts?.map(product => {
     if (product.stock === 0) {
       outOfStock += 1;
     }

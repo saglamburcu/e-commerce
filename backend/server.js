@@ -1,5 +1,4 @@
 const app = require("./app");
-const dotenv = require("dotenv");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const product = require("./routes/ProductRoute");
@@ -20,9 +19,11 @@ process.on("uncaughtException", (err) => {
 })
 
 // config
-dotenv.config({
-  path: "backend/config/.env"
-});
+if (process.env.NODE_ENV !== "PRODUCTION") {
+  require("dotenv").config({
+    path: "backend/config/.env"
+  })
+}
 
 // connect database
 connectDatabase();
@@ -51,11 +52,11 @@ app.use("/api", createProxyMiddleware({
 
 app.use(errorMiddleware);
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
-})
+// const __dirname = path.resolve();
+// app.use(express.static(path.join(__dirname, '/frontend/build')));
+// app.get('*', (req, res) =>
+//   res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+// );
 
 // create server
 const server = app.listen(process.env.PORT, () => {
