@@ -1,5 +1,4 @@
 const app = require("./app");
-const dotenv = require("dotenv");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const product = require("./routes/ProductRoute");
@@ -20,9 +19,11 @@ process.on("uncaughtException", (err) => {
 })
 
 // config
-dotenv.config({
-  path: "backend/config/.env"
-});
+if (process.env.NODE_ENV !== "PRODUCTION") {
+  require("dotenv").config({
+    path: "backend/config/.env"
+  })
+}
 
 // connect database
 connectDatabase();
